@@ -1,50 +1,31 @@
 # Envion
 
-**Envion** è un ecosistema in Pure Data pensato per la composizione algoritmica, la musica concreta e l’elaborazione sperimentale del suono.  
-Include strumenti per slicing, inviluppi dinamici, generazione di texture e gestione multi-canale.
+**Envion** is an ecosystem in Pure Data designed for algorithmic composition, musique concrète, and experimental sound processing.  
+It includes tools for slicing, dynamic envelopes, texture generation, and multi-channel management.
 
 ---
 
-## 📂 Struttura del progetto
+## 📂 Project structure
 
-- `Envion_v3.6.pd` → patch principale  
-- `astrazioni-non-obbligatorie/` → subpatch e utility opzionali  
-- `audio/` → sample di test e file audio (piccoli, caricabili su GitHub)  
-- `data/` → dati e preset per slicing/algoritmi  
-- `html-guide/` → guide e documentazione (anche in versione HTML/CSS)  
-- `legacy version/` → versioni precedenti  
-- `other version/` → varianti sperimentali  
-- `preset.pd` → esempio di gestione preset
-
-
----
-
-##  Il concetto di *Terne*
-
-Uno degli elementi centrali di **Envion** è l’uso delle *terne* (triplette di valori numerici).  
-Ogni terna definisce il comportamento di un frammento sonoro, attraverso tre parametri principali:
-
-1. **Durata** – tempo relativo o assoluto dell’evento (in ms o fattore di scala).  
-2. **Ampiezza** – livello del segnale, che può essere costante o modellato da un inviluppo.  
-3. **Offset / Posizione** – punto di lettura o di partenza del frammento all’interno del campione.
-
-Insieme, queste tre coordinate generano micro-articolazioni che Envion traduce in inviluppi e processi di slicing.  
-Le *terne* funzionano quindi come una sorta di **partitura algoritmica**, dove la somma di centinaia o migliaia di triplette permette di costruire texture complesse, droni, ritmiche irregolari o veri e propri micro-montaggi.
-
- Grazie a questo approccio, Envion non lavora solo come un player di campioni, ma come un **motore di composizione dinamica**, capace di trasformare anche un suono di pochi secondi in una trama sonora estesa e in continua evoluzione.
-
+- `Envion_v3.6.pd` → main patch  
+- `astrazioni-non-obbligatorie/` → optional subpatches and utilities  
+- `audio/` → test samples and audio files (small, uploadable to GitHub)  
+- `data/` → data and presets for slicing/algorithms  
+- `html-guide/` → guides and documentation (also in HTML/CSS format)  
+- `legacy version/` → previous versions  
+- `other version/` → experimental variants  
+- `preset.pd` → example of preset management
 
 ---
 
-## Dependencies
+## The concept of *Terne*
 
-Envion requires Pure Data **vanilla** plus the following externals:
+One of the central elements of **Envion** is the use of *terne* (triplets of numerical values).  
+Each terna defines the behavior of a sound fragment through three main parameters:
 
-- [else] — main external library by Alexandre Porres (musical/synthesis utilities).
-- [cyclone] — Max/MSP compatibility objects (`gate~`, `switch~`, `snapshot~`, `wrap~`, `clip~`, etc.).
-- [zexy] — extra math and DSP utilities.
-- [iemlib] — additional signal and control objects.
-- [snake~], [simplex~], [pp.out~], [x/scope3d] — less common externals used in some subpatches.  
-  (If missing, install via Deken or replace with equivalents.)
+1. **Duration** – relative or absolute time of the event (in ms or scaling factor).  
+2. **Amplitude** – the signal level, which can be constant or shaped by an envelope.  
+3. **Offset / Position** – the reading point or starting position of the fragment within the sample.
 
- All externals can be installed via Pd’s **Help → Find externals** (Deken).
+Together, these three coordinates generate micro-articulations that Envion translates into envelopes and slicing processes.  
+The *terne* thus work as a kind of **algorithmic score**, where the sum of hundreds or thousands of triplets allows the creation of complex text
