@@ -44,6 +44,13 @@ By enabling both checkboxes, Envion activates a **procedural randomization** pro
 
 This mechanism allows Envion to combine automatic loading and random selection, producing an ever-changing and potentially infinite stream of events.
 
+The patch may look **intimidating** at first, but it is intentionally left **“alive”** (with formulas and functions visible) to encourage **exploration**.
+Once you become familiar with the few basic operations (**keys 1–5** and the **space bar**, the latter enabled via a flag), in most cases it is best to **record the output**: if a particular articulation catches your ear during playback, it will be difficult to reproduce the exact same combination.
+
+Even though many operations seem **repeatable** (such as manually selecting a *terna* index from the list or triggering events by hand), the real nuances mainly emerge during the **automatic phase**, where **non-deterministic connections** between lists/terne take place — a sort of **unpredictable snapshot**.
+
+At other times, depending on the **source material**, envelopes may generate **non-zero-cross points** or **glitches**. Yet this is part of the charm: when the program runs in **random mode** — especially if you alternate gestures (**keys 1–5** and the **space bar**) — it becomes possible to capture **subtle variations** and **micro-articulations** that the system brings to life.
+
 ## 📂 Project structure
 
 - `Envion_v3.6.pd` → main patch  
