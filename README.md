@@ -37,7 +37,7 @@ This approach highlights Envion’s nature: it is not about “playing” direct
 
 # Procedural Randomization Automation 
 
-By enabling both checkboxes, Envion activates a **procedural randomization** process that automatically draws from **19,000 pre-defined triplets**.
+By enabling both checkboxes, Envion activates a **procedural randomization** process that automatically draws from **19,000 pre-defined triplets** and applies the X factor to each segment of the terna automatically, thereby imposing its own time-stretch and creating the sonic gesture.
 
 * **Random Terna**: continuously loads text files from the `/data` folder (each file contains about 1,000 envelopes/triplets).
 * **Random List**: randomly selects one of the 1,000 available lists.
