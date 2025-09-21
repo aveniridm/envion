@@ -27,12 +27,12 @@ Each terna defines the behavior of a sound fragment through three main parameter
 2. **Amplitude** – the signal level, which can be constant or shaped by an envelope.  
 3. **Offset / Position** – the reading point or starting position of the fragment within the sample.
 
-### 🔹 Examples of terne
-
-```text
+### Examples of terne
+<pre>
 0.452  80  0     ; → 452 ms duration, amplitude 80, offset at start of sample
 0.210  45  600   ; → 210 ms duration, amplitude 45, offset 600 ms into the sample
 0.879  100 1280  ; → 879 ms duration, full amplitude, offset 1280 ms
+</pre>
 
 
 ## Quick Start
@@ -44,4 +44,3 @@ Each terna defines the behavior of a sound fragment through three main parameter
 - Use the **manual triggers** and sliders to test sequences.  
 - Adjust the **stretch factor** to compress/expand time.  
 - Try the **ready-made presets** (bottom area).  
-- Make sure **file paths** for presets and lists are correct on your system.
