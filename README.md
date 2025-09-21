@@ -124,5 +124,55 @@ For immediate stop: send **clear/stop** to `vline~`, or drop amp to 0.
 * **Normalization** (utility UI) before printing
 * **Recorder**: internal block with **rec/stop** buttons
 
+# Tricks & Best Practices
+
+* **Library hygiene**: one envelope per line; always close with `;`. Avoid zero times anywhere.  
+* **Headroom**: add `clip~` after the amplitude multiplier if you use `pow~` or boosting.  
+* **Stagger stereo**: send the same envelope to L/R but offset *delays* by a few ms for micro-spatial instability.  
+* **Param-mod**: use terne as *control-rate* (via `vline` + `snapshot~` or directly `vline~ → *~`) for resonance/FM index. `$0-factor` is optional.  
+* **Original-speed**: build messages “0, size duration” for linear scans; useful as timbral reference.  
+* **Debug**: print the raw line, then the list of segments; check that the sum of *time+delay* does not exceed sync expectations.  
+
+---
+
+# FAQ
+
+## Is a line with just one terna “valid”?  
+Yes. **One line = one envelope**. With a single terna you get a one-step envelope. Multiple terne on the same line ⇒ multi-segment.  
+
+## I want to use 12 terne in one line. Do I need to change `list split 3`?  
+No. `list split 3` is correct: it iterates groups of three values. Instead, extend the receiving side (e.g. `unpack` to 36 floats) or implement a dynamic parser with `[until]` that sends each terna to a subpatch for accumulation into `vline~`.  
+
+## Sometimes no sound comes out with certain lists of terne. Why?  
+* Zero times (or very long *delays*) ⇒ apparent silence.  
+* *target* = 0 in all segments ⇒ zero amplitude.  
+* Formatting errors (missing `;`, commas instead of dots, broken lines).  
+* `$0-factor` too small/large ⇒ “micro” or “glacial” envelopes.  
+* Out-of-buffer index (wrong messages to `vline~` for array scanning).  
+
+**Procedure:** print the line → check triplets → verify sum of *time+delay* → try without `$0-factor` → try “original-speed”.  
+
+## How do I immediately stop playback?  
+Send `stop` or `clear` to `vline~` and attenuate with `*~ 0`.  
+*tabread4~* follows the index: if the index doesn’t move and amp = 0, you hear nothing.  
+
+## What does the “4” mean in `tabread4~`?  
+It’s **4-point interpolation** (cubic). Improves quality when the index moves at non-integer speeds or oversampling.  
+
+## Difference between `line`, `line~` and `vline~`?  
+* `line`: control-rate ramp.  
+* `line~`: audio-rate ramp, but only one segment per message.  
+* `vline~`: audio-rate with a **sequence** of segments, each with its own *delay*.  
+
+## Can I use terne to modulate filters/FM instead of audio?  
+Yes. In that case map *targets* to the parameter’s range. `$0-factor` is only needed if you want to scale times; otherwise ignore it.  
+
+## What input file “quality” is needed?  
+44.1/48 kHz is more than enough; avoid peaks at 0 dBFS. Leave 3–6 dB of headroom for shaping.  
+
+## How do I manage huge libraries (≈10k envelopes)?  
+Load long text files with `text define -k`. Use a numeric index for navigation and a button for random selection. Keep files “thematic” for coherent families.  
+
+---
 
 v.3.6 last update domenica 21 settembre / 2229
