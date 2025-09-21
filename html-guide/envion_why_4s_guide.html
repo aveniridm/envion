@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Envion – Perché i campioni da ~4 s funzionano meglio (IT + EN)</title>
+<style>
+  :root{
+    --bg:#0b0b0c;
+    --fg:#f5f5f7;
+    --muted:#9aa0a6;
+    --accent:#e6ff6b;
+    --card:#131317;
+    --rule:#1f2030;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";line-height:1.55}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:1000px;margin:0 auto;padding:28px 18px 80px}
+  header{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:20px}
+  h1{font-size:clamp(28px,4vw,44px);line-height:1.1;margin:0}
+  .meta{color:var(--muted);font-size:14px}
+  .card{background:var(--card);border:1px solid var(--rule);border-radius:16px;padding:18px;margin:14px 0}
+  h2{font-size:clamp(18px,2.2vw,24px);margin:0 0 10px 0}
+  h3{font-size:18px;margin:18px 0 8px}
+  p{margin:10px 0}
+  ul{margin:8px 0 8px 22px}
+  li{margin:6px 0}
+  .grid{display:grid;gap:18px}
+  @media(min-width:860px){
+    .grid.two{grid-template-columns:1fr 1fr}
+  }
+  .label{display:inline-block;padding:4px 8px;border:1px solid var(--rule);border-radius:999px;font-size:12px;color:var(--muted)}
+  .callout{border-left:4px solid var(--accent);padding:10px 12px;margin:12px 0;background:rgba(230,255,107,0.06)}
+  .kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;background:#0d0f13;border:1px solid #262a35;border-radius:6px;padding:2px 6px}
+  .footer{color:var(--muted);font-size:13px;margin-top:28px}
+  .subtitle{color:var(--muted);margin-top:6px}
+  .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border:1px solid var(--rule);border-radius:999px;font-size:12px;color:var(--muted)}
+  .hr{height:1px;background:linear-gradient(90deg,transparent, var(--rule), transparent);margin:22px 0}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>Envion • Perché i campioni di ~4 secondi suonano meglio</h1>
+        <div class="subtitle">Guida rapida con principi tecnici e suggerimenti pratici • <span class="label">IT + EN</span></div>
+      </div>
+      <div class="pill"><span>Versione</span><strong>v3.4</strong></div>
+    </header>
+
+    <div class="grid two">
+      <section class="card">
+        <h2>IT — Sintesi</h2>
+        <p>
+          In <strong>Envion v3.4</strong>, i campioni (sample) con durata intorno a <strong>4 secondi</strong> tendono a produrre i risultati più musicali e coerenti.
+          Questo “sweet spot” dipende dall’equilibrio tra <em>densità</em> e <em>articolazione</em>, dal modo in cui Envion usa le <strong>terne</strong> (ampiezza, durata, offset), e da fattori psicoacustici.
+        </p>
+        <div class="callout">
+          <strong>In breve:</strong> 4 s sono abbastanza lunghi per contenere un gesto sonoro completo e abbastanza brevi da mantenere coesione timbrica e controllo degli inviluppi.
+        </div>
+
+        <h3>1) Equilibrio tra densità e articolazione</h3>
+        <ul>
+          <li><strong>Troppo corto (&lt; 1 s):</strong> materiale limitato → ripetitività, suono secco.</li>
+          <li><strong>Troppo lungo (&gt; 10 s):</strong> evento disperso → estrazioni scollegate, perdita di coesione.</li>
+          <li><strong>Intorno a 4 s:</strong> varietà senza dispersione; articolazione chiara delle terne.</li>
+        </ul>
+
+        <h3>2) Relazione con le terne</h3>
+        <p>
+          Le terne tipiche di Envion hanno durate nell’ordine di <strong>100–1200 ms</strong>. In 4 s entrano tipicamente <em>3–10 eventi</em> significativi, senza saturare.
+        </p>
+
+        <h3>3) Coerenza timbrica</h3>
+        <p>
+          4 s spesso racchiudono un <em>singolo gesto sonoro</em> (colpo, transiente, frase breve). Envion può “riscrivere” quel gesto senza snaturarlo.
+        </p>
+
+        <h3>4) Headroom per le manipolazioni</h3>
+        <p>
+          C’è spazio per micro-stretch, decadimenti completi e modulazioni (LFO, slicing) senza andare fuori range o troncare l’inviluppo.
+        </p>
+
+        <h3>5) Fattori psicoacustici</h3>
+        <p>
+          Fra <strong>3–5 s</strong> il cervello percepisce un’unità gestuale con sufficiente tolleranza a frammentazioni e variazioni.
+        </p>
+
+        <div class="hr"></div>
+        <h3>Consigli pratici</h3>
+        <ul>
+          <li><strong>Durata sorgente:</strong> prepara clip tra <strong>3 e 5 s</strong>; 4 s come valore di partenza.</li>
+          <li><strong>Inviluppi:</strong> mantieni il segmento finale della terna a <em>zero</em> per evitare code residue.</li>
+          <li><strong>Headroom:</strong> lascia 3–6 dB di margine sui file per una dinamica più pulita nelle sagomature.</li>
+          <li><strong>Varietà controllata:</strong> usa 2–3 clip da 4 s con timbro affine per coesione + variazioni.</li>
+        </ul>
+
+        <h3>FAQ</h3>
+        <p><strong>Posso usare campioni più lunghi?</strong><br>
+        Sì, ma attenditi eventi più dispersi. Segmenta manualmente in clip da 3–5 s per risultati più compatti.</p>
+        <p><strong>E campioni molto brevi?</strong><br>
+        Funzionano per effetti percussivi/veloci, ma rischiano monotonia se usati da soli.</p>
+      </section>
+
+      <section class="card">
+        <h2>EN — Summary</h2>
+        <p>
+          In <strong>Envion v3.4</strong>, samples around <strong>4 seconds</strong> tend to yield the most coherent and musical outcomes.
+          This “sweet spot” emerges from the balance between <em>density</em> and <em>articulation</em>, how Envion uses <strong>triplets</strong> (amplitude, duration, offset), and psychoacoustic factors.
+        </p>
+        <div class="callout">
+          <strong>TL;DR:</strong> ~4 s are long enough to contain a full sonic gesture and short enough to keep timbral cohesion and envelope control.
+        </div>
+
+        <h3>1) Balance of density vs. articulation</h3>
+        <ul>
+          <li><strong>Too short (&lt; 1 s):</strong> limited material → repetitive, dry results.</li>
+          <li><strong>Too long (&gt; 10 s):</strong> dispersed content → disconnected extractions, reduced cohesion.</li>
+          <li><strong>Around 4 s:</strong> variety without dispersion; clear articulation for triplets.</li>
+        </ul>
+
+        <h3>2) Relation to triplets</h3>
+        <p>
+          Typical Envion triplets span roughly <strong>100–1200 ms</strong>. Within 4 s you can fit about <em>3–10 meaningful events</em> without overcrowding.
+        </p>
+
+        <h3>3) Timbral coherence</h3>
+        <p>
+          ~4 s commonly contain a <em>single sonic gesture</em> (hit, transient, short phrase). Envion can “recompose” that gesture while preserving identity.
+        </p>
+
+        <h3>4) Manipulation headroom</h3>
+        <p>
+          There’s room for micro-stretch, full decays, and modulation (LFO, slicing) without going out-of-range or cutting envelopes short.
+        </p>
+
+        <h3>5) Psychoacoustics</h3>
+        <p>
+          In the <strong>3–5 s</strong> window, the brain perceives a unitary gesture while tolerating fragmentation and variation.
+        </p>
+
+        <div class="hr"></div>
+        <h3>Practical tips</h3>
+        <ul>
+          <li><strong>Source length:</strong> prep clips between <strong>3 and 5 s</strong>; start at 4 s.</li>
+          <li><strong>Envelopes:</strong> ensure the final segment reaches <em>zero</em> to avoid residual tails.</li>
+          <li><strong>Headroom:</strong> leave 3–6 dB margin to improve shaping clarity.</li>
+          <li><strong>Controlled variety:</strong> use 2–3 four‑second clips with related timbre for cohesion + variation.</li>
+        </ul>
+
+        <h3>FAQ</h3>
+        <p><strong>Can I use longer samples?</strong><br>
+        Yes, but expect more dispersion. Consider segmenting into 3–5 s clips for tighter results.</p>
+        <p><strong>What about very short samples?</strong><br>
+        Great for percussive/fast gestures, but can become monotonous if used alone.</p>
+      </section>
+    </div>
+
+    <section class="card">
+      <h2>Appendice — Rapporti temporali (IT + EN)</h2>
+      <p>
+        <strong>IT:</strong> Se una terna ha una durata media di 500–800 ms, in un buffer di 4 s puoi articolare 5–8 inviluppi senza saturazione.
+        Se lavori con durate più lunghe (1–1.2 s), punta a 3–4 eventi ben separati. Ricorda di <span class="kbd">portare a 0</span> l’ultimo segmento.
+      </p>
+      <p>
+        <strong>EN:</strong> If a typical triplet lasts 500–800 ms, a 4 s buffer can host 5–8 envelopes without overcrowding.
+        For longer durations (1–1.2 s), aim for 3–4 well‑spaced events. Always <span class="kbd">end at 0</span> in the last segment.
+      </p>
+    </section>
+
+    <div class="footer">
+      Questa guida è pensata per l’uso diretto in Envion v3.4. Salvala e condividila liberamente. — This guide targets Envion v3.4. Save & share freely.
+    </div>
+  </div>
+</body>
+</html>

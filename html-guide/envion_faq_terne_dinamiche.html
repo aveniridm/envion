@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ENVION · FAQ — Gestire molte terne (dinamiche vs statiche)</title>
+<style>
+  :root{
+    --bg:#0b0b0c;
+    --fg:#f5f7fa;
+    --muted:#c2c6ce;
+    --accent:#7dd3fc;
+    --card:#121216;
+    --code:#e2e8f0;
+    --code-bg:#1a1b20;
+    --border:#2a2c36;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial,sans-serif;line-height:1.55}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:980px;margin:0 auto;padding:28px 18px 60px}
+  header{display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;margin-bottom:10px}
+  header h1{font-size:clamp(1.4rem,3vw,2rem);margin:0}
+  header .tag{font-size:.9rem;color:var(--muted);padding:.18rem .5rem;border:1px solid var(--border);border-radius:999px;background:var(--card)}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;margin:16px 0}
+  h2{font-size:clamp(1.1rem,2.4vw,1.4rem);margin:0 0 10px}
+  h3{font-size:1.05rem;margin:14px 0 6px}
+  p{margin:10px 0}
+  .muted{color:var(--muted)}
+  .kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}
+  pre, code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}
+  pre{background:var(--code-bg);color:var(--code);border:1px solid var(--border);padding:14px;border-radius:12px;overflow:auto}
+  code{background:var(--code-bg);border:1px solid var(--border);padding:.1rem .35rem;border-radius:.4rem}
+  .callout{border-left:4px solid var(--accent);padding:12px 14px;background:#0f172a;border-radius:10px;margin-top:10px}
+  .grid{display:grid;grid-template-columns:1fr;gap:14px}
+  @media (min-width:780px){
+    .grid{grid-template-columns:1.1fr .9fr}
+  }
+  .checklist li{margin:6px 0}
+  footer{margin-top:26px;font-size:.92rem;color:var(--muted)}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>ENVION · FAQ — Gestire molte terne</h1>
+      <span class="tag">Pure Data</span>
+      <span class="tag">Parsing dinamico</span>
+      <span class="tag">v3.x</span>
+    </header>
+
+    <div class="card">
+      <h2>Domanda</h2>
+      <p class="kbd">«Qualora volessi avere la possibilità di usare numeri di terne più complesse (es. <strong>12 terne</strong> in una riga), devo modificare <code>list split 3</code>?»</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Risposta breve</h2>
+        <p><strong>No, <code>list split 3</code> non va modificato</strong>: è già corretto perché divide la riga in gruppi da 3 valori (una terna) e, in loop, svuota l’intera riga. Con 12 terne funziona ugualmente.</p>
+        <div class="callout">
+          <strong>Il vero punto</strong><br/>
+          Ciò che va esteso è la <em>parte di ricezione</em> a valle: se usi <code>unpack</code>, devi prevedere abbastanza outlet (36 float per 12 terne) oppure passare a un parsing <em>dinamico</em>.
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Opzioni di implementazione</h2>
+        <h3>1) Tenere <code>list split 3</code> + <em>unpack</em> esteso</h3>
+        <ul>
+          <li>Lasci <code>list split 3</code> intatto.</li>
+          <li>Aumenti <code>unpack</code> fino a <code>36</code> float per 12 terne.</li>
+          <li>Pro: semplice; Contro: patch “rigida”, tanti cavi.</li>
+        </ul>
+        <h3>2) Parser dinamico (consigliato)</h3>
+        <ul>
+          <li>Usi un ciclo con <code>[until]</code> + <code>[list split 3]</code>.</li>
+          <li>Ogni terna viene inviata a una subpatch <code>[pd envelope-segment]</code> che costruisce i messaggi per <code>vline~</code>.</li>
+          <li>Pro: numero di terne variabile; patch pulita. Contro: leggermente più complesso da impostare.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Schema di flusso (pseudo‑patch)</h2>
+      <pre><code>[text get]   // ottiene la riga completa
+   |
+[list store]
+   |
+(bang per avviare)
+   |
+[until]
+   |
+[list store] --&gt; [list length]
+   |               |
+[list split 3] &lt;-- se &lt; 3, stop
+   | (prima terna)
+   +--&gt; [route target time delay]
+            |      |     |
+            |      |     +-- ritardo per questo segmento
+            |      +-------- durata (ms)
+            +--------------- target
+   |
+(resto) --&gt; loop finché vuoto
+</code></pre>
+      <p class="muted">Ogni terna viene convertita in una porzione del messaggio a <code>vline~</code>. Puoi concatenare i segmenti con spazi oppure inviarli in sequenza con i giusti ritardi.</p>
+    </div>
+
+    <div class="card">
+      <h2>Esempio: 12 terne in una riga</h2>
+      <pre><code>0.6 120 0  0.4 90 0  0.2 60 0  0.0 30 80  0.7 110 0  0.3 70 0
+0.5 100 0  0.1 50 0  0.8 95 0  0.2 40 60  0.6 85 0  0.0 30 120;</code></pre>
+      <p>Con il parser dinamico non devi cambiare nulla nella UI: la patch scorre tutte le 12 terne e costruisce l’inviluppo completo.</p>
+    </div>
+
+    <div class="card">
+      <h2>Checklist rapida</h2>
+      <ul class="checklist">
+        <li>✅ <strong>Non</strong> modificare <code>list split 3</code>.</li>
+        <li>✅ Se resti “statico”: estendi <code>unpack</code> a 36 float.</li>
+        <li>✅ Se passi al dinamico: <code>[until] + [list split 3]</code> + subpatch per segmento.</li>
+        <li>✅ Mantieni <code>$0-factor</code> / normalizzazioni intatte per il timing globale.</li>
+      </ul>
+    </div>
+
+    <footer>
+      Preparato per la guida di ENVION · Emiliano Pennisi — FAQ su parsing di terne complesse (ENVION v3.x).
+    </footer>
+  </div>
+</body>
+</html>

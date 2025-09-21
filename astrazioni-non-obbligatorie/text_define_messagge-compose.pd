@@ -1,0 +1,14 @@
+#N canvas 407 266 1228 633 12;
+#X text 541 163 [text] con 8 righe: start end durata_ms (N=2374633);
+#X obj 541 183 text define -k slices;
+#A set 296829 \, 593658 6732;
+#X msg 539 121 set 296829 \\\, 593658 6732;
+#X msg 371 105 clear;
+#X text 418 105 clear it all;
+#X msg 156 61 click;
+#X msg 204 61 close;
+#X text 252 61 open (to see and edit text) and close text window;
+#X connect 2 0 1 0;
+#X connect 3 0 1 0;
+#X connect 5 0 1 0;
+#X connect 6 0 1 0;

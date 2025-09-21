@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ENVION · FAQ — Terne singole vs multi‑segmento (Pure Data)</title>
+<style>
+  :root{
+    --bg:#fafafa;
+    --fg:#111;
+    --muted:#5a5a5a;
+    --accent:#e64b6a;
+    --card:#ffffff;
+    --code:#0f172a;
+    --code-bg:#f3f4f6;
+    --border:#e6e6e6;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial,sans-serif;line-height:1.55}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:980px;margin:0 auto;padding:28px 18px 60px}
+  header{display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;margin-bottom:10px}
+  header h1{font-size:clamp(1.4rem,3vw,2rem);margin:0}
+  header .tag{font-size:.9rem;color:var(--muted);padding:.18rem .5rem;border:1px solid var(--border);border-radius:999px;background:var(--card)}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;margin:16px 0}
+  h2{font-size:clamp(1.1rem,2.4vw,1.4rem);margin:0 0 10px}
+  h3{font-size:1.05rem;margin:14px 0 6px}
+  p{margin:10px 0}
+  .muted{color:var(--muted)}
+  .kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}
+  pre, code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}
+  pre{background:var(--code-bg);color:var(--code);border:1px solid var(--border);padding:14px;border-radius:12px;overflow:auto}
+  code{background:var(--code-bg);border:1px solid var(--border);padding:.1rem .35rem;border-radius:.4rem}
+  .callout{border-left:4px solid var(--accent);padding:12px 14px;background:#fff8fa;border-radius:10px;margin-top:10px}
+  .grid{display:grid;grid-template-columns:1fr;gap:14px}
+  @media (min-width:780px){
+    .grid{grid-template-columns:1.1fr .9fr}
+  }
+  footer{margin-top:26px;font-size:.92rem;color:var(--muted)}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>ENVION · FAQ — Terne singole vs multi‑segmento</h1>
+      <span class="tag">Pure Data</span>
+      <span class="tag">Algorithmic Envelope</span>
+      <span class="tag">v3.x</span>
+    </header>
+
+    <div class="card">
+      <h2>Domanda</h2>
+      <p class="kbd">«Ho un dubbio: cosa succede quando carico una lista con questa serie di <em>terne singole</em> nella patch ENVION?»</p>
+      <pre><code>0.521 1935 138;</code></pre>
+      <p class="muted">(<strong>Nota</strong>: la riga qui sopra contiene una sola terna: target, time, delay, chiusa da <code>;</code>.)</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Risposta breve</h2>
+        <p><strong>Una riga = un inviluppo completo</strong>. Se la riga contiene una sola terna, ottieni un inviluppo a <strong>un solo segmento</strong>. L’autoplay continua regolarmente; il metro si sincronizza usando la durata calcolata e scalata dal tuo <code>$0-factor</code>.</p>
+        <div class="callout">
+          <strong>In breve</strong><br/>
+          • Una terna per riga → 1 step di <code>vline~</code>.<br/>
+          • Più terne sulla stessa riga → inviluppo multi‑segmento (fino a 4).<br/>
+          • Terne su righe separate ≠ multi‑segmento: producono colpi separati.
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Come funziona nella patch</h2>
+        <ol>
+          <li><code>[text get]</code> legge <strong>una riga alla volta</strong> dal file.</li>
+          <li>La riga passa a <code>[list split 3]</code>, che estrae la <strong>prima terna</strong> e manda il resto al ciclo successivo.</li>
+          <li>Se c’è <em>una sola terna</em>, il resto è vuoto → l’iterazione si ferma e <code>[vline~]</code> riceve <strong>un solo segmento</strong>.</li>
+          <li>Il tempo/metro usa la durata (time+delay) scalata da <code>$0-factor</code> (derivato da <code>Tarray</code> / durata in ms).</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Esempi pratici</h2>
+      <h3>Una terna (un solo step)</h3>
+      <pre><code>0.521 1935 138;</code></pre>
+
+      <h3>Quattro segmenti in un singolo colpo</h3>
+      <pre><code>0.52 1900 130  0.36 1400 0  0.45 1560 0  0.00 1320 30000;</code></pre>
+      <p class="muted">Tutte le terne devono essere sulla <em>stessa riga</em> per creare un inviluppo multi‑segmento.</p>
+
+      <h3>Attenzione</h3>
+      <pre><code>0.52 1900 130;
+0.36 1400 0;
+0.45 1560 0;
+0.00 1320 30000;</code></pre>
+      <p>Così <strong>non</strong> è multi‑segmento: ottieni 4 colpi separati (ognuno con un solo step).</p>
+    </div>
+
+    <div class="card">
+      <h2>Nota tecnica</h2>
+      <p>Il parser della patch spacchetta fino a <code>12</code> float (<code>unpack f f f …</code>) → massimo <strong>4 terne</strong> per inviluppo in questo setup. Oltre si possono aggiungere ulteriori outlet/segmenti estendendo l’<em>unpack</em> e la logica a valle.</p>
+    </div>
+
+    <footer>
+      Preparato per la guida di ENVION · Emiliano Pennisi — Questa pagina riassume il comportamento delle liste di terne nella patch Pd (ENVION v3.x).
+    </footer>
+  </div>
+</body>
+</html>

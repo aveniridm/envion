@@ -1,0 +1,25 @@
+#N canvas 200 200 360 210 10;
+#X obj 20 20 inlet;           # amp
+#X obj 120 20 inlet;          # dur
+#X obj 220 20 inlet;          # off
+#X obj 20 160 outlet;         # (amp dur' off')
+#X obj 20 120 pack f f f;
+#X obj 20 60 f;
+#X obj 120 60 * 1;
+#X obj 220 60 * 1;
+#X obj 20 90 t f f f;
+#X obj 300 20 inlet;          # factor f
+#X obj 120 90 *;
+#X obj 220 90 *;
+#X connect 0 0 5 0;
+#X connect 1 0 6 0;
+#X connect 2 0 7 0;
+#X connect 5 0 8 0;
+#X connect 6 0 10 0;
+#X connect 7 0 11 0;
+#X connect 8 0 4 0;
+#X connect 8 1 10 1;
+#X connect 8 2 11 1;
+#X connect 10 0 4 1;
+#X connect 11 0 4 2;
+#X connect 4 0 3 0;

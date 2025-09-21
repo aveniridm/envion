@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang='it'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>ENVION · Technical Map (HTML + inline SVG)</title>
+<style>
+  :root{
+    --bg:#0b0c0f; --fg:#eef2f7; --card:#0f1115; --border:#1e2633; --muted:#98a1b3;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial,sans-serif;line-height:1.55}
+  .wrap{max-width:1700px;margin:0 auto;padding:22px 14px 48px}
+  header{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:0 0 8px}
+  header h1{font-size:clamp(1.2rem,2.6vw,1.6rem);margin:0}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;margin:10px 0}
+  .svg-holder{overflow:auto;border:1px solid var(--border);border-radius:12px;background:#0b0c0f}
+  .tip{color:var(--muted);font-size:.95rem;margin-top:8px}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>ENVION · Technical Map (HTML + inline SVG)</h1>
+    </header>
+    <div class="card svg-holder">
+      <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1060" viewBox="0 0 1600 1060">
+  <defs>
+    <style>
+      .box{fill:#ffffff;stroke:#9aa5b1;stroke-width:1.4}
+      .title{font:700 15px 'Inter',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;fill:#0f172a}
+      .item{font:500 12px 'Inter',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;fill:#1f2937}
+      .muted{fill:#6b7280;font:500 12px 'Inter',system-ui}
+      .wire{stroke:#475569;stroke-width:1.6;fill:none;marker-end:url(#arrow)}
+      .sig{stroke:#2563eb;stroke-width:2;fill:none;marker-end:url(#arrow)}
+      .data{stroke:#0ea5e9;stroke-width:1.8;fill:none;stroke-dasharray:5 4;marker-end:url(#arrow)}
+      .note{font:500 12px 'Inter',system-ui;fill:#374151}
+      .badge{fill:#111827;stroke:#111827}
+      .badgeText{font:700 11px 'Inter',system-ui;fill:#ffffff}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="1.6" stdDeviation="1.2" flood-color="#cbd5e1" flood-opacity="0.7"/>
+    </filter>
+  </defs>
+
+  <!-- Header -->
+  <g>
+    <rect x="20" y="20" width="1560" height="60" rx="14" class="box" filter="url(#soft)"/>
+    <text x="40" y="58" class="title">ENVION · Algorithmic Dynatext Envelope Sequencer — Technical Map (Pure Data)</text>
+    <rect x="1380" y="36" width="180" height="28" rx="6" class="badge"/>
+    <text x="1470" y="55" text-anchor="middle" class="badgeText">Versione 3.x</text>
+  </g>
+
+  <!-- Modules -->
+  <!-- LOAD SCORE -->
+  <g filter="url(#soft)">
+    <rect x="40" y="110" width="360" height="240" rx="16" class="box"/>
+    <text x="60" y="138" class="title">LOAD SCORE / DYNATEXT</text>
+    <text x="60" y="160" class="item">• [openpanel] → percorso file .txt</text>
+    <text x="60" y="178" class="item">• [symbol] / [$0-path] / [set read $1]</text>
+    <text x="60" y="196" class="item">• [text define] (lista-sample / env.list)</text>
+    <text x="60" y="214" class="item">• [text get] legge riga corrente</text>
+    <text x="60" y="232" class="item">• [list trim] / [list] gestione formato</text>
+    <text x="60" y="250" class="item">• Preset cloud: lettura multipla file (random, delayed_perc, etc.)</text>
+    <text x="60" y="268" class="item">• Selettore: preset UIs → [route]</text>
+    <text x="60" y="286" class="muted">Output: riga di terne (target time delay ... ;)</text>
+  </g>
+
+  <!-- HYBRID / AUTOPLAY -->
+  <g filter="url(#soft)">
+    <rect x="430" y="110" width="300" height="240" rx="16" class="box"/>
+    <text x="450" y="138" class="title">HYBRID / AUTOPLAY</text>
+    <text x="450" y="160" class="item">• [metro] / [random] → trigger lettura</text>
+    <text x="450" y="178" class="item">• [select-env-from-text-get-list]</text>
+    <text x="450" y="196" class="item">• Etichette / UI: “ENV NUMBERS”, tasti KEY-1..4</text>
+    <text x="450" y="214" class="item">• [counter]/[spigot] gestione repeat / retrigger</text>
+    <text x="450" y="232" class="muted">Output: riga scelta → parsing core</text>
+  </g>
+
+  <!-- CORE PARSER -->
+  <g filter="url(#soft)">
+    <rect x="760" y="110" width="430" height="300" rx="16" class="box"/>
+    <text x="780" y="138" class="title">CORE: Parsing terne → inviluppo</text>
+    <text x="780" y="160" class="item">• [list split 3] (in loop) → estrae 1 terna</text>
+    <text x="780" y="178" class="item">• [pack f f f] / [set $1 $2 $3(...)]</text>
+    <text x="780" y="196" class="item">• [unpack f ×12] (setup attuale: max 4 terne)</text>
+    <text x="780" y="214" class="item">• [vline~] genera ramps target/time/delay</text>
+    <text x="780" y="232" class="item">• Stretch: [$0-factor] (→ tempo globale)</text>
+    <text x="780" y="250" class="item">• Durata colpo: [pd durata] → [send $0-end]</text>
+    <text x="780" y="268" class="muted">Output A: segnale inviluppo → amp/pos</text>
+    <text x="780" y="286" class="muted">Output B: durata ms → metro/autoplay</text>
+  </g>
+
+  <!-- FACTOR / TIMEBASE -->
+  <g filter="url(#soft)">
+    <rect x="1210" y="110" width="350" height="300" rx="16" class="box"/>
+    <text x="1230" y="138" class="title">TIMEBASE / FACTOR</text>
+    <text x="1230" y="160" class="item">• [Tarray] / [tabread~] durata segmento</text>
+    <text x="1230" y="178" class="item">• [expr round((( $f1 * 1000.)/44100) * 100)/100]</text>
+    <text x="1230" y="196" class="item">• [$0-durata] ms</text>
+    <text x="1230" y="214" class="item">• [$0-factor] ← expr $f1/$f2 (normalizzazione)</text>
+    <text x="1230" y="232" class="muted">Output: fattore di stretch globale</text>
+  </g>
+
+  <!-- BROWSE AUDIO / SAMPLE BUFFERS -->
+  <g filter="url(#soft)">
+    <rect x="40" y="370" width="420" height="300" rx="16" class="box"/>
+    <text x="60" y="398" class="title">BROWSE AUDIO / SAMPLE BUFFERS</text>
+    <text x="60" y="420" class="item">• [openpanel] carica .wav/.aiff</text>
+    <text x="60" y="438" class="item">• [soundfiler] → array samplebufL/R</text>
+    <text x="60" y="456" class="item">• Tools: normalize / copy L→R / mono→stereo</text>
+    <text x="60" y="474" class="item">• Limiti: [f f] / [list prepend range 0]</text>
+    <text x="60" y="492" class="item">• Original speed playback / countdown</text>
+    <text x="60" y="510" class="muted">Output: arrays + size (sampars) → playback</text>
+  </g>
+
+  <!-- PLAYBACK ENGINE -->
+  <g filter="url(#soft)">
+    <rect x="500" y="430" width="560" height="300" rx="16" class="box"/>
+    <text x="520" y="458" class="title">PLAYBACK ENGINE</text>
+    <text x="520" y="480" class="item">• [tabread4~ samplebufL/R] lettura granulare/segmentata</text>
+    <text x="520" y="498" class="item">• [*~] / [*~] controllo amp (inviluppo)</text>
+    <text x="520" y="516" class="item">• [snake~] / routing stereo</text>
+    <text x="520" y="534" class="item">• [pow~ 3] / shaping opzionale</text>
+    <text x="520" y="552" class="item">• [r $0-vscp] velocità / [r $0-ascp] posizione</text>
+    <text x="520" y="570" class="muted">Input: inviluppo da CORE / arrays da BROWSE</text>
+  </g>
+
+  <!-- OUTPUT / RECORDER -->
+  <g filter="url(#soft)">
+    <rect x="1090" y="470" width="470" height="260" rx="16" class="box"/>
+    <text x="1110" y="498" class="title">OUTPUT / RECORDER</text>
+    <text x="1110" y="520" class="item">• [pd_out~] / [dac~] (uscita principale)</text>
+    <text x="1110" y="538" class="item">• Normalizzazione opzionale (UI “normalize audio”)</text>
+    <text x="1110" y="556" class="item">• Registratore: [writesf~] / gestione nomi file</text>
+    <text x="1110" y="574" class="item">• Metering / scope UI (oscilloscopio)</text>
+    <text x="1110" y="592" class="muted">Input: segnale stereo dal PLAYBACK ENGINE</text>
+  </g>
+
+  <!-- MANUAL PLAYER / SHORTCUTS -->
+  <g filter="url(#soft)">
+    <rect x="40" y="690" width="650" height="320" rx="16" class="box"/>
+    <text x="60" y="718" class="title">MANUAL PLAYER / SHORTCUTS</text>
+    <text x="60" y="740" class="item">• Tasti KEY-1..4: manual strike, original-speed, stop, retrigger</text>
+    <text x="60" y="758" class="item">• [s $0-strike] / [s $0-stop] / [s $0-playorg]</text>
+    <text x="60" y="776" class="item">• [countdown] / [select] per UI circolare</text>
+    <text x="60" y="794" class="item">• [route $0-label] etichette preset e modalità</text>
+    <text x="60" y="812" class="muted">Output: trigger → CORE / PLAYBACK</text>
+  </g>
+
+  <!-- INVILUPPO ROUTING / MIX -->
+  <g filter="url(#soft)">
+    <rect x="720" y="760" width="840" height="250" rx="16" class="box"/>
+    <text x="740" y="788" class="title">INVILUPPO ROUTING / MIX</text>
+    <text x="740" y="810" class="item">• [r $0-chL] / [r $0-chR] assegnazione canali</text>
+    <text x="740" y="828" class="item">• [clip~] sicurezza headroom</text>
+    <text x="740" y="846" class="item">• Send/Return: riversi/delay esterni (opz.)</text>
+    <text x="740" y="864" class="muted">Output: verso OUTPUT / RECORDER</text>
+  </g>
+
+  <!-- Wires (data flow) -->
+  <path d="M 400 240 C 460 260 460 260 430 230" class="data"/>
+  <path d="M 730 260 C 760 260 760 260 760 230" class="data"/>
+  <path d="M 1210 260 C 1180 300 1120 320 1090 320" class="data"/>
+  <text x="1120" y="310" class="note">$0-factor</text>
+
+  <path d="M 460 520 C 500 520 500 520 500 520" class="sig"/>
+  <text x="470" y="510" class="note">samplebufL/R + size</text>
+
+  <path d="M 980 370 C 980 400 900 430 880 430" class="sig"/>
+  <text x="900" y="412" class="note">envelope → amp/pos</text>
+
+  <path d="M 1060 620 C 1100 620 1100 620 1090 600" class="sig"/>
+
+  <path d="M 690 800 C 760 760 760 740 760 700" class="data"/>
+  <text x="720" y="790" class="note">triggers</text>
+
+  <!-- Legend -->
+  <g>
+    <rect x="1320" y="960" width="260" height="80" rx="12" class="box"/>
+    <text x="1340" y="986" class="title">Legenda</text>
+    <line x1="1344" y1="1002" x2="1384" y2="1002" class="sig"/>
+    <text x="1394" y="1006" class="item">Segnale audio</text>
+    <line x1="1344" y1="1022" x2="1384" y2="1022" class="data"/>
+    <text x="1394" y="1026" class="item">Dati / controllo</text>
+  </g>
+
+  <!-- Footer -->
+  <text x="40" y="1015" class="muted">Schema tecnico per ENVION (Pure Data). Rappresenta i flussi logici e i Pd objects chiave; può differire dal layout grafico.</text>
+</svg>
+    </div>
+    <p class="tip">Suggerimento: premi ⌘/Ctrl + per ingrandire. L'SVG è vettoriale: non perde qualità.</p>
+  </div>
+</body>
+</html>

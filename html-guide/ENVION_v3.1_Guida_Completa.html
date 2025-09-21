@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ENVION v3.1 — Guida completa (Pure Data)</title>
+<style>
+  :root{
+    --bg:#0b0d10; --fg:#e7ecf1; --muted:#9fb1c3; --accent:#88b4ff; --accent2:#7bdba6;
+    --card:#12151a; --card2:#0f1317; --border:#1f2630; --code:#0b1116; --note:#0f141b;
+    --warn:#ffd166; --danger:#ff6b6b;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,"Helvetica Neue",Arial}
+  main{max-width:1100px;margin:28px auto 80px;padding:0 18px}
+  h1,h2,h3,h4{line-height:1.2;letter-spacing:.2px}
+  h1{font-size:clamp(28px,3.6vw,44px);margin:0 0 6px}
+  h2{font-size:clamp(22px,2.6vw,30px);margin:28px 0 12px}
+  h3{font-size:clamp(18px,2.2vw,22px);margin:22px 0 8px}
+  p{margin:10px 0}
+  a{color:var(--accent)}
+  code,pre,kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace}
+  pre{background:var(--code);border:1px solid var(--border);border-radius:14px;padding:14px;overflow:auto}
+  kbd{font:12px ui-monospace,Menlo,Consolas;background:#0e1520;border:1px solid var(--border);border-radius:6px;padding:2px 6px;color:#d9e7ff}
+  .sub{color:var(--muted)}
+  .pill{display:inline-flex;gap:10px;align-items:center;padding:8px 12px;border:1px solid var(--border);border-radius:999px;background:#0d1219}
+  .tag{font-size:12px;color:var(--muted)}
+  .callout{border-left:3px solid var(--accent);background:var(--note);border:1px solid var(--border);border-left-color:var(--accent);padding:14px;border-radius:12px}
+  .callout.ok{border-left-color:var(--accent2)}
+  .callout.warn{border-left-color:var(--warn)}
+  .callout.danger{border-left-color:var(--danger)}
+  .grid{display:grid;gap:16px}
+  .grid-2{grid-template-columns:1fr}
+  @media(min-width:900px){.grid-2{grid-template-columns:1fr 1fr}}
+  .card{background:linear-gradient(180deg,var(--card),var(--card2));border:1px solid var(--border);border-radius:18px;padding:16px 16px}
+  .toc{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 8px}
+  .toc a{display:inline-block;padding:6px 10px;border:1px solid var(--border);border-radius:12px;background:#0e141c;text-decoration:none;color:var(--muted)}
+  .toc a:hover{color:var(--fg)}
+  ul.list{margin:0;padding-left:18px}
+  li+li{margin-top:6px}
+  hr{border:none;border-top:1px solid var(--border);margin:26px 0}
+  table{width:100%;border-collapse:separate;border-spacing:0 8px}
+  th,td{text-align:left;padding:10px 12px;border:1px solid var(--border)}
+  th{background:#0e141c}
+  td{background:#0d1219}
+  .foot{margin-top:28px;color:var(--muted);font-size:13px}
+</style>
+</head>
+<body>
+<main>
+  <div class="pill">
+    <strong>ENVION v3.1</strong> <span class="tag">Algorithmic Dynatext Envelope Sequencer</span>
+    <span class="tag">Pure Data (Pd)</span> <span class="tag">Aggiornato: 2025-09-16</span>
+  </div>
+  <h1>Guida completa</h1>
+  <p class="sub">Manuale tecnico‑operativo per la patch <em>Envion_v3.1.pd</em>: architettura, flussi, librerie di inviluppi (terne), riproduzione audio stereo, registrazione, integrazione e troubleshooting.</p>
+
+  <nav class="toc">
+    <a href="#intro">Cos'è Envion</a>
+    <a href="#novita">Panoramica v3.x</a>
+    <a href="#arch">Architettura</a>
+    <a href="#ternes">Le terne &amp; formati</a>
+    <a href="#timebase">Timebase &amp; $0-factor</a>
+    <a href="#workflow">Workflow operativo</a>
+    <a href="#autoplay">Autoplay &amp; Manual Player</a>
+    <a href="#playback">Motore di playback</a>
+    <a href="#rec">Uscite &amp; Recorder</a>
+    <a href="#deps">Dipendenze</a>
+    <a href="#tips">Trucchi &amp; best practice</a>
+    <a href="#faq">FAQ</a>
+    <a href="#changelog">Note di versione</a>
+  </nav>
+
+  <section id="intro">
+    <h2>Cos'è Envion</h2>
+    <p><strong>Envion</strong> è un motore <em>envelope‑first</em> per Pd: pilota l'indice di lettura di buffer stereo tramite sequenze testuali di <strong>terne</strong> (valore, tempo, ritardo) inviate a <code>vline~</code>. Ogni riga di un file di testo rappresenta un inviluppo completo; cambiare riga equivale a cambiare gesto. Il sistema
+    è pensato per <em>musica concreta/acusmatica</em>, sound design e scritture non metriche.</p>
+    <div class="callout ok">
+      <strong>Idea‑chiave</strong>: non “suona” file, ma <em>scrive traiettorie</em> sul file tramite inviluppi numerici (dynatext). Questo consente colpi iper‑articolati, morph lenti, ritardi interni irregolari e comportamenti pseudo‑organici.
+    </div>
+  </section>
+
+  <section id="novita">
+    <h2>Panoramica v3.x</h2>
+    <ul class="list">
+      <li>Gestione librerie <em>dynatext</em> con <code>text define/get</code> e selettore/randomizzatore integrato.</li>
+      <li>Player stereo dedicato: doppio <code>tabread4~</code> su <code>samplebufL</code>/<code>samplebufR</code>; routing <code>snake~</code>.</li>
+      <li>Utility “mono → stereo”: <code>array copy</code> duplica L→R quando carichi un file mono.</li>
+      <li>Modulo di <em>timebase</em> con calcolo della durata, array‑size e <code>$0-factor</code> per lo <em>stretch</em> globale.</li>
+      <li>Shortcuts/KEY 1‑4 per strike, original‑speed playback, stop, retrigger.</li>
+      <li>Recorder integrato e normalizzazione opzionale.</li>
+    </ul>
+    <p class="sub">Questa guida consolida la v3.1: nomenclature coerenti, chiarimenti su <code>$0-factor</code>, parser di terne “multi‑segmento” e consigli per l’uso live.</p>
+  </section>
+
+  <section id="arch">
+    <h2>Architettura (alto livello)</h2>
+    <div class="card">
+      <pre><code>Audio (stereo)  :  samplebufL/R  &lt;-- [soundfiler] &lt;-- [openpanel]
+Indice driver   :  [vline~] &lt;-- Liste di terne da [text define] / [text get]
+Player          :  [tabread4~ samplebufL]  +  [tabread4~ samplebufR]
+Routing         :  [snake~] → [pp.out~] (o [dac~])  |  Normalizzazione (opz.)
+Timebase        :  durata buffer → ms  →  $0-durata  →  $0-factor (stretch)
+Interazione     :  selettore/random env, KEY 1‑4, countdown, “END”
+Recorder        :  [writesf~] con naming e pannello “AUDIO RECORDER”
+      </code></pre>
+    </div>
+  </section>
+
+  <section id="ternes">
+    <h2>Le terne &amp; formati</h2>
+    <p>Una <em>terna</em> è <code>&lt;target&gt; &lt;time_ms&gt; &lt;delay_ms&gt;</code>. Più terne sulla <strong>stessa riga</strong> producono un inviluppo multi‑segmento; righe diverse generano colpi separati.</p>
+    <h3>Esempi</h3>
+    <pre><code>Una terna (singolo step)
+0.521 1935 138;</code></pre>
+    <pre><code>Quattro segmenti in un colpo (stessa riga)
+0.52 1900 130  0.36 1400 0  0.45 1560 0  0.00 1320 30000;</code></pre>
+    <div class="callout warn">
+      <strong>Regole pratiche</strong>
+      <ul class="list">
+        <li>Separatore di riga: <code>;</code></li>
+        <li>Decimali: punto <code>.</code></li>
+        <li>Spazi tra numeri; niente virgole, a meno che non invii manualmente messaggi multipli a <code>vline~</code>.</li>
+        <li>Ogni riga = un inviluppo completo. Evita di spezzare un multi‑segmento su più righe.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="timebase">
+    <h2>Timebase &amp; <code>$0-factor</code></h2>
+    <p>Il modulo <em>timebase</em> ricava la durata del buffer (campioni → millisecondi), la espone come <code>$0-durata</code> e calcola <code>$0-factor</code> per lo <em>stretch</em> globale degli inviluppi.</p>
+    <h3>Conversioni tipiche</h3>
+    <pre><code>// da campioni a millisecondi (44.1 kHz)
+expr round((( $f1 * 1000.) / 44100) * 100) / 100</code></pre>
+    <p><code>$0-factor</code> viene applicato ai tempi di ciascun segmento; non è obbligatorio quando usi le terne come <em>modulazione di parametri</em> (es. risonanza o indice FM): lì ti interessa il profilo, non lo stretching temporale.</p>
+    <div class="callout">
+      <strong>Original-speed playback</strong><br/>
+      Il messaggio lineare tipico è: <code>0, &lt;array_size&gt; &lt;durata_ms&gt;</code> → scansiona l'intero buffer in <em>durata_ms</em> a velocità costante.
+    </div>
+  </section>
+
+  <section id="workflow">
+    <h2>Workflow operativo</h2>
+    <ol class="list">
+      <li><strong>Carica un campione</strong> con <kbd>Open</kbd> (<code>openpanel → soundfiler</code>) in <code>samplebufL/R</code>. Se mono, usa “Mono→Stereo” (<code>array copy</code> L→R).</li>
+      <li><strong>Carica una libreria di inviluppi</strong> (<code>text define/get</code>): ogni riga contiene N× terne; usa selettore/random.</li>
+      <li><strong>Suona</strong>: attiva il metro/autoplay o usa i tasti KEY (1‑4) per strike, original‑speed, stop, retrigger.</li>
+      <li><strong>Registra</strong> dal blocco “AUDIO RECORDER”.</li>
+    </ol>
+    <div class="grid grid-2">
+      <div class="card">
+        <h3>Preset utili (idee)</h3>
+        <ul class="list">
+          <li><em>Percussive</em>: attacco nullo/corto, decadimento naturale.</li>
+          <li><em>Hybrid</em>: transizioni a step + code morbide.</li>
+          <li><em>Slow morph</em>: terne lunghe per scritture lente.</li>
+          <li><em>Vactrol‑like</em>: decrescite LPG “respirate”.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Formattazione librerie</h3>
+        <pre><code>1 0 0  0.58 19 0  0.28 22 19  0 25 41;
+0.7 120 0  0.0 30 80;</code></pre>
+        <p class="sub">Riga 1 = inviluppo a 4 terne; riga 2 = 2 terne. Evita righe con tempi tutti a 0 (suono nullo).</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="autoplay">
+    <h2>Autoplay &amp; Manual Player</h2>
+    <ul class="list">
+      <li><strong>Autoplay</strong>: un <code>metro</code> pilota l’estrazione di una riga da <code>text get</code>; la durata dell’ultimo colpo può pilotare il passo successivo (listener “END”).</li>
+      <li><strong>Manual Player</strong>: KEY‑1 (strike), KEY‑2 (original‑speed), KEY‑3 (stop), KEY‑4 (retrigger). Pulsanti e contatore circolare aiutano nel live.</li>
+    </ul>
+    <div class="callout ok">
+      <strong>Concatenazione intelligente</strong> — i <em>delay</em> interni alle terne permettono pattern irregolari senza dover riprogrammare il <code>metro</code>.
+    </div>
+  </section>
+
+  <section id="playback">
+    <h2>Motore di playback</h2>
+    <table>
+      <thead><tr><th>Blocco</th><th>Funzione</th></tr></thead>
+      <tbody>
+        <tr><td><code>tabread4~ samplebufL/R</code></td><td>Lettura interpolate a 4‑punti; indicizzata dall’uscita di <code>vline~</code>.</td></tr>
+        <tr><td><code>*~</code> / <code>pow~</code></td><td>Controllo amp (envelope) e sagomatura opzionale.</td></tr>
+        <tr><td><code>snake~</code></td><td>Routing/mix stereo (o multicanale).</td></tr>
+        <tr><td>Safety</td><td><code>clip~</code> e headroom per evitare saturazioni.</td></tr>
+      </tbody>
+    </table>
+    <div class="callout warn">
+      <strong>Nota</strong>: <em>tabread4~</em> non “si ferma”: smette di produrre solo se l’ampiezza è 0 o l’indice è fuori buffer. Per lo stop immediato invia <code>clear</code>/<code>stop</code> a <code>vline~</code> e/o abbassa l’amp con <code>*~ 0</code>.
+    </div>
+  </section>
+
+  <section id="rec">
+    <h2>Uscite &amp; Recorder</h2>
+    <ul class="list">
+      <li>Uscita principale: <code>pp.out~</code> (o sostituisci con <code>dac~</code>).</li>
+      <li>Normalizzazione opzionale (utility UI) prima della stampa.</li>
+      <li>Registrazione: <code>writesf~</code> con controllo del nome file e pulsanti “rec/stop”.</li>
+    </ul>
+  </section>
+
+  <section id="deps">
+    <h2>Dipendenze &amp; requisiti</h2>
+    <div class="grid grid-2">
+      <div class="card">
+        <h3>Pd Vanilla</h3>
+        <ul class="list">
+          <li>Consigliato ≥ 0.53 per uso esteso di <code>text</code> e <code>array copy</code>.</li>
+          <li>Oggetti principali: <code>soundfiler, tabread4~, vline~, expr, line, list, pack/unpack, sel, key, spigot, pow~, random</code>.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Esterni ELSE</h3>
+        <ul class="list">
+          <li><code>snake~</code>, <code>scope~</code>, <code>note</code>, eventuali <code>comment</code>.</li>
+          <li>Installa da <em>Deken</em> cercando “ELSE (Porres)”.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="tips">
+    <h2>Trucchi &amp; best practice</h2>
+    <ul class="list">
+      <li><strong>Library hygiene</strong>: un inviluppo per riga; chiudi sempre con <code>;</code>. Evita tempi 0 ovunque.</li>
+      <li><strong>Headroom</strong>: aggiungi <code>clip~</code> dopo il moltiplicatore d’ampiezza se usi <code>pow~</code> o boost.</li>
+      <li><strong>Stagger stereo</strong>: invia lo stesso inviluppo a L/R ma sposta i <em>delay</em> di pochi ms per micro‑instabilità spaziale.</li>
+      <li><strong>Param‑mod</strong>: usa le terne come <em>control‑rate</em> (via <code>vline</code> + <code>snapshot~</code> o direttamente <code>vline~ → *~</code>) per risonanza/indice FM. Lo <code>$0-factor</code> è opzionale.</li>
+      <li><strong>Original‑speed</strong>: costruisci messaggi “0, size durata” per scan lineari; utile come riferimento timbrico.</li>
+      <li><strong>Debug</strong>: stampa la riga grezza, poi la lista dei segmenti; verifica che la somma di <em>time+delay</em> non superi attese di sincronizzazione.</li>
+    </ul>
+  </section>
+
+  <section id="faq">
+    <h2>FAQ</h2>
+
+    <h3>Una riga con una sola terna è “valida”?</h3>
+    <p>Sì. <strong>Una riga = un inviluppo</strong>. Con una sola terna ottieni uno step singolo. Più terne sulla stessa riga ⇒ multi‑segmento.</p>
+
+    <h3>Voglio usare 12 terne in una riga. Devo cambiare <code>list split 3</code>?</h3>
+    <p>No. <code>list split 3</code> è corretto: itera gruppi da tre valori. Estendi piuttosto la ricezione (es. <code>unpack</code> a 36 float) o implementa un parser dinamico con <code>[until]</code> che invia ogni terna a una subpatch di accumulo per <code>vline~</code>.</p>
+
+    <h3>A volte il suono non esce con certe liste di terne. Perché?</h3>
+    <ul class="list">
+      <li>Tempi a 0 (o <em>delay</em> lunghissimi) ⇒ silenzio apparente.</li>
+      <li><em>target</em> = 0 in tutti i segmenti ⇒ ampiezza nulla.</li>
+      <li>Formattazione errata (manca <code>;</code>, decimali con virgola, righe spezzate).</li>
+      <li><code>$0-factor</code> troppo piccolo/alto ⇒ inviluppi “micro” o “glaciali”.</li>
+      <li>Indice fuori buffer (messaggi sbagliati a <code>vline~</code> per la scansione dell’array).</li>
+    </ul>
+    <p class="callout">Procedura: stampa riga → verifica triplette → controlla somma <em>time+delay</em> → prova senza <code>$0-factor</code> → prova “original‑speed”.</p>
+
+    <h3>Come fermo subito la lettura?</h3>
+    <p>Invia <code>stop</code> o <code>clear</code> a <code>vline~</code> e attenua con <code>*~ 0</code>. <em>tabread4~</em> segue l’indice: se l’indice non si muove e l’amp è 0, non senti nulla.</p>
+
+    <h3>Cosa significa il “4” in <code>tabread4~</code>?</h3>
+    <p>È l’interpolazione a <strong>4 punti</strong> (cubic). Migliora la qualità quando l’indice scorre a velocità non intere/sovracampionamenti.</p>
+
+    <h3>Differenza tra <code>line</code>, <code>line~</code> e <code>vline~</code>?</h3>
+    <ul class="list">
+      <li><code>line</code>: controllo a <em>control‑rate</em>.</li>
+      <li><code>line~</code>: ramp audio‑rate, ma un solo segmento per messaggio.</li>
+      <li><code>vline~</code>: audio‑rate con <strong>sequenza</strong> di segmenti, ognuno con proprio <em>delay</em>.</li>
+    </ul>
+
+    <h3>Posso usare le terne per modulare filtri/FM invece che l’audio?</h3>
+    <p>Sì. In quel caso mappi i <em>target</em> nell’intervallo del parametro. Lo <code>$0-factor</code> serve solo se vuoi scalare i tempi; altrimenti puoi ignorarlo.</p>
+
+    <h3>Quanta “qualità” per i file d’ingresso?</h3>
+    <p>44.1/48 kHz sono più che sufficienti; evita picchi a 0 dBFS: lascia 3–6 dB di headroom per le sagomature.</p>
+
+    <h3>Come imposto librerie enormi (≈10k inviluppi)?</h3>
+    <p>Carica file di testo lunghi con <code>text define -k</code>. Usa indice numerico per navigare e un pulsante per la scelta casuale. Mantieni i file “a tema” per famiglie coerenti.</p>
+  </section>
+
+  <section id="changelog">
+    <h2>Note di versione (sintesi)</h2>
+    <ul class="list">
+      <li><strong>v3.x</strong>: librerie dynatext, stereo dedicato, timebase + factor, recorder integrato, UI con etichette e shortcut.</li>
+      <li><strong>v3.1</strong>: rifiniture UI/nomi, chiarimenti su <code>$0-factor</code>, stabilità countdown/END, uniformati moduli di normalizzazione/recorder.</li>
+    </ul>
+    <p class="foot">Documento generato automaticamente • 2025-09-16 22:53.</p>
+  </section>
+</main>
+</body>
+</html>
