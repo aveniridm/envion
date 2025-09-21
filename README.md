@@ -59,5 +59,70 @@ Each terna defines the behavior of a sound fragment through three main parameter
 - Adjust the **stretch factor** to compress/expand time.  
 - Try the **ready-made presets** (bottom area).  
 
+**Timebase & $0-factor**  
+The timebase module retrieves the buffer duration (samples → milliseconds), exposes it as **$0-durata**, and calculates **$0-factor** for the global stretch of envelopes.
+
+**TYPICAL CONVERSIONS**
+
+    // from samples to milliseconds (44.1 kHz)
+    expr round((($f1 * 1000.) / 44100) * 100) / 100
+    
+
+* **$0-factor** applies to times of each segment.
+* Not mandatory when using *terne* as parameter modulations (e.g., FM resonance, filter index, temporal stretching).
+
+**Original-speed playback:**  
+`0, <array_size> <durata_ms>` → scans the entire buffer in **durata\_ms** at constant speed.
+
+**WORKFLOW**
+
+1. **Load a sample** → `openpanel ~ soundfiler` into **sampletabL/R**. If mono, use *Mono→Stereo* (array copy L→R).
+2. **Load an envelope library** → `text define/get`. Each line = one *terna*. Select or randomize.
+3. **Play** → via autoplay or manual keys: **KEY1–4** (strike, original-speed, stop, retrigger).
+4. **Record** → from block **AUDIO RECORDER**.
+
+**USEFUL PRESETS (IDEAS)**
+
+* **Percussive:** fast attack, natural decay
+* **Hybrid:** step + soft transition
+* **Slow morph:** long, very slow envelopes
+* **Vector/LPG:** “breathing” LPG-like response
+
+**LIBRARY FORMATTING**
+
+    1 0.0 0.58 19 0.8 22 29 1 25 41;
+    0.7 120 0.0 38 80;
+    
+
+* Line 1 = **4-segment envelope**
+* Line 2 = **2-segment envelope** Avoid all-zero lines (silent)
+
+**AUTOPLAY & MANUAL PLAYER**
+
+* **Autoplay**: a metro drives `text get`; last strike duration can trigger next step (*END* listener).
+* **Manual**:
+   * **KEY1** = strike
+   * **KEY2** = original-speed
+   * **KEY3** = stop
+   * **KEY4** = retrigger
+
+*Smart concatenation*: internal delays in *terne* allow irregular patterns without reprogramming the metro.
+
+**PLAYBACK ENGINE**
+
+* `tabread4~ sampletabL/R` → interpolated 4-point reading, indexed by **vline\~**
+* `*~ / pow~` → amp control (envelope) + optional shaping
+* `snake~` → stereo/multichannel routing
+* `safety` → `clip~` adds headroom to avoid clipping
+
+**Note:** `tabread4~` never stops. It runs until index=0 or out of buffer.  
+For immediate stop: send **clear/stop** to `vline~`, or drop amp to 0.
+
+**OUTPUT & RECORDER**
+
+* Main out → **pd out\~** (replace with `dac~`)
+* **Normalization** (utility UI) before printing
+* **Recorder**: internal block with **rec/stop** buttons
+
 
 v.3.6 last update domenica 21 settembre / 2229
