@@ -17,6 +17,7 @@ It includes tools for slicing, dynamic envelopes, texture generation, and multi-
 > This ensures that temporal gestures and sonic material remain bound together, preserving coherence while still allowing complex, generative transformations.  
 
 IMPORTANT! This Pd patch depends on the following external libraries: Cyclone | gge | ceammc | else | symplex~ (for 3D scope)
+[First step on Envion (youtube clip)](https://www.youtube.com/watch?v=BiTsPTQfgCY&feature=youtu.be)
 
 [Deep HTML / SVG Guide here: ](https://www.peamarte.it/env/envion_v3.6.html)
 
