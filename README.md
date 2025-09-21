@@ -35,6 +35,15 @@ As a **procedural environment**, in most cases it is sufficient to **load a samp
 
 This approach highlights Envion’s nature: it is not about “playing” directly, but about **generating emergent sonic material** from which fragments can be extracted for composition.
 
+# Procedural Randomization Automation (EN)
+
+By enabling both checkboxes, Envion activates a **procedural randomization** process that automatically draws from **19,000 pre-defined triplets**.
+
+* **Random Terna**: continuously loads text files from the `/data` folder (each file contains about 1,000 envelopes/triplets).
+* **Random List**: randomly selects one of the 1,000 available lists.
+
+This mechanism allows Envion to combine automatic loading and random selection, producing an ever-changing and potentially infinite stream of events.
+
 ## 📂 Project structure
 
 - `Envion_v3.6.pd` → main patch  
