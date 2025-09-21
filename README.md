@@ -172,7 +172,7 @@ Yes. In that case map *targets* to the parameter’s range. `$0-factor` is only 
 44.1/48 kHz is more than enough; avoid peaks at 0 dBFS. Leave 3–6 dB of headroom for shaping.  
 
 ## How do I manage huge libraries (≈10k envelopes)?  
-Load long text files with `text define -k`. Use a numeric index for navigation and a button for random selection. Keep files “thematic” for coherent families.  
+After preparing the text files, use the browse txt file option to load them. Then navigate with a numeric index or trigger a random selection button. Keep files thematic for coherent families. Use a numeric index for navigation and a button for random selection. Keep files “thematic” for coherent families.  
 
 ---
 
