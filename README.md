@@ -32,7 +32,8 @@ Each terna defines the behavior of a sound fragment through three main parameter
 0.452  80  0     ; → 452 ms duration, amplitude 80, offset at start of sample
 0.210  45  600   ; → 210 ms duration, amplitude 45, offset 600 ms into the sample
 0.879  100 1280  ; → 879 ms duration, full amplitude, offset 1280 ms
-</ pre>
+</pre>
+
 
 ## ⚡ Quick Start
 
