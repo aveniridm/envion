@@ -33,3 +33,15 @@ Each terna defines the behavior of a sound fragment through three main parameter
 0.452  80  0     ; → 452 ms duration, amplitude 80, offset at start of sample
 0.210  45  600   ; → 210 ms duration, amplitude 45, offset 600 ms into the sample
 0.879  100 1280  ; → 879 ms duration, full amplitude, offset 1280 ms
+
+
+## Quick Start
+
+1. **Load a list** from **Dynatext Cloud** (or select a local `.txt` in `data/`).  
+2. **Browse a sample** (WAV) and assign it as the playback buffer.  
+3. **Turn on DSP** and explore.
+
+- Use the **manual triggers** and sliders to test sequences.  
+- Adjust the **stretch factor** to compress/expand time.  
+- Try the **ready-made presets** (bottom area).  
+- Make sure **file paths** for presets and lists are correct on your system.
