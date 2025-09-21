@@ -3,6 +3,16 @@
 **Envion** is an ecosystem in Pure Data designed for algorithmic composition, musique concrète, and experimental sound processing.  
 It includes tools for slicing, dynamic envelopes, texture generation, and multi-channel management.
 
+> ### What is?
+> **Envion** is an *envelope-first* engine for **Pure Data (Pd)**: it drives the read index of stereo buffers through textual sequences of **triplets** *(value, time, delay)* sent to `vline~`.  
+> Each line of a text file represents a complete envelope; switching line means switching gesture.  
+> The system is designed for **musique concrète/acousmatic music**, **sound design**, and **non-metric writing**.  
+>  
+> **Key idea**  
+> Instead of “playing” files, it **writes trajectories** on them through numeric envelopes (*dynatext*).  
+> This enables **hyper-articulated hits**, **slow morphs**, **irregular internal delays**, and **pseudo-organic behaviors**.  
+
+
 ---
 
 ## 📂 Project structure
