@@ -15,7 +15,7 @@ It includes tools for slicing, dynamic envelopes, texture generation, and multi-
 > At its core, Envion adds an **algorithmic layer** that keeps the envelope and the sample tightly coupled.  
 > This ensures that temporal gestures and sonic material remain bound together, preserving coherence while still allowing complex, generative transformations.  
 
-
+[Deep HTML / SVG Guide here: ](https://www.peamarte.it/env/envion_v3.6.html)
 
 ---
 
