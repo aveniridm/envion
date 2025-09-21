@@ -27,5 +27,9 @@ Each terna defines the behavior of a sound fragment through three main parameter
 2. **Amplitude** – the signal level, which can be constant or shaped by an envelope.  
 3. **Offset / Position** – the reading point or starting position of the fragment within the sample.
 
-Together, these three coordinates generate micro-articulations that Envion translates into envelopes and slicing processes.  
-The *terne* thus work as a kind of **algorithmic score**, where the sum of hundreds or thousands of triplets allows the creation of complex text
+### 🔹 Examples of terne
+
+```text
+0.452  80  0     ; → 452 ms duration, amplitude 80, offset at start of sample
+0.210  45  600   ; → 210 ms duration, amplitude 45, offset 600 ms into the sample
+0.879  100 1280  ; → 879 ms duration, full amplitude, offset 1280 ms
