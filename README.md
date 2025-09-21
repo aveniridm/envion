@@ -21,3 +21,18 @@ Include strumenti per slicing, inviluppi dinamici, generazione di texture e gest
 
 
 
+
+---
+
+## Dependencies
+
+Envion requires Pure Data **vanilla** plus the following externals:
+
+- [else] — main external library by Alexandre Porres (musical/synthesis utilities).
+- [cyclone] — Max/MSP compatibility objects (`gate~`, `switch~`, `snapshot~`, `wrap~`, `clip~`, etc.).
+- [zexy] — extra math and DSP utilities.
+- [iemlib] — additional signal and control objects.
+- [snake~], [simplex~], [pp.out~], [x/scope3d] — less common externals used in some subpatches.  
+  (If missing, install via Deken or replace with equivalents.)
+
+👉 All externals can be installed via Pd’s **Help → Find externals** (Deken).
