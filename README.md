@@ -115,10 +115,25 @@ The timebase module retrieves the buffer duration (samples → milliseconds), ex
 
 **USEFUL PRESETS (IDEAS)**
 
-* **Percussive:** fast attack, natural decay
-* **Hybrid:** step + soft transition
-* **Slow morph:** long, very slow envelopes
-* **Vector/LPG:** “breathing” LPG-like response
+# Lists of Terne (1000 envelopes each - total 19k list)
+
+* **default.txt** – basic, neutral list, useful as a starting point.
+* **perc.txt** – percussive envelopes with fast attacks and short decays.
+* **vline\_perc\_1.txt / vline\_perc\_2.txt / vline\_ultra\_perc\_3.txt** – percussive variants generated via `vline~`, from softer (1) to more extreme/fast (3).
+* **zadar\_style\_4triplets.txt** – complex envelopes inspired by the *Zadar* generator, with four-way triplet structures.
+* **complex\_drone\_plain.txt** – long, static envelopes designed for drones.
+* **complex\_percussive\_plain.txt** – articulated, rhythmical envelopes with irregular variations.
+* **emf\_interference.txt** – patterns inspired by electromagnetic interference, with glitchy and fragmented shapes.
+* **drone.txt** – very extended, continuous envelopes for static layered textures.
+* **unstable-metro.txt** – “unstable metronome” sequences, irregular timing with micro-variations.
+* **buchla.txt** – organic, *West Coast*\-style envelopes, fluid and unpredictable curves.
+* **sharpy.txt** – sharp envelopes with strong transients.
+* **relaxed.txt** – smooth envelopes with slower times and softened curves.
+* **random\_delayed\_perc.txt** – percussive hits with random delays, creating temporal irregularities.
+* **vactrol.txt** – envelopes emulating a *vactrol low pass gate*, with natural attack/decay response.
+* **polyrhythm.txt** – multi-layered, offset patterns generating polyrhythmic articulations.
+* **bounded\_kickdrum.txt** – envelopes constrained to kick-drum ranges, punchy with short sustain.
+* **terne\_1000\_fadeout.txt** – 1000 terne with progressive fadeout, ideal for dissolving structures.
 
 **LIBRARY FORMATTING**
 
