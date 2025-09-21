@@ -44,3 +44,6 @@ Each terna defines the behavior of a sound fragment through three main parameter
 - Use the **manual triggers** and sliders to test sequences.  
 - Adjust the **stretch factor** to compress/expand time.  
 - Try the **ready-made presets** (bottom area).  
+
+
+v.3.6 last update domenica 21 settembre / 2229
