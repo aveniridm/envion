@@ -9,8 +9,12 @@ It includes tools for slicing, dynamic envelopes, texture generation, and multi-
 > The system is designed for **musique concrète/acousmatic music**, **sound design**, and **non-metric writing**.  
 >  
 > **Key idea**  
-> Instead of “playing” files, it **writes trajectories** on them through numeric envelopes (*dynatext*).  
+> Instead of “playing” files, Envion **writes trajectories** on them through numeric envelopes (*dynatext*).  
 > This enables **hyper-articulated hits**, **slow morphs**, **irregular internal delays**, and **pseudo-organic behaviors**.  
+>  
+> At its core, Envion adds an **algorithmic layer** that keeps the envelope and the sample tightly coupled.  
+> This ensures that temporal gestures and sonic material remain bound together, preserving coherence while still allowing complex, generative transformations.  
+
 
 
 ---
