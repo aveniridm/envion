@@ -1,6 +1,6 @@
 # Envion
 
-**Envion** is an ecosystem in Pure Data designed for algorithmic composition, musique concrète, and experimental sound processing.  
+**Envion** is an ecosystem in Pure Data designed for algorithmic and procedural sound design composition, musique concrète, and experimental sound processing.  
 It includes tools for slicing, dynamic envelopes, texture generation, and multi-channel management.
 
 > ### What is?
