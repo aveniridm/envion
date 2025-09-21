@@ -35,7 +35,7 @@ As a **procedural environment**, in most cases it is sufficient to **load a samp
 
 This approach highlights Envion’s nature: it is not about “playing” directly, but about **generating emergent sonic material** from which fragments can be extracted for composition.
 
-# Procedural Randomization Automation (EN)
+# Procedural Randomization Automation 
 
 By enabling both checkboxes, Envion activates a **procedural randomization** process that automatically draws from **19,000 pre-defined triplets**.
 
