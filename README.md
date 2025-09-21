@@ -23,6 +23,18 @@ IMPORTANT! This Pd patch depends on the following external libraries: Cyclone | 
 
 ---
 
+# Using Envion
+
+As a **procedural environment**, in most cases it is sufficient to **load a sample**, record the output for several minutes, and then select the most interesting portions of the generated audio.
+
+1. Load a sample into the main buffer.
+2. Enable **Random Terna** (checkbox below the Dynatext Cloud).
+3. Enable **Random List** (central checkbox).
+4. Record the output for several minutes.
+5. Select the most significant sections of the recorded audio.
+
+This approach highlights Envion’s nature: it is not about “playing” directly, but about **generating emergent sonic material** from which fragments can be extracted for composition.
+
 ## 📂 Project structure
 
 - `Envion_v3.6.pd` → main patch  
