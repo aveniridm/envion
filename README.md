@@ -16,7 +16,6 @@ Include strumenti per slicing, inviluppi dinamici, generazione di texture e gest
 - `other version/` → varianti sperimentali  
 - `preset.pd` → esempio di gestione preset
 
----
 
 ---
 
@@ -34,7 +33,6 @@ Le *terne* funzionano quindi come una sorta di **partitura algoritmica**, dove l
 
  Grazie a questo approccio, Envion non lavora solo come un player di campioni, ma come un **motore di composizione dinamica**, capace di trasformare anche un suono di pochi secondi in una trama sonora estesa e in continua evoluzione.
 
----
 
 ---
 
