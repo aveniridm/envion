@@ -38,6 +38,11 @@ As a **procedural environment**, in most cases it is sufficient to **load a samp
 
 This approach highlights Envion’s nature: it is not about “playing” directly, but about **generating emergent sonic material** from which fragments can be extracted for composition.
 
+NOTE: When loading material with **high headroom** (low volume), you can use the **array normalization** utility located in the top-left corner.  
+If instead you load **mono audio material**, there is also a **Mono → Stereo** function in the top-right corner.  
+This function creates a small loop and copies the data from the **left array** into the **right array**.
+
+
 ---
 
 # First Steps with included audio materials
