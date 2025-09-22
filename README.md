@@ -40,7 +40,7 @@ This approach highlights Envion’s nature: it is not about “playing” direct
 
 ---
 
-# First Steps with audio included audio materials
+# First Steps with included audio materials
 
 To start experimenting, try loading the file:
 
