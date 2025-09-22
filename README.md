@@ -77,6 +77,34 @@ Each terna defines the behavior of a sound fragment through three main parameter
 0.879  100 1280  ; → 879 ms duration, full amplitude, offset 1280 ms
 </pre>
 
+# Semantic Class – List Validation and Categorization
+
+The patch `duration_flag_800.pd` implements a basic **semantic check** for incoming lists (vline-style). It ensures structural validity and assigns each list to a category before it is passed on.
+
+# Step-by-step logic
+
+1. **Input (**`inlet`**)** A list in `vline~` format enters the patch (usually a triplet: *duration – amplitude – offset*).
+2. **Length check (**`list length`**)**
+   * The list must contain **at least 3 elements**.
+   * If it has fewer than 3 → it is flagged as `list invalid`.
+3. **Splitting and unpacking**
+   * The list is split and the first three values are extracted (`unpack f f f`).
+   * The **first element** is interpreted as *duration*.
+4. **Duration test (**`moses 500`**)**
+   * If duration **< 500 ms**, the list is classified as `list percussive`.
+   * If duration **≥ 500 ms**, it is classified as `list hybrid`.
+5. **Routing**
+   * Invalid lists are discarded.
+   * Valid lists are semantically tagged as *percussive* or *hybrid* and then sent to the `outlet`.
+
+# In practice
+
+This patch acts as a **semantic filter**:
+
+* It first checks whether a list is **structurally valid** (minimum 3 items).
+* Then it applies a **musical classification** based on duration: short events are *percussive*, longer ones are *hybrid*.
+
+This guarantees that Envion only processes clean, meaningful lists and can route them according to their temporal behavior.
 
 ## Quick Start
 
