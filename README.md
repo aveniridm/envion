@@ -199,6 +199,9 @@ The timebase module retrieves the buffer duration (samples → milliseconds), ex
 * `snake~` → stereo/multichannel routing
 * `safety` → `clip~` adds headroom to avoid clipping
 
+![Dynatext Cloud Sequencer](html-guide/img/dynatext-cloud-sequencer.png)
+
+
 **Note:** `tabread4~` never stops. It runs until index=0 or out of buffer.  
 For immediate stop: send **clear/stop** to `vline~`, or drop amp to 0.
 
