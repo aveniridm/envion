@@ -4,6 +4,12 @@ v3.6 Algorithmic Dynatext Envelope Sequencer in Pure Data (Pd) developed by Emil
 **Envion** is an ecosystem in Pure Data designed for algorithmic and procedural composition, musique concrète, and experimental sound processing.
 It includes tools for slicing, dynamic envelopes, texture generation, and multi-channel management.
 
+## 📖 Documentation
+
+A complete interactive guide (HTML + SVG) is available here:  
+[Envion v3.6 — Full Documentation](https://www.peamarte.it/env/envion_v3.6.html)
+
+
 > ### What is?
 > **Envion** is an *envelope-first* engine for **Pure Data (Pd)**: it drives the read index of stereo buffers through textual sequences of **triplets** *(value, time, delay)* sent to `vline~`.  
 > Each line of a text file represents a complete envelope; switching line means switching gesture.  
@@ -24,11 +30,6 @@ IMPORTANT! This Pd patch depends on the following external libraries: Cyclone | 
 ---
 
 ![Envion Main Patch](html-guide/img/main-patch.png)
-
-## 📖 Documentation
-
-A complete interactive guide (HTML + SVG) is available here:  
-[Envion v3.6 — Full Documentation](https://www.peamarte.it/env/envion_v3.6.html)
 
 # Using Envion
 
