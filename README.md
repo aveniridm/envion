@@ -227,6 +227,8 @@ For immediate stop: send **clear/stop** to `vline~`, or drop amp to 0.
 
 Envion can also be approached in a very **hands-on** way, without diving into all the procedural automation.
 
+![Envion Manual Strike](html-guide/img/envio-manual-strike.png)
+
 ## Manual Strike Mode
 - Load any list from the **Dynatext Cloud**.
 - Assign a sample (short percussive ones work best).
