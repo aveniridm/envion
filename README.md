@@ -76,6 +76,9 @@ Each terna defines the behavior of a sound fragment through three main parameter
 2. **Amplitude** – the signal level, which can be constant or shaped by an envelope.  
 3. **Offset / Position** – the reading point or starting position of the fragment within the sample.
 
+![Terna Dynatext](html-guide/img/terna-dynatext.png)
+
+
 ### Examples of terne
 <pre>
 0.452  80  0     ; → 452 ms duration, amplitude 80, offset at start of sample
