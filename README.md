@@ -1,5 +1,5 @@
 # Envion
-v3.6 Algorithmic Dynatext Envelope Sequencer in Pure Data (Pd) developed by Emiliano Pennisi 2025
+Algorithmic Dynatext Envelope Sequencer in Pure Data (Pd) developed by Emiliano Pennisi 2025
 
 **Envion** is an ecosystem in Pure Data designed for algorithmic and procedural composition, musique concrète, and experimental sound processing.
 It includes tools for slicing, dynamic envelopes, texture generation, and multi-channel management.
