@@ -42,6 +42,8 @@ NOTE: When loading material with **high headroom** (low volume), you can use the
 If instead you load **mono audio material**, there is also a **Mono → Stereo** function in the top-right corner.  
 This function creates a small loop and copies the data from the **left array** into the **right array**.
 
+> Ultra-stereo material is recommended for this kind of application.  
+> When loading and mirroring mono material, activate **Nuke** on alternate channels of the matrix mixer to emphasize differences between left and right arrays, **widening the stereo field**.
 
 ---
 
