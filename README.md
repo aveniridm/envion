@@ -87,6 +87,9 @@ Each terna defines the behavior of a sound fragment through three main parameter
 
 The patch `duration_flag_800.pd` implements a basic **semantic check** for incoming lists (vline-style). It ensures structural validity and assigns each list to a category before it is passed on.
 
+![Semantic Class](html-guide/img/semantic-class.png)
+
+
 # Step-by-step logic
 
 1. **Input (**`inlet`**)** A list in `vline~` format enters the patch (usually a triplet: *duration – amplitude – offset*).
