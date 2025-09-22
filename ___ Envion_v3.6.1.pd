@@ -1482,7 +1482,7 @@
 #X connect 19 0 9 0;
 #X restore 1492 923 pd low-end.clean_;
 #X obj 965 55 cnv 19 94 20 empty empty RANDOM\ LIST 6 10 0 12 #000000 #ffffff 0;
-#X obj 734 238 tgl 16 0 empty empty ENABLE\ KEY 0 -8 0 10 #dfdfdf #ffffff #000000 0 1;
+#X obj 734 238 tgl 16 0 empty empty ENABLE\ KEY 0 -8 0 10 #dfdfdf #000000 #000000 0 1;
 #X obj 734 259 s \$0-key_enable;
 #X obj 1314 904 cnv 6 75 16 empty empty CONCRETE-B 9 8 0 10 #000000 #ffffff 0;
 #X obj 1294 904 bng 16 250 50 0 empty empty empty 0 -8 0 10 #fcfcfc #000000 #000000;
