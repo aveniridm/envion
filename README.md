@@ -23,6 +23,9 @@ IMPORTANT! This Pd patch depends on the following external libraries: Cyclone | 
 
 ---
 
+![Envion Main Patch](html-guide/img/main-patch.png)
+
+
 # Using Envion
 
 As a **procedural environment**, in most cases it is sufficient to **load a sample**, record the output for several minutes, and then select the most interesting portions of the generated audio.
