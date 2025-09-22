@@ -4,6 +4,12 @@ v3.6 Algorithmic Dynatext Envelope Sequencer in Pure Data (Pd) developed by Emil
 **Envion** is an ecosystem in Pure Data designed for algorithmic and procedural composition, musique concrète, and experimental sound processing.
 It includes tools for slicing, dynamic envelopes, texture generation, and multi-channel management.
 
+For years, I explored different systems for handling envelopes dynamically — starting with software like Composer Desktop Project, and later with several hardware generators such as Zadar in the Eurorack domain.
+
+I would like to emphasize how fascinating the world of envelope dynamics is, and how envelopes can imprint transformative tonal characteristics onto sounds. Out of this research, I developed Envion as a kind of gesture generator. I soon realized that the most flexible way to manage thousands of segments was to use plain-text databases containing the necessary information. From there, I created the Dynatext system.
+
+At the moment, I am working on formatting textual data from external APIs. In this way, Envion could become a powerful tool for generating thousands of random articulations. For example, by drawing on stock market data, weather information, or NASA’s extensive library of APIs — which are incredibly rich and fascinating. Even Co-Star, the app that calculates natal charts, makes wide use of them.
+
 ## 📖 Documentation
 
 A complete interactive guide (HTML + SVG) is available here:  
