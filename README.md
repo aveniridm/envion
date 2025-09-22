@@ -222,6 +222,30 @@ For immediate stop: send **clear/stop** to `vline~`, or drop amp to 0.
 
 ---
 
+
+# Quick Play & Algorithmic Drum Machine
+
+Envion can also be approached in a very **hands-on** way, without diving into all the procedural automation.
+
+## Manual Strike Mode
+- Load any list from the **Dynatext Cloud**.
+- Assign a sample (short percussive ones work best).
+- Use **KEY-1 (Manual Strike)** to trigger individual gestures.  
+Each line of the list becomes a distinct hit: quick to explore, immediate to hear.
+
+This simple workflow turns Envion into an **algorithmic drum machine**: by browsing different lists and striking manually, you can generate unique **percussive articulations** and irregular rhythms.
+
+## Tips & Tricks
+* Combine **short samples** (kicks, snares, metallic hits) with **percussive lists** (`perc.txt`, `random_delayed_perc.txt`) for rhythmic patterns.
+* Try **drone or long lists** on short samples: unexpected stutters and stretched hits emerge.
+* Map envelopes to **parameter modulation** (filters, FM index) instead of playback for complex timbres.
+* Alternate between **manual strike** and **autoplay** to balance **control** and **emergence**.
+* For **drum-like grooves**, use Random List + Random Terna but limit the sample length to ≤ 500 ms.
+
+This way, Envion can be both a **tool for deep algorithmic exploration** and a **playful instrument** for instant, raw experimentation.
+
+---
+
 # FAQ
 
 ## Is a line with just one terna “valid”?  
