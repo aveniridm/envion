@@ -8,7 +8,7 @@ For years, I explored different systems for handling envelopes dynamically — s
 I would like to emphasize how fascinating the world of **envelope dynamics** is, and how envelopes can imprint *transformative tonal characteristics* onto sounds. Out of this research, I developed **Envion** as a kind of *gesture generator*.  
 
 I soon realized that the most flexible way to manage **thousands of segments** was to use plain-text databases containing the necessary information. From there, I created the **Dynatext** system.  
-At the moment, I am working on formatting textual data from **external APIs**. In this way, **Envion** could become a powerful tool for generating *thousands of random articulations*.  
+At the moment, I am working on formatting textual data from **external APIs**. In this way, **Envion** could become a powerful tool for generating *thousands of random articulations* not only generated from local lists but also from the variable numbers of online APIs.  
 For example, by drawing on **stock market data**, **weather information**, or **NASA’s extensive library of APIs** — which are incredibly rich and fascinating. Even *Costar*, the app that calculates natal charts, makes wide use of them.  
 
 ## 📖 Documentation
