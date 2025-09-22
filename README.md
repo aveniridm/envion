@@ -79,6 +79,21 @@ At other times, depending on the **source material**, envelopes may generate **n
 
 ![Procedural Auto Screen](html-guide/img/screen-procedural-auto.png)
 
+## Stereo Behavior and Enhanced aggression
+
+The **Nuke** module processes the **left and right channels with slight differences** in the filter and clipping stages.  
+These micro-variations introduce **phase shifts** and **asymmetries** between L and R, resulting in:
+
+- **Stereo widening**: the left and right outputs are no longer exact copies, creating a broader spatial image.  
+- **Perceptual instability**: small discrepancies between L+R cause the sound to feel more alive and shifting in space.  
+- **Enhanced aggression**: distortion artifacts differ across channels, producing a **wider, noisier stereo field**.
+
+
+![Nuke Distortion](html-guide/img/nuke-distorsion.png)  
+*Distortion/overload utility snapshot*
+
+This design choice makes Nuke not only a distortion stage but also a **stereo expander through destruction**.  
+The contrast between **similar but non-identical processing** of L and R is what gives the module its strong sense of spatial depth.
 
 ## 📂 Project structure
 
