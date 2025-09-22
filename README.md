@@ -54,6 +54,9 @@ Even though many operations seem **repeatable** (such as manually selecting a *t
 
 At other times, depending on the **source material**, envelopes may generate **non-zero-cross points** or **glitches**. Yet this is part of the charm: when the program runs in **random mode** — especially if you alternate gestures (**keys 1–5** and the **space bar**) — it becomes possible to capture **subtle variations** and **micro-articulations** that the system brings to life.
 
+![Procedural Auto Screen](html-guide/img/screen-procedural-auto.png)
+
+
 ## 📂 Project structure
 
 - `Envion_v3.6.pd` → main patch  
