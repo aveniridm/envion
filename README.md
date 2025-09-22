@@ -14,7 +14,7 @@ For example, by drawing on **stock market data**, **weather information**, or **
 ## 📖 Documentation
 
 A complete interactive guide (HTML + SVG) is available here:  
-[Envion v3.6 — Full Documentation](https://www.peamarte.it/env/envion_v3.6.html)
+[Envion v3.6.1 — Full Documentation](https://www.peamarte.it/env/envion_v3.6.html)
 
 
 > ### What is?
@@ -111,7 +111,7 @@ The contrast between **similar but non-identical processing** of L and R is what
 
 ## 📂 Project structure
 
-- `Envion_v3.6.pd` → main patch  
+- `Envion_v3.6.1.pd` → main patch  
 - `audio/` → test samples and audio files 
 - `data/` → data terna and presets for slicing/algorithms  
 - `html-guide/` → guides and documentation (also in HTML/CSS format)  
@@ -340,4 +340,4 @@ After preparing the text files, use the browse txt file option to load them. The
 
 ---
 
-v.3.6 last update domenica 21 settembre / 2229
+v.3.6.1 last update domenica 22 settembre / 22.29
