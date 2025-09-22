@@ -54,13 +54,10 @@ At other times, depending on the **source material**, envelopes may generate **n
 ## 📂 Project structure
 
 - `Envion_v3.6.pd` → main patch  
-- `astrazioni-non-obbligatorie/` → optional subpatches and utilities  
-- `audio/` → test samples and audio files (small, uploadable to GitHub)  
-- `data/` → data and presets for slicing/algorithms  
+- `audio/` → test samples and audio files 
+- `data/` → data terna and presets for slicing/algorithms  
 - `html-guide/` → guides and documentation (also in HTML/CSS format)  
-- `legacy version/` → previous versions  
-- `other version/` → experimental variants  
-- `preset.pd` → example of preset management
+
 
 ---
 
