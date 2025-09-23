@@ -136,12 +136,12 @@
 #X obj 1164 425 s \$0-label;
 #X obj 1443 160 r \$0-label;
 #N canvas 0 22 450 278 (subpatch) 0;
-#X array samplebufL 8.32013e+06 float 2;
-#X coords 0 1 8.32013e+06 -1 100 80 1 0 0;
+#X array samplebufL 1 float 2;
+#X coords 0 1 1 -1 100 80 1 0 0;
 #X restore 1763 413 graph;
 #N canvas 0 22 450 278 (subpatch) 0;
-#X array samplebufR 8.32013e+06 float 2;
-#X coords 0 1 8.32013e+06 -1 100 80 1;
+#X array samplebufR 1 float 2;
+#X coords 0 1 1 -1 100 80 1;
 #X restore 1881 414 graph;
 #X obj 290 689 soundfiler;
 #X obj 290 616 openpanel;
@@ -702,7 +702,7 @@
 #X text 354 928 dur.array.ms;
 #X text 589 935 display audio path;
 #N canvas 537 115 366 264 (subpatch) 0;
-#X obj 51 101 tgl 42 0 \$0-tgl-s \$0-tgl-r empty 1 8 1 9 #000000 #ffffef #fcfcfc 0 1;
+#X obj 51 101 tgl 42 0 \$0-tgl-s \$0-tgl-r empty 1 8 1 9 #ffffff #000000 #fcfcfc 0 1;
 #X obj 215 68 route dsp;
 #X obj 215 37 receive pd;
 #N canvas 977 77 379 291 set_color 0;
@@ -771,7 +771,7 @@
 #X restore 215 165 pd set_color;
 #X obj 135 122 r \$0-tgl-s;
 #N canvas 121 482 450 300 (subpatch) 0;
-#X obj 101 101 cnv 25 40 25 empty \$0-cnv DSP 3 13 0 20 #000000 #ffffef 0;
+#X obj 101 101 cnv 25 40 25 empty \$0-cnv DSP 3 13 0 20 #ffffff #000000 0;
 #X coords 0 -1 1 1 42 27 1 100 100;
 #X restore 51 144 pd;
 #X obj 226 139 s \$0-tgl-r;
@@ -1423,7 +1423,7 @@
 #X f 18;
 #X obj 908 860 s \$0-radio_1;
 #X obj 907 886 s \$0-radio_2;
-#X obj 1669 294 bng 25 250 50 0 empty \$0-r-copy empty 17 7 0 10 #e4e4e4 #4d4d4d #373737;
+#X obj 1693 317 bng 25 250 50 0 empty \$0-r-copy empty 17 7 0 10 #e4e4e4 #4d4d4d #373737;
 #X obj 1481 1136 cnv 6 144 31 empty empty RANDOM\ GESTURE 18 16 0 14 #fc0400 #fcfcfc 0;
 #X obj 1445 1135 bng 32 250 50 0 empty empty empty 0 -8 0 10 #fcfcfc #000000 #000000;
 #N canvas 826 128 832 323 random-gesture 0;
