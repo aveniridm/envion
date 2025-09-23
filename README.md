@@ -29,7 +29,7 @@ A complete interactive guide (HTML + SVG) is available here:
 > At its core, Envion adds an **algorithmic layer** that keeps the envelope and the sample tightly coupled.  
 > This ensures that temporal gestures and sonic material remain bound together, preserving coherence while still allowing complex, generative transformations.  
 
-IMPORTANT! This Pd patch depends on the following external libraries: Cyclone | gge | ceammc | else | symplex~ (for 3D scope)
+IMPORTANT! This Pd patch depends on the following external libraries: Cyclone | gge | ceammc | else | symplex~ (for 3D scope) | Audiolab
 [First step on Envion (youtube clip)](https://www.youtube.com/watch?v=BiTsPTQfgCY&feature=youtu.be)
 
 [Deep HTML / SVG Guide here: ](https://www.peamarte.it/env/envion_v3.6.html)
