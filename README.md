@@ -16,6 +16,21 @@ For example, by drawing on **stock market data**, **weather information**, or **
 A complete interactive guide (HTML + SVG) is available here:  
 [Envion v3.6.1 — Full Documentation](https://www.peamarte.it/env/envion_v3.6.html)
 
+<sub>
+**Note on Licensing**  
+At the moment, this project is **not** released under a full FOSS license.  
+The plan is to make it **completely open-source** once a few more fixes are in place and the project feels more consolidated.  
+
+**Why this choice (for now):**  
+- It’s still a very personal and evolving tool.  
+- I’d like to avoid premature forks that could create confusion.  
+- I need time to consolidate ideas, documentation, and artistic direction.  
+- Keeping it non-FOSS (while still free and accessible) lets me decide when and how to open it properly.  
+
+**Long-term goal:** fully open-source once things are more stable.  
+</sub>
+
+
 
 ![Envion - Plugdata version](html-guide/img/plug-data-black.png)  
 *Envion - Plugdata version*
