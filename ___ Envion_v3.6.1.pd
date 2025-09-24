@@ -135,16 +135,16 @@
 #X obj 932 291 s \$0-label;
 #X obj 1211 26 r \$0-label;
 #N canvas 0 22 450 278 (subpatch) 0;
-#X array samplebufL 1.94954e+06 float 2;
+#X array samplebufL 1 float 2;
 #A color 0;
 #A width 2;
-#X coords 0 1 1.94954e+06 -1 100 80 1 0 0;
+#X coords 0 1 1 -1 100 80 1 0 0;
 #X restore 1516 264 graph;
 #N canvas 0 22 450 278 (subpatch) 0;
-#X array samplebufR 1.94954e+06 float 2;
+#X array samplebufR 1 float 2;
 #A color 0;
 #A width 2;
-#X coords 0 1 1.94954e+06 -1 100 80 1;
+#X coords 0 1 1 -1 100 80 1;
 #X restore 1634 265 graph;
 #X obj 58 535 soundfiler;
 #X obj 58 482 openpanel;
@@ -716,7 +716,7 @@
 #X text 305 801 display audio path;
 #X text 138 815 dur.env.tot;
 #N canvas 537 115 366 264 (subpatch) 0;
-#X obj 51 101 tgl 42 0 \$0-tgl-s \$0-tgl-r empty 1 8 1 9 #000000 #ffffef #fcfcfc 0 1;
+#X obj 51 101 tgl 42 0 \$0-tgl-s \$0-tgl-r empty 1 8 1 9 #ffffff #000000 #fcfcfc 0 1;
 #X obj 215 68 route dsp;
 #X obj 215 37 receive pd;
 #N canvas 977 77 379 291 set_color 0;
@@ -785,7 +785,7 @@
 #X restore 215 165 pd set_color;
 #X obj 135 122 r \$0-tgl-s;
 #N canvas 121 482 450 300 (subpatch) 0;
-#X obj 101 101 cnv 25 40 25 empty \$0-cnv DSP 3 13 0 20 #000000 #ffffef 0;
+#X obj 101 101 cnv 25 40 25 empty \$0-cnv DSP 3 13 0 20 #ffffff #000000 0;
 #X coords 0 -1 1 1 42 27 1 100 100;
 #X restore 51 144 pd;
 #X obj 226 139 s \$0-tgl-r;
@@ -1543,6 +1543,7 @@
 #X obj 930 106 r \$0-rst;
 #X obj 479 228 r \$0-met0;
 #X obj 705 166 r \$0-met0;
+#X msg 860 649 stop;
 #X connect 0 0 2 0;
 #X connect 1 0 2 0;
 #X connect 3 0 2 0;
@@ -1858,3 +1859,4 @@
 #X connect 394 0 21 1;
 #X connect 395 0 233 0;
 #X connect 396 0 239 0;
+#X connect 397 0 66 0;
