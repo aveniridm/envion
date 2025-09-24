@@ -330,6 +330,12 @@ Each line of the list becomes a distinct hit: quick to explore, immediate to hea
 
 This simple workflow turns Envion into an **algorithmic drum machine**: by browsing different lists and striking manually, you can generate unique **percussive articulations** and irregular rhythms.
 
+
+[![Watch the video](https://img.youtube.com/vi/AsYjCjTsesY/maxresdefault.jpg)](https://youtu.be/AsYjCjTsesY)
+
+▶ Click the image above to watch the video on YouTube
+
+
 ## Tips & Tricks
 * Combine **short samples** (kicks, snares, metallic hits) with **percussive lists** (`perc.txt`, `random_delayed_perc.txt`) for rhythmic patterns.
 * Try **drone or long lists** on short samples: unexpected stutters and stretched hits emerge.
