@@ -20,10 +20,10 @@ A complete interactive guide (HTML + SVG) is available here:
 ![Envion - Plugdata version](html-guide/img/plug-data-black.png)  
 *Envion - Plugdata version*
 
-Inside the repository there is also a version tailored for **PlugData**.  
-It’s worth noting that this version is significantly more performant: PlugData uses a single unified engine (via JUCE) to handle both audio and graphics, which reduces overhead and makes real-time processing smoother compared to Pd-vanilla. 
-The new JUCE-based management improves GUI responsiveness, event handling, and CPU scheduling, resulting in noticeably faster patch execution, especially on older machines.
-
+Inside the repository there is also a version tailored for **PlugData.**
+It’s worth noting that this version is significantly more performant: unlike Pd-vanilla, where the audio and GUI share the same thread, PlugData (built on JUCE) separates the audio engine from the graphical interface.
+This reduces overhead, prevents dropouts when interacting with the patch, and makes real-time processing smoother.
+The JUCE-based architecture also improves GUI responsiveness, event handling, and CPU scheduling, resulting in noticeably faster and more stable performance, especially on older machines.
 
 
 > ### What is?
