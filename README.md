@@ -33,6 +33,9 @@ The new JUCE-based management improves GUI responsiveness, event handling, and C
 
 [![Watch the video](https://img.youtube.com/vi/h8UiZJa_Q_Q/maxresdefault.jpg)](https://youtu.be/h8UiZJa_Q_Q)
 
+▶ Click the image above to watch the video on YouTube
+
+
 
 
 
