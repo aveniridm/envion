@@ -20,6 +20,11 @@ A complete interactive guide (HTML + SVG) is available here:
 ![Envion - Plugdata version](html-guide/img/plug-data-black.png)  
 *Envion - Plugdata version*
 
+Inside the repository there is also a version tailored for **PlugData**.  
+It’s worth noting that this version is significantly more performant: PlugData uses a single unified engine (via JUCE) to handle both audio and graphics, which reduces overhead and makes real-time processing smoother compared to Pd-vanilla. 
+The new JUCE-based management improves GUI responsiveness, event handling, and CPU scheduling, resulting in noticeably faster patch execution, especially on older machines.
+
+
 
 > ### What is?
 > **Envion** is an *envelope-first* engine for **Pure Data (Pd)**: it drives the read index of stereo buffers through textual sequences of **triplets** *(value, time, delay)* sent to `vline~`.  
