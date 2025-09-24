@@ -31,7 +31,8 @@ The new JUCE-based management improves GUI responsiveness, event handling, and C
 > Each line of a text file represents a complete envelope; switching line means switching gesture.  
 
 
-▶ [Watch the video on YouTube](https://youtu.be/h8UiZJa_Q_Q)
+[![Watch the video](https://img.youtube.com/vi/h8UiZJa_Q_Q/maxresdefault.jpg)](https://youtu.be/h8UiZJa_Q_Q)
+
 
 
 
