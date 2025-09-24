@@ -105,6 +105,11 @@ The result is a material that embodies a **contrast**:
 
 This interplay between the **synthetic and the real**, between **algorithmic articulation** and **spatial resonance**, is at the core of Envion’s aesthetic exploration.
 
+> 💡 **Tip**  
+> When loading a very short sample (such as a percussive sound), adjust the *stretch factor* manually (use the **vertical slider**, not the horizontal *auto-stretch*).  
+> Setting it to the minimum ensures that the envelope perfectly matches the duration of the sound, preventing unwanted stretching.
+
+
 
 # Procedural Randomization Automation 
 
@@ -309,6 +314,11 @@ For immediate stop: send **clear/stop** to `vline~`, or drop amp to 0.
 # Quick Play & Algorithmic Drum Machine
 
 Envion can also be approached in a very **hands-on** way, without diving into all the procedural automation.
+
+> 💡 **Tip**  
+> When loading a very short sample (such as a percussive sound), adjust the *stretch factor* manually (use the **vertical slider**, not the horizontal *auto-stretch*).  
+> Setting it to the minimum ensures that the envelope perfectly matches the duration of the sound, preventing unwanted stretching.
+
 
 ![Envion Manual Strike](html-guide/img/envio-manual-strike.png)
 
