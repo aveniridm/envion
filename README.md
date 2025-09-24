@@ -29,6 +29,11 @@ The new JUCE-based management improves GUI responsiveness, event handling, and C
 > ### What is?
 > **Envion** is an *envelope-first* engine for **Pure Data (Pd)**: it drives the read index of stereo buffers through textual sequences of **triplets** *(value, time, delay)* sent to `vline~`.  
 > Each line of a text file represents a complete envelope; switching line means switching gesture.  
+
+
+[![Watch the video](https://img.youtube.com/vi/h8UiZJa_Q_Q/maxresdefault.jpg)](https://youtu.be/h8UiZJa_Q_Q)
+
+
 > The system is designed for **musique concrète/acousmatic music**, **sound design**, and **non-metric writing**.  
 >  
 > **Key idea**  
