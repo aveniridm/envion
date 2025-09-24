@@ -16,7 +16,9 @@ For example, by drawing on **stock market data**, **weather information**, or **
 A complete interactive guide (HTML + SVG) is available here:  
 [Envion v3.6.1 — Full Documentation](https://www.peamarte.it/env/envion_v3.6.html)
 
-[![Envion - Plugdata version](html-guide/img/plug-data-black.png)](https://github.com/aveniridm/envion_v3.6)
+
+![Envion - Plugdata version](html-guide/img/plug-data-black.png)  
+*Envion - Plugdata version*
 
 
 > ### What is?
