@@ -333,8 +333,7 @@ This simple workflow turns Envion into an **algorithmic drum machine**: by brows
 
 [![Watch the video !  Algorithmic Drum Machine](https://img.youtube.com/vi/AsYjCjTsesY/maxresdefault.jpg)](https://youtu.be/AsYjCjTsesY)
 
-▶ Click the image above to watch the video on YouTube
-
+▶ Click the image above to watch the video: Algorithmic Drum Machine
 
 ## Tips & Tricks
 * Combine **short samples** (kicks, snares, metallic hits) with **percussive lists** (`perc.txt`, `random_delayed_perc.txt`) for rhythmic patterns.
