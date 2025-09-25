@@ -111,6 +111,33 @@ This interplay between the **synthetic and the real**, between **algorithmic art
 
 
 
+
+# Freeze and Stretch
+
+[![Watch the video](https://img.youtube.com/vi/srLcQWzKQ2Y/maxresdefault.jpg)](https://youtu.be/srLcQWzKQ2Y)
+
+▶ Click the image above to watch the video on YouTube  
+
+---
+
+💡 **Freeze a sample in ENVION (pseudo-FFT feel)**  
+
+In this video I show how to “freeze” a sample in **ENVION**.  
+I used an **Amen Break** as an example: by manually adjusting a few parameters, the final result strongly resembles an FFT transformation, even though the process itself is not technically spectral.  
+
+**Here’s the interesting part:** with the *vertical stretch factor slider* set to the minimum, the envelope is forced to perfectly match the duration of the sound, avoiding unwanted stretching; then, by *massively increasing the stretch factor*, the sample progressively loses its rhythmic articulation and turns into a suspended sound mass. During this stretching phase, it’s normal to hear some *glitches*, since the factor is forcing the shape of the sound by stretching or compressing it. Once you find the *sweet spot*, the sound remains suspended and frozen.  
+
+Adding some reverb enhances the impression of a “frozen” texture.  
+The outcome is a kind of **sonic illusion**: there’s no actual FFT analysis happening, but the resulting aesthetic easily evokes a spectral transformation. It’s basically a *“wannabe FFT”*: a freeze effect achieved through different means, yet still capable of delivering a similar sensation.  
+
+---
+
+🔗 [More about ENVION](https://www.peamarte.it/env/envion_v3.6.html)
+
+
+
+
+
 # Procedural Randomization Automation 
 
 By enabling both checkboxes, Envion activates a **procedural randomization** process that automatically draws from **19,000 pre-defined triplets** and applies the X factor to each segment of the terna automatically, thereby imposing its own time-stretch and creating the sonic gesture.
