@@ -60,7 +60,27 @@ The JUCE-based architecture also improves GUI responsiveness, event handling, an
 > At its core, Envion adds an **algorithmic layer** that keeps the envelope and the sample tightly coupled.  
 > This ensures that temporal gestures and sonic material remain bound together, preserving coherence while still allowing complex, generative transformations.  
 
-IMPORTANT! This Pd patch depends on the following external libraries: Cyclone | gge | ceammc | else | symplex~ (for 3D scope) | audiolab
+> **Dependencies**: Cyclone · ggee · ceammc · else · simplex (for 3D scope) | audiolab  
+
+---
+
+**Install via Deken (Pure Data)**
+
+1. In Pure Data, go to **Help → Find Externals…** (opens *Deken*).  
+2. Search and install each library: `cyclone`, `ggee`, `ceammc`, `else`, `simplex`, `audiolab`.  
+3. If prompted for a location, install to your user externals folder (e.g., `~/Documents/Pd/externals`).  
+4. Restart Pure Data so the new objects are available.  
+
+---
+
+**Troubleshooting**  
+- If you cannot find a library, check that you are connected to the internet and your Pd version is up-to-date.  
+- Installed externals may not load until Pd is restarted.  
+- On macOS, make sure you installed Pd with write access to the externals folder (sometimes you need to create `~/Documents/Pd/externals` manually).  
+
+
+
+
 [First step on Envion (youtube clip)](https://www.youtube.com/watch?v=BiTsPTQfgCY&feature=youtu.be)
 
 [Deep HTML / SVG Guide here: ](https://www.peamarte.it/env/envion_v3.6.html)

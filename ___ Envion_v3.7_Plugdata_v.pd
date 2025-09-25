@@ -1,5 +1,5 @@
-#N struct 1090-path-template float x float y array 1090-data 1090-data-template;
-#N struct 1090-data-template float x float y;
+#N struct 1005-path-template float x float y array 1005-data 1005-data-template;
+#N struct 1005-data-template float x float y;
 #N canvas 1 23 1907 979 10;
 #X declare -lib ceammc;
 #X declare -lib audiolab;
@@ -27,7 +27,7 @@
 #X obj 1084 388 s \$0-speed;
 #X obj 1163 258 metro 4000;
 #X obj 988 798 t b b;
-#X msg 1239 732 0.769 1272 260 0.32 47 6 0.44 23 53 0.04 299 76, f 61;
+#X msg 1239 732 0.799 407 40 0.43 287 26 0.16 100 313 0 88 413, f 61;
 #X msg 1200 681 set \$1 \$2 \$3 \$4 \$5 \$6 \$7 \$8 \$9 \$10 \$11 \$12, f 43;
 #X obj 1200 656 pack f f f f f f f f f f f f, f 32;
 #X floatatom 1070 337 4 0 0 0 random-speed - \$0-spds 0;
@@ -137,12 +137,12 @@
 #X obj 1164 425 s \$0-label;
 #X obj 1443 130 r \$0-label;
 #N canvas 0 22 450 278 (subpatch) 0;
-#X array samplebufL 118568 float 2;
-#X coords 0 1 118568 -1 100 80 1 0 0;
+#X array samplebufL 659535 float 2;
+#X coords 0 1 659535 -1 100 80 1 0 0;
 #X restore 1763 383 graph;
 #N canvas 0 22 450 278 (subpatch) 0;
-#X array samplebufR 118568 float 2;
-#X coords 0 1 118568 -1 100 80 1;
+#X array samplebufR 659535 float 2;
+#X coords 0 1 659535 -1 100 80 1;
 #X restore 1881 384 graph;
 #X obj 290 689 soundfiler;
 #X obj 290 616 openpanel;
@@ -171,7 +171,7 @@
 #X floatatom 336 1077 8 0 0 0 factor - \$0-factor 16;
 #X obj 1163 780 unpack f f f f f f f f f f f f, f 111;
 #X msg 1178 945 set \$1 \$2 \$3 \$4 \$5 \$6 \$7 \$8 \$9 \$10 \$11 \$12, f 81;
-#X msg 1177 971 0.769 8528.49 1743.24 0.32 859.627 109.74 0.44 420.668 969.366 0.04 5468.69 1390.03, f 81;
+#X msg 1177 971 0.799 7254.9 713.013 0.43 3286.53 297.735 0.16 1145.13 3584.27 0 1007.72 4729.4, f 81;
 #X listbox 1175 1014 49 0 0 0 - - - 16;
 #X text 1160 768 1;
 #X text 1220 798 2;
@@ -226,7 +226,7 @@
 #X obj 693 719 pack f f;
 #X floatatom 757 580 5 0 0 0 - \$0-durata - 0;
 #X msg 693 742 set 0 \, addcomma \, add \$1 \$2;
-#X msg 693 773 0 \, 118565 31065.9 \;;
+#X msg 693 773 0 \, 659532 502.473 \;;
 #X obj 755 908 *~;
 #X floatatom 796 634 6 0 0 0 - - - 16;
 #X obj 796 612 * 14;
@@ -266,7 +266,7 @@
 #X obj 72 308 outlet~;
 #X obj 177 308 outlet~;
 #X obj 125 24 inlet;
-#X msg 73 191 0 \, 118568 2688.62 \;, f 30;
+#X msg 73 191 0 \, 659535 14955.4 \;, f 30;
 #X obj 491 43 r \$0-dpstart;
 #X obj 491 74 t b;
 #X text 589 31 ARRAY length (ms);
@@ -2125,6 +2125,9 @@
 #X text 624 437 accendi i toggle metro master -metro-terna;
 #X msg 780 485 0.1;
 #X msg 700 161 57.748;
+#X obj 968 388 s \$0-initvol;
+#X msg 967 356 1;
+#X text 1059 387 volume iniziale;
 #X connect 1 0 7 0;
 #X connect 7 1 25 0;
 #X connect 7 2 20 0;
@@ -2136,6 +2139,7 @@
 #X connect 7 6 37 0;
 #X connect 7 6 36 0;
 #X connect 7 6 35 0;
+#X connect 7 6 44 0;
 #X connect 7 7 14 0;
 #X connect 7 7 33 0;
 #X connect 7 7 39 0;
@@ -2163,6 +2167,7 @@
 #X connect 39 0 15 0;
 #X connect 41 0 28 0;
 #X connect 42 0 2 0;
+#X connect 44 0 43 0;
 #X restore 1723 1177 pd lamina-reso;
 #X f 21;
 #X obj 1877 1070 cnv 6 144 31 empty empty CYBERKICK 41 16 0 14 #95b76d #fcfcfc 0;
@@ -2214,6 +2219,9 @@
 #X msg 157 349 read data/perc.txt;
 #X obj 528 600 s \$0-st;
 #X text 445 623 checkbox-main random-list;
+#X obj 941 430 s \$0-initvol;
+#X text 1032 429 volume iniziale;
+#X msg 940 398 0.8;
 #X connect 1 0 7 0;
 #X connect 7 1 25 0;
 #X connect 7 2 20 0;
@@ -2225,6 +2233,7 @@
 #X connect 7 6 42 0;
 #X connect 7 6 41 0;
 #X connect 7 6 40 0;
+#X connect 7 6 48 0;
 #X connect 7 7 43 0;
 #X connect 7 7 33 0;
 #X connect 7 7 14 0;
@@ -2254,11 +2263,12 @@
 #X connect 42 0 19 0;
 #X connect 43 0 12 0;
 #X connect 43 0 11 0;
+#X connect 48 0 46 0;
 #X restore 1875 1106 pd cyber-kick;
 #X f 21;
 #X text 2023 1106 volume 80%;
 #N canvas 733 172 450 300 initvol 0;
-#X obj 236 154 hsl 128 15 0 1 0 0 empty \$0-initvol empty -2 -8 0 10 #dcdcdc #000000 #000000 0 1;
+#X obj 239 154 hsl 128 15 0 1 0 0 empty \$0-initvol empty -2 -8 0 10 #dcdcdc #000000 #000000 0 1;
 #X floatatom 234 179 5 0 0 0 - - - 0;
 #X text 248 154 set slider (0-1);
 #X msg 234 200 set \$1;
