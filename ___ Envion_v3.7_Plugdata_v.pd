@@ -1,5 +1,5 @@
-#N struct 1005-path-template float x float y array 1005-data 1005-data-template;
-#N struct 1005-data-template float x float y;
+#N struct 1090-path-template float x float y array 1090-data 1090-data-template;
+#N struct 1090-data-template float x float y;
 #N canvas 1 23 1907 979 10;
 #X declare -lib ceammc;
 #X declare -lib audiolab;
@@ -27,7 +27,7 @@
 #X obj 1084 388 s \$0-speed;
 #X obj 1163 258 metro 4000;
 #X obj 988 798 t b b;
-#X msg 1239 732 0.252 1821 57 0.8 59 29 0.5 39 88 1 42 127, f 61;
+#X msg 1239 732 0.769 1272 260 0.32 47 6 0.44 23 53 0.04 299 76, f 61;
 #X msg 1200 681 set \$1 \$2 \$3 \$4 \$5 \$6 \$7 \$8 \$9 \$10 \$11 \$12, f 43;
 #X obj 1200 656 pack f f f f f f f f f f f f, f 32;
 #X floatatom 1070 337 4 0 0 0 random-speed - \$0-spds 0;
@@ -171,7 +171,7 @@
 #X floatatom 336 1077 8 0 0 0 factor - \$0-factor 16;
 #X obj 1163 780 unpack f f f f f f f f f f f f, f 111;
 #X msg 1178 945 set \$1 \$2 \$3 \$4 \$5 \$6 \$7 \$8 \$9 \$10 \$11 \$12, f 81;
-#X msg 1177 971 0.252 28970.3 906.813 0.8 225.005 110.596 0.5 148.732 335.601 1 160.173 484.333, f 81;
+#X msg 1177 971 0.769 8528.49 1743.24 0.32 859.627 109.74 0.44 420.668 969.366 0.04 5468.69 1390.03, f 81;
 #X listbox 1175 1014 49 0 0 0 - - - 16;
 #X text 1160 768 1;
 #X text 1220 798 2;
@@ -226,7 +226,7 @@
 #X obj 693 719 pack f f;
 #X floatatom 757 580 5 0 0 0 - \$0-durata - 0;
 #X msg 693 742 set 0 \, addcomma \, add \$1 \$2;
-#X msg 693 773 0 \, 118565 38082.1 \;;
+#X msg 693 773 0 \, 118565 31065.9 \;;
 #X obj 755 908 *~;
 #X floatatom 796 634 6 0 0 0 - - - 16;
 #X obj 796 612 * 14;
@@ -695,7 +695,7 @@
 #X obj 538 794 del 2;
 #X msg 538 819 \; samplebufL const 0 \; samplebufR const 0 \; samplebufL resize 1 \; samplebufR resize 1;
 #X obj 590 953 r display_path;
-#X msg 539 983 read -resize /Users/emiliano/Documents/SOX/nord-dums/PERC/GAIT.wav samplebufL samplebufR, f 25;
+#X msg 539 983, f 25;
 #X obj 562 908 r clear_display_msg;
 #X text 578 794 clear path;
 #X text 354 928 dur.array.ms;
@@ -1668,7 +1668,7 @@
 #X obj 814 743 s \$0-reverbr;
 #X obj 851 656 s \$0-activate-radio-pan;
 #X obj 1029 538 s \$0-slider-pan;
-#X msg 966 499 2;
+#X msg 962 502 0.3;
 #X connect 1 0 7 0;
 #X connect 7 1 35 0;
 #X connect 7 2 30 0;
@@ -2257,6 +2257,21 @@
 #X restore 1875 1106 pd cyber-kick;
 #X f 21;
 #X text 2023 1106 volume 80%;
+#N canvas 733 172 450 300 initvol 0;
+#X obj 236 154 hsl 128 15 0 1 0 0 empty \$0-initvol empty -2 -8 0 10 #dcdcdc #000000 #000000 0 1;
+#X floatatom 234 179 5 0 0 0 - - - 0;
+#X text 248 154 set slider (0-1);
+#X msg 234 200 set \$1;
+#X obj 376 154 loadbang;
+#X msg 376 180 0.7;
+#X obj 377 212 s \$0-initvol;
+#X obj 116 149 outlet;
+#X connect 0 0 1 0;
+#X connect 1 0 3 0;
+#X connect 3 0 7 0;
+#X connect 4 0 5 0;
+#X connect 5 0 6 0;
+#X restore 2038 665 pd initvol;
 #X connect 0 0 2 0;
 #X connect 1 0 2 0;
 #X connect 3 0 2 0;
@@ -2607,3 +2622,4 @@
 #X connect 437 0 430 3;
 #X connect 439 0 441 0;
 #X connect 443 0 444 0;
+#X connect 446 0 435 0;
