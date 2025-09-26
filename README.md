@@ -214,6 +214,58 @@ Each terna defines the behavior of a sound fragment through three main parameter
 ![Terna Dynatext](html-guide/img/terna-dynatext.png)
 
 
+
+## What are Dynatext?
+
+Dynatext are the true databases of **Envion**: they are not “small” files, but **large archives** containing up to **1000 lines each**.  
+Every line corresponds to a complete trajectory, described through a **numerical triplet** (*amplitude, time, offset*), which is interpreted by the engine to drive envelopes.  
+
+These files, stored in the `/data` folder, form a vast repertoire of complex gestures ready to be activated, combined, and transformed.  
+By exploring the text files, you can easily understand how they are structured and, if you wish, create your own — although the existing library already covers a wide range of sonic behaviors.  
+
+---
+
+## Why I use `vline~` instead of `line~`
+
+- **`line~`** only accepts a target and a time → simple, linear ramps.  
+- **`vline~`** accepts an entire sequence of **concatenated triplets** (*value, duration, delay*), enabling complex articulations such as micro-curves, pauses, multiple attacks, and temporal bounces.  
+
+Instead of mere linear ramps, Envion works with fully-fledged **dynamic phrases**, richer and more expressive.  
+
+---
+
+## Random List and Random Terna
+
+The system takes on an even more **non-deterministic** behavior when the two randomization checkboxes are enabled:
+
+- **Random List** → randomly selects one of the 17 Dynatext files in `/data`.  
+- **Random Terna** → within the chosen file, randomly picks one of the 1000 lines.  
+
+This happens **simultaneously**: Envion randomly chooses both the file and the line inside it, yielding a very high degree of chance and variability. Each activation can produce a completely different sonic behavior, even with the same source material.  
+
+---
+
+## The role of *Stretch*
+
+The key control is the **Stretch** parameter, which adapts the trajectories to the **time domain** of the audio material (a term familiar to Max/MSP users).  
+
+By adjusting Stretch, Dynatext trajectories are compressed or expanded in time:  
+
+- **Low values** → fast, percussive, almost microscopic gestures.  
+- **High values** → slow, broad, dramatic evolutions.  
+
+---
+
+## In summary
+
+- **Large archives** (1000 lines × 17 files)  
+- **Multi-level randomization** (file + line)  
+- **Fine time-domain control** via Stretch  
+
+Together, these elements make Dynatext not just predefined envelopes, but a true **generative machine of dynamic articulations**, capable of endlessly surprising outcomes.  
+
+
+
 ### Examples of terne
 <pre>
 0.452  80  0     ; → 452 ms duration, amplitude 80, offset at start of sample
