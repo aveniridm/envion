@@ -126,12 +126,7 @@ All the percussion comes from Envion, with a few strikes of *hyōshigi* (Japanes
 
 
 
-NOTE: When loading material with **high headroom** (low volume), you can use the **array normalization** utility located in the top-left corner.  
-If instead you load **mono audio material**, there is also a **Mono → Stereo** function in the top-right corner.  
-This function creates a small loop and copies the data from the **left array** into the **right array**.
 
-> Ultra-stereo material is recommended for this kind of application.  
-> When loading and mirroring mono material, activate **Nuke** on alternate channels of the matrix mixer to emphasize differences between left and right arrays, **widening the stereo field**.
 
 ---
 
@@ -181,6 +176,12 @@ The outcome is a kind of **sonic illusion**: there’s no actual FFT analysis ha
 
 
 
+NOTE: When loading material with **high headroom** (low volume), you can use the **array normalization** utility located in the top-left corner.  
+If instead you load **mono audio material**, there is also a **Mono → Stereo** function in the top-right corner.  
+This function creates a small loop and copies the data from the **left array** into the **right array**.
+
+> Ultra-stereo material is recommended for this kind of application.  
+> When loading and mirroring mono material, activate **Nuke** on alternate channels of the matrix mixer to emphasize differences between left and right arrays, **widening the stereo field**.
 
 
 # Procedural Randomization Automation 
