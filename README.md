@@ -101,6 +101,31 @@ As a **procedural environment**, in most cases it is sufficient to **load a samp
 
 This approach highlights Envion’s nature: it is not about “playing” directly, but about **generating emergent sonic material** from which fragments can be extracted for composition.
 
+
+## Japanese Wood — Envion test (YouTube Shorts)
+
+[![Japanese Wood — Envion test](https://img.youtube.com/vi/NG90a9NgMEc/hqdefault.jpg)](https://www.youtube.com/shorts/NG90a9NgMEc)
+
+I loaded the *Japanese Wood (Akira Wood)* preset inside **Envion** to soundtrack a scene from *Dreams* (1990) by Akira Kurosawa — the Kitsune Wedding sequence, where the child wanders through the forest.  
+
+All the percussion comes from Envion, with a few strikes of *hyōshigi* (Japanese ritual wooden clappers) taken directly from the film.  
+
+<details>
+<summary>📋 Copy-paste video description (YouTube)</summary>
+
+**𝐉𝐚𝐩𝐚𝐧𝐞𝐬𝐞 𝐖𝐨𝐨𝐝 (𝐀𝐤𝐢𝐫𝐚 𝐖𝐨𝐨𝐝) — 𝐄𝐧𝐯𝐢𝐨𝐧 𝐭𝐞𝐬𝐭**
+
+I loaded the *Japanese Wood (Akira Wood)* preset inside Envion to soundtrack a scene from *Dreams* (1990) by Akira Kurosawa — the Kitsune Wedding sequence, where the child wanders through the forest.  
+All the percussion comes from Envion, with a few strikes of *hyōshigi* (Japanese ritual wooden clappers) taken directly from the film.
+
+**Hashtag**  
+#puredata, #algorithmmusic, #algorithmiccomposition, #generativemusic, #musiqueconcrete, #envion, #electroacoustic, #sounddesign, #experimentalcomposition, #audiovisualart, #akirakurosawa, #dreams1990, #kitsunewedding, #sonicart, #avantgardemusic, #newmusic, #electroniccomposition, #soundsculpture, #fieldrecording, #contemporarymusic  
+
+</details>
+
+
+
+
 NOTE: When loading material with **high headroom** (low volume), you can use the **array normalization** utility located in the top-left corner.  
 If instead you load **mono audio material**, there is also a **Mono → Stereo** function in the top-right corner.  
 This function creates a small loop and copies the data from the **left array** into the **right array**.
