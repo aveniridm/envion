@@ -111,7 +111,7 @@ I loaded the *Japanese Wood (Akira Wood)* preset inside **Envion** to soundtrack
 All the percussion comes from Envion, with a few strikes of *hyōshigi* (Japanese ritual wooden clappers) taken directly from the film.  
 
 <details>
-<summary>📋 Copy-paste video description (YouTube)</summary>
+<summary>📋video description (YouTube)</summary>
 
 **𝐉𝐚𝐩𝐚𝐧𝐞𝐬𝐞 𝐖𝐨𝐨𝐝 (𝐀𝐤𝐢𝐫𝐚 𝐖𝐨𝐨𝐝) — 𝐄𝐧𝐯𝐢𝐨𝐧 𝐭𝐞𝐬𝐭**
 
