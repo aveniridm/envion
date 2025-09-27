@@ -15,6 +15,27 @@ I soon realized that the most flexible way to manage **thousands of segments** w
 At the moment, I am working on formatting textual data from **external APIs**. In this way, **Envion** could become a powerful tool for generating *thousands of random articulations* not only generated from local lists but also from the variable numbers of online APIs.  
 For example, by drawing on **stock market data**, **weather information**, or **NASA’s extensive library of APIs** — which are incredibly rich and fascinating. Even *Co-Star*, the app that calculates natal charts, makes wide use of them.  
 
+
+## What an Envelope-Driven System Can Do
+
+To grasp, in simple terms, what a system that generates **thousands of envelopes** can achieve, consider this practical example:
+
+In the video below, we start from a **very short single sample** (a few milliseconds — in this case, a percussive hit). Through the generation of *gestural trajectories*, that tiny fragment is multiplied into thousands of variants.
+
+This happens because at each trigger the sound receives not only an envelope — which can be quite complex, with multiple stages — but also a **stretch factor** that **remodels** the source material, forcing it to adapt to a new time domain. If you open a file in the `/data` folder, you’ll notice that many parameter strings contain numerous successive stages.
+
+In this sense, the term **algorithmic drum machine** is appropriate. That said, time can be further deformed, both through manual stretching and through procedural processes.
+
+> A single simple sample creates an almost infinite succession of events.
+
+###  Example Video
+
+[![Watch the video](https://img.youtube.com/vi/kByTGFL8rUI/0.jpg)](https://www.youtube.com/watch?v=kByTGFL8rUI)
+
+*Video showing how a minimal percussive sample can give rise to a vast multiplicity of triggered events via gestural mapping and envelope/stretch transformations.*  
+
+
+
 ## 📖 Documentation
 
 A complete interactive guide (HTML + SVG) is available here:  
@@ -52,6 +73,20 @@ The JUCE-based architecture also improves GUI responsiveness, event handling, an
 
 
 > The system is designed for **musique concrète/acousmatic music**, **sound design**, and **non-metric writing**.  
+
+## What an Envelope-Driven System Can Do
+
+To grasp, in simple terms, what a system that generates **thousands of envelopes** can achieve, consider this practical example:
+
+In the video below, we start from a **very short single sample** (a few milliseconds — in this case, a percussive hit). Through the generation of *gestural trajectories*, that tiny fragment is multiplied into thousands of variants.
+
+This happens because at each trigger the sound receives not only an envelope — which can be quite complex, with multiple stages — but also a **stretch factor** that **remodels** the source material, forcing it to adapt to a new time domain. If you open a file in the `/data` folder, you’ll notice that many parameter strings contain numerous successive stages.
+
+In this sense, the term **algorithmic drum machine** is appropriate. That said, time can be further deformed, both through manual stretching and through procedural processes.
+
+
+
+
 >  
 > **Key idea**  
 > Instead of “playing” files, Envion **writes trajectories** on them through numeric envelopes (*dynatext*).  
