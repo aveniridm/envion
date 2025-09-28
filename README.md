@@ -35,6 +35,24 @@ In this sense, the term **algorithmic drum machine** is appropriate. That said, 
 *Video showing how a minimal percussive sample can give rise to a vast multiplicity of triggered events via gestural mapping and envelope/stretch transformations.*  
 
 
+### How to Read a Triple (amp – dur – offset)
+
+In the example patch, the message box contains a long list of numbers.  
+`[list split 3]` breaks each sequence into **three values**:
+
+![Envion terna example patch](https://www.peamarte.it/env/html-guide/img/terna.png)
+
+- **Amplitude** (target value, e.g., 1 or 0.2)  
+- **Duration** (in ms)  
+- **Offset** (start time in ms)  
+
+These are sent to `vline~`, which builds the temporal trajectory.
+
+#### Timeline of the Example List
+
+
+
+
 
 ## 📖 Documentation
 
