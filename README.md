@@ -111,6 +111,24 @@ The JUCE-based architecture also improves GUI responsiveness, event handling, an
 
 > The system is designed for **musique concrète/acousmatic music**, **sound design**, and **non-metric writing**.  
 
+
+ℹ️ **Envion quick setup**
+
+With **PlugData**, ~~cyclone~~ and ~~else~~ are already included.  
+For the 3D scope you can (optionally) add: `ggee`, `audiolab`, `simplex`.
+
+- ~~cyclone~~ — included in PlugData  
+- ~~else~~ — included in PlugData  
+- ggee  
+- ceammc  
+- simplex  
+- audiolab  
+
+Open: `Envion_v3.9_Plugdata.pd` → play presets (bottom-right), tweak behavior, load new samples.
+
+
+
+
 ## What an Envelope-Driven System Can Do
 
 To grasp, in simple terms, what a system that generates **thousands of envelopes** can achieve, consider this practical example:
