@@ -15,6 +15,21 @@ At the moment, I am working on formatting textual data from **external APIs**. I
 
 For example, by drawing on **stock market data**, **weather information**, or **NASA’s extensive library of APIs** — which are incredibly rich and fascinating. Even *Co-Star*, the app that calculates astrology and planetary positions, could provide inspiration for procedural envelope generation.
 
+ℹ️ **Envion quick setup**
+
+With **PlugData**, ~~cyclone~~ and ~~else~~ are already included.  
+For the 3D scope you can (optionally) add: `ggee`, `audiolab`, `simplex`.
+
+- ~~cyclone~~ — included in PlugData  
+- ~~else~~ — included in PlugData  
+- ggee  
+- ceammc  
+- simplex  
+- audiolab  
+
+Open: `Envion_v3.9_Plugdata.pd` → play presets (bottom-right), tweak behavior, load new samples.
+
+
 ## What an Envelope-Driven System Can Do
 
 To grasp, in simple terms, what a system that generates **thousands of envelopes** can achieve, consider this practical example:
@@ -110,23 +125,6 @@ The JUCE-based architecture also improves GUI responsiveness, event handling, an
 ▶ Click the image above to watch the video on YouTube
 
 > The system is designed for **musique concrète/acousmatic music**, **sound design**, and **non-metric writing**.  
-
-
-ℹ️ **Envion quick setup**
-
-With **PlugData**, ~~cyclone~~ and ~~else~~ are already included.  
-For the 3D scope you can (optionally) add: `ggee`, `audiolab`, `simplex`.
-
-- ~~cyclone~~ — included in PlugData  
-- ~~else~~ — included in PlugData  
-- ggee  
-- ceammc  
-- simplex  
-- audiolab  
-
-Open: `Envion_v3.9_Plugdata.pd` → play presets (bottom-right), tweak behavior, load new samples.
-
-
 
 
 ## What an Envelope-Driven System Can Do
