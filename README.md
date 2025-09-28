@@ -16,7 +16,7 @@ For the 3D scope you can (optionally) add: `ggee`, `audiolab`, `simplex`.
 - ~~else~~ — included in PlugData  
 - ggee  
 - ceammc  
-- simplex  
+- simplex - optionally  
 - audiolab  
 
 Open: `Envion_v3.9_Plugdata.pd` → play presets (bottom-right), tweak behavior, load new samples.
