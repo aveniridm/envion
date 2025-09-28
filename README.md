@@ -306,6 +306,28 @@ These micro-variations introduce **phase shifts** and **asymmetries** between L 
 This design choice makes Nuke not only a distortion stage but also a **stereo expander through destruction**.  
 The contrast between **similar but non-identical processing** of L and R is what gives the module its strong sense of spatial depth.
 
+## Echo — Stereo Delay & Feedback
+
+![Envion — Echo module detail](https://www.peamarte.it/env/html-guide/img/echo-det.png)  
+*Echo section (L/R sends, feedback, flutter & post-reverb).*
+
+### How the Echo works
+- **Stereo**: L/R channels with slightly different times create a wider field.  
+- **Feedback**: controls the number of repeats, from subtle to regenerating.  
+- **Flutter**: small random variations of delay time, making it more “alive” and unstable.  
+- **Post-Reverb**: reverb applied only to the echo tails, adding depth.  
+- **Sends**: send amount to Echo-L / Echo-R from the mixer to decide how much signal enters.  
+
+### The two synthesized sounds (demo on the right)
+1. **Filtered burst**: a short envelope (`line~`) multiplies `noise~` inside a `bp~` (band-pass).  
+   Result: sharp, bright hits.  
+2. **Grainy tone**: `noise~` through `bp~` with variable frequency (MIDI scale → `mtof`), fast envelope.  
+   Result: more “tonal” accents.  
+
+Together, the two sounds fill the stereo space: the Echo’s micro-shifts create width and motion.
+
+
+
 ## 📂 Project structure
 
 - `Envion_v3.6.1.pd` → main patch  
