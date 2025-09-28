@@ -129,6 +129,9 @@ The JUCE-based architecture also improves GUI responsiveness, event handling, an
 To grasp, in simple terms, what a system that generates **thousands of envelopes** can achieve, consider this practical example:
 
 In the video below, we start from a **very short single sample** (a few milliseconds — in this case, a percussive hit). Through the generation of *gestural trajectories*, that tiny fragment is multiplied into thousands of variants.
+It follows that a single sample in **Envion** never sounds the same:  
+with each trigger, both time-stretch and temporal shape change,  
+turning the sample into **thousands of sonic variations** instead of a static file.
 
 This happens because at each trigger the sound receives not only an envelope — which can be quite complex, with multiple stages — but also a **stretch factor** that **remodels** the source material, forcing it to adapt to a new time domain. If you open a file in the `/data` folder, you’ll notice that many parameter strings contain numerous successive stages.
 
