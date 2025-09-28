@@ -34,7 +34,6 @@ In this sense, the term **algorithmic drum machine** is appropriate. That said, 
 
 *Video showing how a minimal percussive sample can give rise to a vast multiplicity of triggered events via gestural mapping and envelope/stretch transformations.*  
 
-
 ### How to Read a Triple (amp – dur – offset)
 
 In the example patch, the message box contains a long list of numbers.  
@@ -50,6 +49,39 @@ These are sent to `vline~`, which builds the temporal trajectory.
 
 #### Timeline of the Example List
 
+```text
+1 50 0       → start at 0, ramp to 1 in 50ms  → end = 50
+0.2 200 50   → start at 50, ramp to 0.2 in 200ms → end = 250
+0.8 100 250  → start at 250, ramp to 0.8 in 100ms → end = 350
+0 20 350     → start at 350, ramp to 0 in 20ms → end = 370
+1 10 370     → start at 370, ramp to 1 in 10ms → end = 380
+0 50 380     → start at 380, ramp to 0 in 50ms → end = 430
+1 10 430     → start at 430, ramp to 1 in 10ms → end = 440
+0 50 440     → start at 440, ramp to 0 in 50ms → end = 490
+1 10 490     → start at 490, ramp to 1 in 10ms → end = 500
+0 50 500     → start at 500, ramp to 0 in 50ms → end = 550
+
+```
+
+In practice, `vline~` reads the sequence as a **multi-stage envelope**,  
+where each segment begins from the final value of the previous one.  
+In the provided patch, the envelope output multiplies the oscillator,  
+shaping the sound exactly according to the list.
+
+#### Try it Yourself
+
+Inside the Envion directory you’ll find a patch called **`terna-sample.pd`**.  
+Open it and try **changing the content of the list**:
+
+- pick a file from `/data`  
+- copy and paste one of the envelope strings into the message box  
+- listen to the result  
+
+To be more exhaustive, further down I also explain in greater detail  
+the concept of **Triplets** and how they are then handled by the algorithm.
+
+This small exercise will help you better understand how the **triple-based system** works  
+and how each gesture is constructed from amplitude, duration, and offset values.
 
 
 
