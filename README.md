@@ -306,7 +306,7 @@ These micro-variations introduce **phase shifts** and **asymmetries** between L 
 This design choice makes Nuke not only a distortion stage but also a **stereo expander through destruction**.  
 The contrast between **similar but non-identical processing** of L and R is what gives the module its strong sense of spatial depth.
 
-## Echo — Stereo Delay & Feedback
+## Echo — Stereo Delay & Feedback (else~ lib)
 
 ![Envion — Echo module detail](https://www.peamarte.it/env/html-guide/img/echo-det.png)  
 *Echo section (L/R sends, feedback, flutter & post-reverb).*
