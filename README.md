@@ -1,55 +1,466 @@
-# Envion
-Algorithmic Dynatext Envelope Sequencer in Pure Data (Pd) developed by **Emiliano Pennisi 2025**
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Envion v3.6 &mdash; Algorithmic Dynatext Envelope Sequencer</title>
+  <meta name="description" content="Envion v3.6 — Algorithmic Dynatext Envelope Sequencer in Pure Data (Pd) developed by Emiliano Pennisi, 2025." /><!-- SEO/social --><!-- SEO & Social Meta Tags per Envion v3.6 --><meta property="og:title" content="Envion v3.6 — Algorithmic Envelope Sequencer" /><meta property="og:description" content="Envion v3.6 for Pure Data: envelope-first ecosystem for experimental sound and musique concrète." /><meta property="og:image" content="https://www.peamarte.it/env/html-guide/img/enviaon-cmps.PNG" /><meta property="og:type" content="website" /><meta property="og:url" content="https://www.peamarte.it/env/envion_v3.6.html" /><meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="Envion v3.6 — Algorithmic Envelope Sequencer" /><meta name="twitter:description" content="Envion v3.6 for Pure Data: envelope-first ecosystem for experimental sound and musique concrète." /><meta name="twitter:image" content="https://www.peamarte.it/env/html-guide/img/enviaon-cmps.PNG" />
+  <link href="https://www.peamarte.it/env/envion_v3.6.html" rel="canonical" /><!-- FINE AGGIUNTA -->
+  <style type="text/css">:root {
+      --bg: #0b0c0f;
+      --fg: #e9eef3;
+      --muted: #aab3bd;
+      --card: #14161b;
+      --accent: #d946ef;  /* viola/fucsia brillante */
+      --accent-2: #f472b6; /* accento secondario */
+      --link: #facc15;    /* giallo lime, acido */
+      --code: #0f172a;
+      --ok: #22c55e;
+      --warn: #f59e0b;
+      --danger: #ef4444;
+      --border: rgba(255,255,255,.08);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 16px;
+      --radius-sm: 12px;
+      --radius-lg: 24px;
+      --pad: clamp(18px, 2vw, 32px);
+      --max: 1100px;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #ffffff;
+        --fg: #0b1220;
+        --muted: #4b5563;
+        --card: #f8fafc;
+        --border: rgba(2,6,23,.08);
+        --shadow: 0 10px 20px rgba(2,6,23,.08);
+        --code: #f1f5f9;
+      }
+    }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font: 16px/1.7 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    }
+    .wrap {
+      max-width: var(--max);
+      margin: auto;
+      padding: var(--pad);
+    }
+    header.site {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: linear-gradient(180deg, var(--bg), color-mix(in oklab, var(--bg), transparent 18%));
+      backdrop-filter: saturate(1.2) blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    header .inner {
+      max-width: var(--max);
+      margin: auto;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px clamp(16px,2.6vw,28px);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: conic-gradient(from 180deg at 50% 50%, var(--accent), var(--accent-2));
+      box-shadow: var(--shadow);
+    }
+    .brand h1 {
+      font-size: 18px;
+      margin: 0 0 -2px 0;
+    }
+    .brand .sub {
+      font-size: 12px;
+      color: var(--muted);
+    }
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      margin-left: 16px;
+      border: 1px solid var(--border);
+      padding: 8px 12px;
+      border-radius: 10px;
+      transition: border .15s, color .15s;
+    }
+    nav a:hover {
+      color: var(--fg);
+      border-color: color-mix(in oklab, var(--border), var(--fg) 20%);
+    }
+    main h1, main h2, main h3, main h4 {
+      margin-top: 2.2rem;
+      margin-bottom: 0.7rem;
+      line-height: 1.2;
+    }
+    main h1 { font-size: clamp(28px, 3.2vw, 46px); }
+    main h2 { font-size: clamp(22px, 2.2vw, 32px); }
+    main h3 { font-size: clamp(18px, 1.6vw, 24px); }
+    main h4 { font-size: clamp(16px, 1.3vw, 20px); color: var(--muted);}
+    p, ul, ol, blockquote {
+      margin-top: 0.9em;
+      margin-bottom: 0.9em;
+    }
+    ul, ol { padding-left: 1.5em; }
+    blockquote, .callout {
+      margin: 1.2rem 0;
+      padding: 14px 18px;
+      border-left: 3px solid var(--accent);
+      background: color-mix(in oklab, var(--card), transparent 10%);
+      border-radius: 12px;
+    }
+    .note { border-left-color: var(--accent-2); }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: var(--pad);
+      margin-bottom: 2rem;
+    }
+    .card + .card { margin-top: 18px; }
+    .grid { display: grid; gap: 18px; }
+    .grid.cols-2 { grid-template-columns: 1fr 1fr; }
+    .grid.cols-3 { grid-template-columns: repeat(3,1fr); }
+    @media (max-width: 900px) {
+      .grid.cols-2, .grid.cols-3 { grid-template-columns: 1fr; }
+    }
+    pre, code, kbd {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+    pre {
+      background: var(--code);
+      color: var(--fg);
+      padding: 14px;
+      border-radius: 12px;
+      overflow: auto;
+      border: 1px solid var(--border);
+      margin: 1em 0;
+    }
+    code {
+      background: color-mix(in oklab, var(--code), transparent 30%);
+      padding: 2px 6px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      display: block;
+    }
+    figure { margin: 1.1rem 0; }
+    figcaption { color: var(--muted); font-size: 15px; margin-top: 8px; }
+    .button, a.button {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      background: linear-gradient(180deg, color-mix(in oklab, var(--accent), white 10%), var(--accent));
+      border: none;
+      color: #002233;
+      padding: 10px 14px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform .05s;
+    }
+    a.button.secondary {
+      background: transparent;
+      color: var(--fg);
+      border: 1px solid var(--border);
+    }
+    .strike { text-decoration: line-through; opacity: .7; }
+    footer {
+      margin: 48px auto 24px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 15px;
+      line-height: 1.6;
+    }
 
-**Envion** is an ecosystem in Pure Data designed for algorithmic and procedural composition, musique concrète, and experimental sound processing.
-It includes tools for slicing, dynamic envelopes, texture generation, and multi-channel management.
+  /* Highlight Dynatext section, but keep in style with the site */
+  .dynatext-highlight {
+    background: linear-gradient(120deg, color-mix(in oklab, var(--accent), var(--card) 70%), var(--card) 70%);
+    border: 2px solid color-mix(in oklab, var(--accent), var(--border) 50%);
+    box-shadow: 0 6px 24px 0 color-mix(in oklab, var(--accent), transparent 85%);
+    margin-top: 28px;
+    margin-bottom: 28px;
+    padding: calc(var(--pad) * 0.9);
+  }
+  @media (max-width: 600px) {
+    .dynatext-highlight {
+      padding: 18px 8px;
+    }
+  }
+  #dynatext h2 {
+    color: var(--accent-2);
+    margin-top: 1.3em;
+    margin-bottom: 0.6em;
+    font-size: clamp(19px, 2vw, 28px);
+  }
+  #dynatext ul {
+    margin-bottom: 1em;
+    padding-left: 1.6em;
+  }
+  #dynatext code {
+    background: color-mix(in oklab, var(--accent), var(--code) 50%);
+    color: #1e293b;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
 
-For years, I explored different systems for handling envelopes dynamically — starting with software like *Composer Desktop Project*, and later with hardware generators such as **Zadar** in the Eurorack domain.  
-I would like to emphasize how fascinating the world of **envelope dynamics** is, and how envelopes can imprint *transformative tonal characteristics* onto sounds. Out of this research, I developed **Envion** as a kind of *gesture generator*.  
+    
+/* FEATURE VIDEO CLEAN */
+.feature-video { margin:32px 0; }
+.feature-video .frame {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: block;
+  border: 0;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.25);
+}
+.feature-video .caption {
+  margin-top: 10px;
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.feature-video .badge {
+  display: inline-block;
+  background: var(--accent);
+  color: #1b1b1b;
+  padding: 2px 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  margin-right: 8px;
+}
+/* END FEATURE VIDEO CLEAN */
 
-![Envion — Composite Overview](html-guide/img/enviaon-cmps.PNG "Envion — Composite Overview")
+    /* Responsive video */
+    .video-wrap { width:100%; max-width:900px; margin:0 auto; }
+    .video-outer { position:relative; width:100%; padding-bottom:56.25%; height:0; }
+    .video-outer iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
+    
+    
+/* --- YOUTUBE SHORTS SUPPORT --- */
+.feature-video .frame.tall {
+  aspect-ratio: 9 / 16;   /* verticale per Shorts */
+}
+
+.feature-video .caption .meta {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}  
+
+/* --- ttips--- */
+
+.tooltip .tip-bubble {
+  position: relative;       /* non più assoluto */
+  inset: auto;              /* reset */
+  display: block;
+  min-width: auto;
+  max-width: 100%;
+  background: var(--card);
+  color: var(--fg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow);
+  padding: 10px 12px;
+  line-height: 1.2;
+  font-size: 14px;
+  margin-top: 8px;          /* piccolo distacco dall'icona */
+  opacity: 1;               /* sempre visibile */
+  pointer-events: auto;
+  transform: none;
+}
+
+
+/* --- ttips--- */
+</style>
+</head>
+<body>
+<header class="site">
+<div class="inner">
+<div class="brand">
+<div aria-hidden="true" class="logo">&nbsp;</div>
+
+<div>
+<h1>Envion v3.6</h1>
+
+<div class="sub">Algorithmic Dynatext Envelope Sequencer for Pure Data (Pd) &mdash; 2025 &middot; by Emiliano Pennisi</div>
+</div>
+</div>
+
+<nav><a href="#what-is">What is?</a> <a href="#using-envion">Using Envion</a> <a href="#first-steps">First Steps</a> <a href="#procedural">Automation</a></nav>
+</div>
+</header>
+
+<main class="wrap"><!-- HERO SECTION -->
+<section class="hero grid cols-2" style="gap:22px; align-items:center; margin:32px auto;">
+<div class="card">
+<h1 class="title">Envion</h1>
+
+<p class="subtitle">an envelope-first ecosystem for musique concr&egrave;te &amp; experimental sound</p>
+
+<p class="meta" style="font-size:80%; line-height:1.2;">
+
+  <strong><em>Micro-Assembly</em></strong> &middot;
+  <strong><em>Dynatext Envelope</em></strong> &middot;
+  <strong><em>Texture generator</em></strong> &middot;
+  <strong><em>Full Stereo - ready for multichannels</em></strong>
+
+</p>
+
+<p><strong>Envion</strong> is an ecosystem in Pure Data designed for algorithmic and procedural composition, musique concr&egrave;te, and experimental sound processing.</p>
+
+<p style="font-size:80%;"><a aria-label="Go to GitHub Repository and Download" class="button" href="https://github.com/aveniridm/envion_v3.6" rel="noopener" target="_blank">➜ Go to GitHub Repository and Download</a></p>
+
+<div class="callout" style="background:#f5f9fc; color:#333; border:1px solid #e0e6eb;">💡 <strong>Feedback is welcome!</strong><br />
+Please feel free to test, comment, or open issues on GitHub &mdash; your input helps improve Envion.</div>
+
+<!-- <div class="callout note" style="background:#fafafa; color:#555; border:1px solid #e5e7eb;">🔖 <strong>Note on Licensing</strong><br /> -->
+  <div class="callout note" style="background: color-mix(in oklab, var(--accent), white 80%);
+                                 color:#0b0c0f;
+                                 border:1px solid #e5e7eb;
+                                 border-radius:6px;
+                                 padding:12px 16px;
+                                 margin:16px 0;
+                                 font-size:14px;
+                                 line-height:1.5;">
+
+<strong>🔖 Note on Licensing</strong><br />Envion is released under the MIT License with Attribution. You are free to use, modify, and redistribute this project, including for commercial purposes, as long as you clearly attribute the original project name <strong>Envion</strong> and the author <strong>Emiliano Pennisi</strong>.<br />
+<strong>See the (LICENSE) file for details.</strong></div>
+
+<div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:10px"><a class="button" href="https://www.youtube.com/watch?v=BiTsPTQfgCY&amp;feature=youtu.be" rel="noopener" target="_blank">▶ First step on Envion</a> <a class="button secondary" href="https://www.youtube.com/watch?v=TuJRD6aVqsc" rel="noopener" target="_blank">Clip-Shaping Sonic Textures</a></div>
+</div>
+
+<figure class="card" style="padding:0"><img alt="Envion — Composite Overview" decoding="async" loading="lazy" src="html-guide/img/enviaon-cmps.PNG" /></figure>
+</section>
+<!-- WHAT IS SECTION -->
+
+<section class="card" id="what-is">
+<h2>What is?</h2>
+
+<blockquote>
+<p><strong>Envion</strong> is an <em>envelope‑first</em> engine for <strong>Pure Data (Pd)</strong>: it drives the read index of stereo buffers through textual sequences of <strong>triplets</strong> (<em>value, time, delay</em>) sent to <code>vline~</code>.<br />
+Each line of a text file represents a complete envelope; switching line means switching gesture.</p>
+
+<p>For years, I explored different systems for handling envelopes dynamically &mdash; starting with software like <em>Composer Desktop Project</em>, and later with hardware generators such as <strong>Zadar</strong> in the Eurorack domain.</p>
+
+<p><img alt="Envion - Plugdata version" src="html-guide/img/plug-data-black.png" /><br />
+<em>Envion - Plugdata version</em></p>
+
+<p>I would like to emphasize how fascinating the world of <strong>envelope dynamics</strong> is, and how envelopes can imprint <em>transformative tonal characteristics</em> onto sounds. Out of this research, I developed <strong>Envion</strong> as a kind of <em>gesture generator</em>.</p>
+
+<p>I soon realized that the most flexible way to manage <strong>thousands of segments</strong> was to use plain-text databases containing the necessary information. From there, I created the <strong>Dynatext</strong> system.</p>
+
+<p>At the moment, I am working on formatting textual data from <strong>external APIs</strong>. In this way, Envion could become a powerful tool for generating <em>thousands of random articulations not only generated from local lists but also from the variable numbers of online APIs</em>.</p>
+
+<p>For example, by drawing on <strong>stock market data</strong>, <strong>weather information</strong>, or <strong>NASA&rsquo;s extensive library of APIs</strong> &mdash; which are incredibly rich and fascinating. Even <em>Co-Star</em>, the app that calculates natal charts, makes wide use of them.</p>
+
+<p>The system is designed for <strong>musique concr&egrave;te/acousmatic music</strong>, <strong>sound design</strong>, and <strong>non‑metric writing</strong>.</p>
+
+
+<span class="tooltip" aria-haspopup="true" aria-label="Envion quick setup">
+
+
+  <aside class="tip-bubble" role="tooltip">
+    <p><strong>  <span aria-hidden="true">ℹ️</span> Envion quick setup</strong></p>
+    <p>With <strong>PlugData</strong>, <span class="strike">cyclone</span> and <span class="strike">else</span> are already included.<br>
+    For the 3D scope you can (optionally) add: <code>ggee</code>, <code>audiolab</code>, <code>simplex</code>.</p>
+
+    <ul>
+      <li><span class="strike">cyclone</span> — included in PlugData</li>
+      <li><span class="strike">else</span> — included in PlugData</li>
+      <li>ggee</li>
+      <li>ceammc</li>
+      <li>simplex</li>
+      <li>audiolab</li>
+    </ul>
+
+    <p>Open: <code>Envion_v3.9_Plugdata.pd</code> → play presets (bottom-right), tweak behavior, load new samples.</p>
+  </aside>
+</span>
 
 
 
-I soon realized that the most flexible way to manage **thousands of segments** was to use plain-text databases containing the necessary information. From there, I created the **Dynatext** system.  
-At the moment, I am working on formatting textual data from **external APIs**. In this way, **Envion** could become a powerful tool for generating *thousands of random articulations* not only generated from local lists but also from the variable numbers of online APIs.  
-For example, by drawing on **stock market data**, **weather information**, or **NASA’s extensive library of APIs** — which are incredibly rich and fascinating. Even *Co-Star*, the app that calculates natal charts, makes wide use of them.  
+
+  <h2>What an Envelope-Driven System Can Do</h2>
+  <p>
+    To grasp, in simple terms, what a system that generates <strong>thousands of envelopes</strong> can achieve, consider this practical example:
+  </p>
+  <p>
+    In the video below, we start from a <strong>very short single sample</strong> (a few milliseconds — in this case, a percussive hit). Through the generation of <em>gestural trajectories</em>, that tiny fragment is multiplied into thousands of variants.
+  </p>
+
+<p>
+  It follows that a single sample in Envion never sounds the same:
+  <strong>with each trigger</strong>, both time-stretch and temporal shape change,
+  turning the sample into <strong>thousands of sonic variations</strong> instead of a static file.
+</p>
 
 
-## What an Envelope-Driven System Can Do
+  <p>
+    This happens because at each sound receives not only an envelope — which can be quite complex, with multiple stages — but also a <strong>stretch factor</strong> that <strong>remodels</strong> the source material, forcing it to adapt to a new time domain. If you open a file in the <code>/data</code> folder, you’ll notice that many parameter strings contain numerous successive stages.
+  </p>
+  <p>
+    In this sense, the term <strong>algorithmic drum machine</strong> is appropriate. That said, time can be further deformed, both through manual stretching and through procedural processes.
+  </p>
 
-To grasp, in simple terms, what a system that generates **thousands of envelopes** can achieve, consider this practical example:
 
-In the video below, we start from a **very short single sample** (a few milliseconds — in this case, a percussive hit). Through the generation of *gestural trajectories*, that tiny fragment is multiplied into thousands of variants.
+<!-- FEATURE VIDEO CLEAN -->
+<div class="feature-video">
+  <iframe
+    class="frame"
+    src="https://www.youtube.com/embed/kByTGFL8rUI"
+    title="Envion — Algo LPG Drums"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen></iframe>
+  <div class="caption">
+    <span class="badge">Video</span>
+A single simple sample creates an almost infinite succession of events. Watch: <em>Algo LPG Drums</em>.
+  </div>
+</div>
+<!-- END FEATURE VIDEO CLEAN -->
 
-This happens because at each trigger the sound receives not only an envelope — which can be quite complex, with multiple stages — but also a **stretch factor** that **remodels** the source material, forcing it to adapt to a new time domain. If you open a file in the `/data` folder, you’ll notice that many parameter strings contain numerous successive stages.
 
-In this sense, the term **algorithmic drum machine** is appropriate. That said, time can be further deformed, both through manual stretching and through procedural processes.
 
-> A single simple sample creates an almost infinite succession of events.
+<section id="envion-triple-guide">
+  <h3>How to Read a Triple (amp – dur – offset)</h3>
+  <p>In the example patch, the message box contains a long list of numbers.
+    <code>[list split 3]</code> breaks each sequence into <strong>three values</strong>:</p>
 
-###  Example Video
+  <p>
+    <img
+      src="https://www.peamarte.it/env/html-guide/img/terna.png"
+      alt="Envion terna example patch"
+      style="border:1px solid #ddd; border-radius:8px; max-width:100%; height:auto; display:block; margin:1em 0;">
+  </p>
 
-[![Watch the video](https://img.youtube.com/vi/kByTGFL8rUI/0.jpg)](https://www.youtube.com/watch?v=kByTGFL8rUI)
+  <ul>
+    <li><strong>Amplitude</strong> (target value, e.g., 1 or 0.2)</li>
+    <li><strong>Duration</strong> (in ms)</li>
+    <li><strong>Offset</strong> (start time in ms)</li>
+  </ul>
+  <p>These are sent to <code>vline~</code>, which builds the temporal trajectory.</p>
 
-*Video showing how a minimal percussive sample can give rise to a vast multiplicity of triggered events via gestural mapping and envelope/stretch transformations.*  
-
-### How to Read a Triple (amp – dur – offset)
-
-In the example patch, the message box contains a long list of numbers.  
-`[list split 3]` breaks each sequence into **three values**:
-
-![Envion terna example patch](https://www.peamarte.it/env/html-guide/img/terna.png)
-
-- **Amplitude** (target value, e.g., 1 or 0.2)  
-- **Duration** (in ms)  
-- **Offset** (start time in ms)  
-
-These are sent to `vline~`, which builds the temporal trajectory.
-
-#### Timeline of the Example List
-
-```text
+  <h4>Timeline of the Example List</h4>
+  <pre>
 1 50 0       → start at 0, ramp to 1 in 50ms  → end = 50
 0.2 200 50   → start at 50, ramp to 0.2 in 200ms → end = 250
 0.8 100 250  → start at 250, ramp to 0.8 in 100ms → end = 350
@@ -60,565 +471,504 @@ These are sent to `vline~`, which builds the temporal trajectory.
 0 50 440     → start at 440, ramp to 0 in 50ms → end = 490
 1 10 490     → start at 490, ramp to 1 in 10ms → end = 500
 0 50 500     → start at 500, ramp to 0 in 50ms → end = 550
+  </pre>
 
-```
+  <p>In practice, <code>vline~</code> reads the sequence as a <strong>multi-stage envelope</strong>,
+    where each segment begins from the final value of the previous one. In the provided patch,
+    the envelope output multiplies the oscillator, shaping the sound exactly according to the list.</p>
 
-In practice, `vline~` reads the sequence as a **multi-stage envelope**,  
-where each segment begins from the final value of the previous one.  
-In the provided patch, the envelope output multiplies the oscillator,  
-shaping the sound exactly according to the list.
+  <h4>Try it Yourself</h4>
+  <p>Inside the Envion directory you’ll find a patch called <strong>terna-sample.pd</strong>.
+     Open it and try <strong>changing the content of the list</strong>:</p>
 
-#### Try it Yourself
+  <ul>
+    <li>pick a file from <code>/data</code></li>
+    <li>copy and paste one of the envelope strings into the message box</li>
+    <li>listen to the result</li>
+  </ul>
+<p>To be more exhaustive, further down I also explain in greater detail the concept of Triplets and how they are then handled by the algorithm.</p>
+  <p>This small exercise will help you better understand how the <strong>triple-based system</strong>
+     works and how each gesture is constructed from amplitude, duration, and offset values.</p>
+</section>
 
-Inside the Envion directory you’ll find a patch called **`terna-sample.pd`**.  
-Open it and try **changing the content of the list**:
 
-- pick a file from `/data`  
-- copy and paste one of the envelope strings into the message box  
-- listen to the result  
 
-To be more exhaustive, further down I also explain in greater detail  
-the concept of **Triplets** and how they are then handled by the algorithm.
 
-This small exercise will help you better understand how the **triple-based system** works  
-and how each gesture is constructed from amplitude, duration, and offset values.
 
 
 
+<p><strong>Key idea</strong><br />
+Instead of &ldquo;playing&rdquo; files, Envion <strong>writes trajectories</strong> on them through numeric envelopes (<em>dynatext</em>). This enables <strong>hyper‑articulated hits</strong>, <strong>slow morphs</strong>, <strong>irregular internal delays</strong>, and <strong>pseudo‑organic behaviors</strong>.</p>
 
-## 📖 Documentation
+<p>At its core, Envion adds an <strong>algorithmic layer</strong> that keeps the envelope and the sample tightly coupled, preserving coherence while enabling complex, generative transformations.</p>
 
-A complete interactive guide (HTML + SVG) is available here:  
-[Envion v3.6.1 — Full Documentation](https://www.peamarte.it/env/envion_v3.6.html)
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" src="https://www.youtube.com/embed/h8UiZJa_Q_Q" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" title="YouTube video player"></iframe></div>
 
-> **License**  
+<p>Inside the repository there is also a version tailored for <strong>PlugData</strong>. It&rsquo;s worth noting that this version is significantly more performant: unlike Pd-vanilla, where the audio and GUI share the same thread, PlugData (built on JUCE) separates the audio engine from the graphical interface. This reduces overhead, prevents dropouts when interacting with the patch, and makes real-time processing smoother. The JUCE-based architecture also improves GUI responsiveness, event handling, and CPU scheduling, resulting in noticeably faster and more stable performance, especially on older machines.</p>
+</blockquote>
 
-Envion is released under the MIT License with Attribution.  
-You are free to use, modify, and redistribute this project, including for commercial purposes, 
-as long as you clearly attribute the original project name **Envion** and the author **Emiliano Pennisi**.  
-See the [LICENSE](LICENSE) file for details.
+<p class="note callout"><strong>Dependencies</strong>: Cyclone &middot; ggee &middot; ceammc &middot; else &middot; simplex (for 3D scope) | audiolab</p>
 
+<div class="callout note"><strong>Install via Deken (Pure Data)</strong>
 
+<ol style="margin:0.6em 0 0.2em 1.2em;">
+  <li>In Pure Data, go to <kbd>Help</kbd> &rarr; <kbd>Find Externals&hellip;</kbd> (opens <em>Deken</em>).</li>
+  <li>Search and install each library: <code>cyclone</code>, <code>ggee</code>, <code>ceammc</code>, <code>else</code>, <code>simplex</code>, <code>audiolab</code>.</li>
+  <li>If prompted for a location, install to your user externals folder (e.g., <code>~/Documents/Pd/externals</code>).</li>
+  <li>Restart Pure Data so the new objects are available.</li>
+</ol>
+</div>
+</section>
+<!-- USING ENVION SECTION -->
 
-![Envion - Plugdata version](html-guide/img/plug-data-black.png)  
-*Envion - Plugdata version*
+<section class="card" id="using-envion">
+<h2>Using Envion</h2>
 
-Inside the repository there is also a version tailored for **PlugData.**
-It’s worth noting that this version is significantly more performant: unlike Pd-vanilla, where the audio and GUI share the same thread, PlugData (built on JUCE) separates the audio engine from the graphical interface.
-This reduces overhead, prevents dropouts when interacting with the patch, and makes real-time processing smoother.
-The JUCE-based architecture also improves GUI responsiveness, event handling, and CPU scheduling, resulting in noticeably faster and more stable performance, especially on older machines.
+<p>As a <strong>procedural environment</strong>, in most cases it is sufficient to <strong>load a sample</strong>, record the output for several minutes, and then select the most interesting portions of the generated audio.</p>
 
+<ol>
+  <li>Load a sample into the main buffer.</li>
+  <li>Enable <strong>Random Terna</strong> (checkbox below the Dynatext Cloud).</li>
+  <li>Enable <strong>Random List</strong> (central checkbox).</li>
+  <li>Record the output for several minutes.</li>
+  <li>Select the most significant sections of the recorded audio.</li>
+</ol>
 
-> ### What is?
-> **Envion** is an *envelope-first* engine for **Pure Data (Pd)**: it drives the read index of stereo buffers through textual sequences of **triplets** *(value, time, delay)* sent to `vline~`.  
-> Each line of a text file represents a complete envelope; switching line means switching gesture.  
+<p>This approach highlights Envion&rsquo;s nature: it is not about &ldquo;playing&rdquo; directly, but about <strong>generating emergent sonic material</strong> from which fragments can be extracted for composition.</p>
 
 
-[![Watch the video](https://img.youtube.com/vi/h8UiZJa_Q_Q/maxresdefault.jpg)](https://youtu.be/h8UiZJa_Q_Q)
+<!-- YOUTUBE SHORTS — Japanese Wood (Akira Wood) -->
+<section class="card" id="reel-japanese-wood">
+  <h2>Japanese Wood — Envion test (YouTube Shorts)</h2>
 
-▶ Click the image above to watch the video on YouTube
+  <div class="feature-video">
+    <iframe
+      class="frame tall"
+      src="https://www.youtube.com/embed/NG90a9NgMEc"
+      title="Japanese Wood — Envion test (Shorts)"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen></iframe>
 
+    <div class="caption">
+      <span class="badge">Shorts</span>
+      I loaded the <em>Japanese Wood (Akira Wood)</em> preset inside <strong>Envion</strong> to soundtrack a scene from <em>Dreams</em> (1990) by Akira Kurosawa — the Kitsune Wedding sequence, where the child wanders through the forest.
+      <span class="meta">All percussion comes from Envion, with a few strikes of <em>hyōshigi</em> taken directly from the film.</span>
+    </div>
+  </div>
 
+  <details style="margin-top:10px;">
+    <summary style="cursor:pointer;">Description Here</summary>
+    <p style="margin-top:8px;">
+      𝐉𝐚𝐩𝐚𝐧𝐞𝐬𝐞 𝐖𝐨𝐨𝐝 (𝐀𝐤𝐢𝐫𝐚 𝐖𝐨𝐨𝐝) — 𝐄𝐧𝐯𝐢𝐨𝐧 𝐭𝐞𝐬𝐭<br>
+      I loaded the <em>Japanese Wood (Akira Wood)</em> preset inside Envion to soundtrack a scene from <em>Dreams</em> (1990) by Akira Kurosawa — the Kitsune Wedding sequence, where the child wanders through the forest.<br>
+      All the percussion comes from Envion, with a few strikes of <em>hyōshigi</em> (Japanese ritual wooden clappers) taken directly from the film.
+    </p>
+    <p style="font-size:0.95rem; color:var(--muted);">
+      Hashtag: #puredata, #algorithmmusic, #algorithmiccomposition, #generativemusic, #musiqueconcrete, #envion, #electroacoustic, #sounddesign, #experimentalcomposition, #audiovisualart, #akirakurosawa, #dreams1990, #kitsunewedding, #sonicart, #avantgardemusic, #newmusic, #electroniccomposition, #soundsculpture, #fieldrecording, #contemporarymusic
+    </p>
+  </details>
+</section>
 
 
+<div class="callout note">
+<p><strong>Note</strong> &mdash; When loading material with <strong>high headroom</strong> (low volume), use the <strong>array normalization</strong> utility (top‑left). For <strong>mono</strong> material, a <strong>Mono &rarr; Stereo</strong> function (top‑right) mirrors data by copying the left array into the right array.</p>
+</div>
 
-> The system is designed for **musique concrète/acousmatic music**, **sound design**, and **non-metric writing**.  
+<blockquote>Ultra‑stereo material is recommended for this kind of application. When loading and mirroring mono material, activate <strong>Nuke</strong> on alternate channels of the matrix mixer to emphasize differences between left and right arrays, <strong>widening the stereo field</strong>.</blockquote>
+</section>
+<!-- FIRST STEPS SECTION -->
 
-## What an Envelope-Driven System Can Do
+<section class="card" id="first-steps">
+<h2>First Steps with included audio materials</h2>
 
-To grasp, in simple terms, what a system that generates **thousands of envelopes** can achieve, consider this practical example:
+<p>To start experimenting, try loading the file:</p>
 
-In the video below, we start from a **very short single sample** (a few milliseconds — in this case, a percussive hit). Through the generation of *gestural trajectories*, that tiny fragment is multiplied into thousands of variants.
-It follows that a single sample in **Envion** never sounds the same:  
-with each trigger, both time-stretch and temporal shape change,  
-turning the sample into **thousands of sonic variations** instead of a static file.
-
-This happens because the sound receives not only an envelope — which can be quite complex, with multiple stages — but also a **stretch factor** that **remodels** the source material, forcing it to adapt to a new time domain. If you open a file in the `/data` folder, you’ll notice that many parameter strings contain numerous successive stages.
-
-In this sense, the term **algorithmic drum machine** is appropriate. That said, time can be further deformed, both through manual stretching and through procedural processes.
-
-
-
-
->  
-> **Key idea**  
-> Instead of “playing” files, Envion **writes trajectories** on them through numeric envelopes (*dynatext*).  
-> This enables **hyper-articulated hits**, **slow morphs**, **irregular internal delays**, and **pseudo-organic behaviors**.  
->  
-> At its core, Envion adds an **algorithmic layer** that keeps the envelope and the sample tightly coupled.  
-> This ensures that temporal gestures and sonic material remain bound together, preserving coherence while still allowing complex, generative transformations.  
-
-> **Dependencies**: Cyclone · ggee · ceammc · else · simplex (for 3D scope) | audiolab  
-
----
-
-**Install via Deken (Pure Data)**
-
-1. In Pure Data, go to **Help → Find Externals…** (opens *Deken*).  
-2. Search and install each library: `cyclone`, `ggee`, `ceammc`, `else`, `simplex`, `audiolab`.  
-3. If prompted for a location, install to your user externals folder (e.g., `~/Documents/Pd/externals`).  
-4. Restart Pure Data so the new objects are available.  
-
----
-
-**Troubleshooting**  
-- If you cannot find a library, check that you are connected to the internet and your Pd version is up-to-date.  
-- Installed externals may not load until Pd is restarted.  
-- On macOS, make sure you installed Pd with write access to the externals folder (sometimes you need to create `~/Documents/Pd/externals` manually).  
-
-
-
-
-[First step on Envion (youtube clip)](https://www.youtube.com/watch?v=BiTsPTQfgCY&feature=youtu.be)
-
-[Deep HTML / SVG Guide here: ](https://www.peamarte.it/env/envion_v3.6.html)
-
----
-
-![Envion Main Patch](html-guide/img/main-patch.png)
-
-# Using Envion
-
-As a **procedural environment**, in most cases it is sufficient to **load a sample**, record the output for several minutes, and then select the most interesting portions of the generated audio.
-
-1. Load a sample into the main buffer.
-2. Enable **Random Terna** (checkbox below the Dynatext Cloud).
-3. Enable **Random List** (central checkbox).
-4. Record the output for several minutes.
-5. Select the most significant sections of the recorded audio.
-
-This approach highlights Envion’s nature: it is not about “playing” directly, but about **generating emergent sonic material** from which fragments can be extracted for composition.
-
-
-## Japanese Wood — Envion test (YouTube Shorts)
-
-[![Japanese Wood — Envion test](https://img.youtube.com/vi/NG90a9NgMEc/hqdefault.jpg)](https://www.youtube.com/shorts/NG90a9NgMEc)
-
-I loaded the *Japanese Wood (Akira Wood)* preset inside **Envion** to soundtrack a scene from *Dreams* (1990) by Akira Kurosawa — the Kitsune Wedding sequence, where the child wanders through the forest.  
-
-All the percussion comes from Envion, with a few strikes of *hyōshigi* (Japanese ritual wooden clappers) taken directly from the film.  
-
-<details>
-<summary>📋video description (YouTube)</summary>
-
-**𝐉𝐚𝐩𝐚𝐧𝐞𝐬𝐞 𝐖𝐨𝐨𝐝 (𝐀𝐤𝐢𝐫𝐚 𝐖𝐨𝐨𝐝) — 𝐄𝐧𝐯𝐢𝐨𝐧 𝐭𝐞𝐬𝐭**
-
-I loaded the *Japanese Wood (Akira Wood)* preset inside Envion to soundtrack a scene from *Dreams* (1990) by Akira Kurosawa — the Kitsune Wedding sequence, where the child wanders through the forest.  
-All the percussion comes from Envion, with a few strikes of *hyōshigi* (Japanese ritual wooden clappers) taken directly from the film.
-
-**Hashtag**  
-#puredata, #algorithmmusic, #algorithmiccomposition, #generativemusic, #musiqueconcrete, #envion, #electroacoustic, #sounddesign, #experimentalcomposition, #audiovisualart, #akirakurosawa, #dreams1990, #kitsunewedding, #sonicart, #avantgardemusic, #newmusic, #electroniccomposition, #soundsculpture, #fieldrecording, #contemporarymusic  
-
-</details>
-
-
-
-
-
-
----
-
-# First Steps with included audio materials
-
-To start experimenting, try loading the file:
-
-`/audio/env_0001.wav`
-
-This reel was created specifically for Envion using my **modular synthesizers** (Orthogonal Devices **ER-301**, **Morphagene**, and several **Low Pass Gates**).  
-It was then **reamped** — played back through speakers and re-recorded in the room — to capture the **original ambient nuances** of the space.  
-
-The result is a material that embodies a **contrast**:  
-- **Surreal gestures** generated by modular synthesis.  
-- Immersed within a **real acoustic environment** that imprints its own depth and imperfections.  
-
-This interplay between the **synthetic and the real**, between **algorithmic articulation** and **spatial resonance**, is at the core of Envion’s aesthetic exploration.
-
-> 💡 **Tip**  
-> When loading a very short sample (such as a percussive sound), adjust the *stretch factor* manually (use the **vertical slider**, not the horizontal *auto-stretch*).  
-> Setting it to the minimum ensures that the envelope perfectly matches the duration of the sound, preventing unwanted stretching.
-
-
-
-
-# Freeze and Stretch
-
-[![Watch the video](https://img.youtube.com/vi/srLcQWzKQ2Y/maxresdefault.jpg)](https://youtu.be/srLcQWzKQ2Y)
-
-▶ Click the image above to watch the video on YouTube  
-
----
-
-💡 **Freeze a sample in ENVION (pseudo-FFT feel)**  
-
-In this video I show how to “freeze” a sample in **ENVION**.  
-I used an **Amen Break** as an example: by manually adjusting a few parameters, the final result strongly resembles an FFT transformation, even though the process itself is not technically spectral.  
-
-**Here’s the interesting part:** with the *vertical stretch factor slider* set to the minimum, the envelope is forced to perfectly match the duration of the sound, avoiding unwanted stretching; then, by *massively increasing the stretch factor*, the sample progressively loses its rhythmic articulation and turns into a suspended sound mass. During this stretching phase, it’s normal to hear some *glitches*, since the factor is forcing the shape of the sound by stretching or compressing it. Once you find the *sweet spot*, the sound remains suspended and frozen.  
-
-Adding some reverb enhances the impression of a “frozen” texture.  
-The outcome is a kind of **sonic illusion**: there’s no actual FFT analysis happening, but the resulting aesthetic easily evokes a spectral transformation. It’s basically a *“wannabe FFT”*: a freeze effect achieved through different means, yet still capable of delivering a similar sensation.  
-
----
-
-🔗 [More about ENVION](https://www.peamarte.it/env/envion_v3.6.html)
-
-
-
-NOTE: When loading material with **high headroom** (low volume), you can use the **array normalization** utility located in the top-left corner.  
-If instead you load **mono audio material**, there is also a **Mono → Stereo** function in the top-right corner.  
-This function creates a small loop and copies the data from the **left array** into the **right array**.
-
-> Ultra-stereo material is recommended for this kind of application.  
-> When loading and mirroring mono material, activate **Nuke** on alternate channels of the matrix mixer to emphasize differences between left and right arrays, **widening the stereo field**.
-
-
-# Procedural Randomization Automation 
-
-By enabling both checkboxes, Envion activates a **procedural randomization** process that automatically draws from **19,000 pre-defined triplets** and applies the X factor to each segment of the terna automatically, thereby imposing its own time-stretch and creating the sonic gesture.
-
-* **Random Terna**: continuously loads text files from the `/data` folder (each file contains about 1,000 envelopes/triplets).
-* **Random List**: randomly selects one of the 1,000 available lists.
-
-This mechanism allows Envion to combine automatic loading and random selection, producing an ever-changing and potentially infinite stream of events.
-
-The patch may look **intimidating** at first, but it is intentionally left **“alive”** (with formulas and functions visible) to encourage **exploration**.
-Once you become familiar with the few basic operations (**keys 1–5** and the **space bar**, the latter enabled via a flag), in most cases it is best to **record the output**: if a particular articulation catches your ear during playback, it will be difficult to reproduce the exact same combination.
-
-Even though many operations seem **repeatable** (such as manually selecting a *terna* index from the list or triggering events by hand), the real nuances mainly emerge during the **automatic phase**, where **non-deterministic connections** between lists/terne take place — a sort of **unpredictable snapshot**.
-
-At other times, depending on the **source material**, envelopes may generate **non-zero-cross points** or **glitches**. Yet this is part of the charm: when the program runs in **random mode** — especially if you alternate gestures (**keys 1–5** and the **space bar**) — it becomes possible to capture **subtle variations** and **micro-articulations** that the system brings to life.
-
-![Procedural Auto Screen](html-guide/img/screen-procedural-auto.png)
-
-## Stereo Behavior and Enhanced aggression
-
-The **Nuke** module processes the **left and right channels with slight differences** in the filter and clipping stages.  
-These micro-variations introduce **phase shifts** and **asymmetries** between L and R, resulting in:
-
-- **Stereo widening**: the left and right outputs are no longer exact copies, creating a broader spatial image.  
-- **Perceptual instability**: small discrepancies between L+R cause the sound to feel more alive and shifting in space.  
-- **Enhanced aggression**: distortion artifacts differ across channels, producing a **wider, noisier stereo field**.
-
-
-![Nuke Distortion](html-guide/img/nuke-distorsion.png)  
-*Distortion/overload utility snapshot*
-
-This design choice makes Nuke not only a distortion stage but also a **stereo expander through destruction**.  
-The contrast between **similar but non-identical processing** of L and R is what gives the module its strong sense of spatial depth.
-
-## Echo — Stereo Delay & Feedback (else~ lib)
-
-![Envion — Echo module detail](https://www.peamarte.it/env/html-guide/img/echo-det.png)  
-*Echo section (L/R sends, feedback, flutter & post-reverb).*
-
-### How the Echo works
-- **Stereo**: L/R channels with slightly different times create a wider field.  
-- **Feedback**: controls the number of repeats, from subtle to regenerating.  
-- **Flutter**: small random variations of delay time, making it more “alive” and unstable.  
-- **Post-Reverb**: reverb applied only to the echo tails, adding depth.  
-- **Sends**: send amount to Echo-L / Echo-R from the mixer to decide how much signal enters.  
-
-### The two synthesized sounds (demo on the right)
-1. **Filtered burst**: a short envelope (`line~`) multiplies `noise~` inside a `bp~` (band-pass).  
-   Result: sharp, bright hits.  
-2. **Grainy tone**: `noise~` through `bp~` with variable frequency (MIDI scale → `mtof`), fast envelope.  
-   Result: more “tonal” accents.  
-
-Together, the two sounds fill the stereo space: the Echo’s micro-shifts create width and motion.
-
-
-
-## 📂 Project structure
-
-- `Envion_v3.6.1.pd` → main patch  
-- `audio/` → test samples and audio files 
-- `data/` → data terna and presets for slicing/algorithms  
-- `html-guide/` → guides and documentation (also in HTML/CSS format)  
-
-
----
-
-## The concept of *Terne*
-
-One of the central elements of **Envion** is the use of *terne* (triplets of numerical values).  
-Each terna defines the behavior of a sound fragment through three main parameters:
-
-1. **Duration** – relative or absolute time of the event (in ms or scaling factor).  
-2. **Amplitude** – the signal level, which can be constant or shaped by an envelope.  
-3. **Offset / Position** – the reading point or starting position of the fragment within the sample.
-
-![Terna Dynatext](html-guide/img/terna-dynatext.png)
-
-
-
-## What are Dynatext?
-
-Dynatext are the true databases of **Envion**: they are not “small” files, but **large archives** containing up to **1000 lines each**.  
-Every line corresponds to a complete trajectory, described through a **numerical triplet** (*amplitude, time, offset*), which is interpreted by the engine to drive envelopes.  
-
-These files, stored in the `/data` folder, form a vast repertoire of complex gestures ready to be activated, combined, and transformed.  
-By exploring the text files, you can easily understand how they are structured and, if you wish, create your own — although the existing library already covers a wide range of sonic behaviors.  
-
----
-
-## Why I use `vline~` instead of `line~`
-
-- **`line~`** only accepts a target and a time → simple, linear ramps.  
-- **`vline~`** accepts an entire sequence of **concatenated triplets** (*value, duration, delay*), enabling complex articulations such as micro-curves, pauses, multiple attacks, and temporal bounces.  
-
-Instead of mere linear ramps, Envion works with fully-fledged **dynamic phrases**, richer and more expressive.  
-
----
-
-## Random List and Random Terna
-
-The system takes on an even more **non-deterministic** behavior when the two randomization checkboxes are enabled:
-
-- **Random List** → randomly selects one of the 17 Dynatext files in `/data`.  
-- **Random Terna** → within the chosen file, randomly picks one of the 1000 lines.  
-
-This happens **simultaneously**: Envion randomly chooses both the file and the line inside it, yielding a very high degree of chance and variability. Each activation can produce a completely different sonic behavior, even with the same source material.  
-
----
-
-## The role of *Stretch*
-
-The key control is the **Stretch** parameter, which adapts the trajectories to the **time domain** of the audio material (a term familiar to Max/MSP users).  
-
-By adjusting Stretch, Dynatext trajectories are compressed or expanded in time:  
-
-- **Low values** → fast, percussive, almost microscopic gestures.  
-- **High values** → slow, broad, dramatic evolutions.  
-
----
-
-## In summary
-
-- **Large archives** (1000 lines × 17 files)  
-- **Multi-level randomization** (file + line)  
-- **Fine time-domain control** via Stretch  
-
-Together, these elements make Dynatext not just predefined envelopes, but a true **generative machine of dynamic articulations**, capable of endlessly surprising outcomes.  
-
-
-
-### Examples of terne
 <pre>
-0.452  80  0     ; → 452 ms duration, amplitude 80, offset at start of sample
-0.210  45  600   ; → 210 ms duration, amplitude 45, offset 600 ms into the sample
-0.879  100 1280  ; → 879 ms duration, full amplitude, offset 1280 ms
-</pre>
+<code>/audio/env_0001.wav</code></pre>
 
-# Semantic Class – List Validation and Categorization
+<p>This reel was created specifically for Envion using my <strong>modular synthesizers</strong> (Orthogonal Devices <strong>ER‑301</strong>, <strong>Morphagene</strong>, and several <strong>Low Pass Gates</strong>). It was then <strong>reamped</strong> &mdash; played back through speakers and re‑recorded in the room &mdash; to capture the <strong>original ambient nuances</strong> of the space.</p>
 
-The patch `duration_flag_800.pd` implements a basic **semantic check** for incoming lists (vline-style). It ensures structural validity and assigns each list to a category before it is passed on.
+<p>The result is a material that embodies a <strong>contrast</strong>:</p>
+
+<ul>
+  <li><strong>Surreal gestures</strong> generated by modular synthesis.</li>
+  <li>Immersed within a <strong>real acoustic environment</strong> that imprints its own depth and imperfections.</li>
+</ul>
+
+<p>This interplay between the <strong>synthetic and the real</strong>, between <strong>algorithmic articulation</strong> and <strong>spatial resonance</strong>, is at the core of Envion&rsquo;s aesthetic exploration.</p>
+</section>
+<!-- TIP BOX -->
+
+<div style="background: color-mix(in oklab, var(--accent), white 80%); color:#0b0c0f; border-left:4px solid #14161b; padding:12px 16px; margin:16px 0; border-radius:6px; font-size:14px; line-height:1.5;"><span style="font-size:16px; margin-right:6px;">💡</span> <strong>Tip</strong><br />
+When loading a very short sample (such as a percussive sound), adjust the <em>stretch factor</em> manually (use the <strong>vertical slider</strong>, not the horizontal <em>auto-stretch</em>). Setting it to the minimum ensures that the envelope perfectly matches the duration of the sound, preventing unwanted stretching.</div>
+<!-- PROCEDURAL RANDOMIZATION SECTION -->
 
-![Semantic Class](html-guide/img/semantic-class.png)
+<section class="card" id="procedural">
+<h2>Procedural Randomization Automation</h2>
 
+<p>By enabling both checkboxes, Envion activates a <strong>procedural randomization</strong> process that automatically draws from <strong>19,000 pre‑defined triplets</strong> and applies the X factor to each segment of the terna, imposing its own time‑stretch and creating the sonic gesture.</p>
 
-# Step-by-step logic
+<ul>
+  <li><strong>Random Terna</strong>: continuously loads text files from the <code>/data</code> folder (each file &asymp; 1,000 envelopes/triplets).</li>
+  <li><strong>Random List</strong>: randomly selects one of the 1,000 available lists.</li>
+</ul>
 
-1. **Input (**`inlet`**)** A list in `vline~` format enters the patch (usually a triplet: *duration – amplitude – offset*).
-2. **Length check (**`list length`**)**
-   * The list must contain **at least 3 elements**.
-   * If it has fewer than 3 → it is flagged as `list invalid`.
-3. **Splitting and unpacking**
-   * The list is split and the first three values are extracted (`unpack f f f`).
-   * The **first element** is interpreted as *duration*.
-4. **Duration test (**`moses 500`**)**
-   * If duration **< 500 ms**, the list is classified as `list percussive`.
-   * If duration **≥ 500 ms**, it is classified as `list hybrid`.
-5. **Routing**
-   * Invalid lists are discarded.
-   * Valid lists are semantically tagged as *percussive* or *hybrid* and then sent to the `outlet`.
+<p>This combines automatic loading and random selection, producing an ever‑changing and potentially infinite stream of events.</p>
 
-# In practice
+<p>The patch may look <strong>intimidating</strong> at first, but it is intentionally left <strong>&ldquo;alive&rdquo;</strong> (with formulas and functions visible) to encourage <strong>exploration</strong>. Once you learn the few basic operations (<strong>keys 1&ndash;5</strong> and the <strong>space bar</strong>, enabled via a flag), it is often best to <strong>record the output</strong> to capture unique articulations that are hard to reproduce exactly.</p>
 
-This patch acts as a **semantic filter**:
+<h1>Freeze and Stretch</h1>
 
-* It first checks whether a list is **structurally valid** (minimum 3 items).
-* Then it applies a **musical classification** based on duration: short events are *percussive*, longer ones are *hybrid*.
+<div style="max-width: 900px; margin: 24px auto;">
+<div class="video-outer"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" src="https://www.youtube-nocookie.com/embed/srLcQWzKQ2Y?rel=0" title="ENVION — Freeze a sample (Amen Break) pseudo-FFT"></iframe></div>
 
-This guarantees that Envion only processes clean, meaningful lists and can route them according to their temporal behavior.
+<div style="margin-top: 16px; padding: 14px 16px; background: #f5f7fb; border: 1px solid #dfe6ee; border-radius: 12px; display: grid; grid-template-columns: 28px 1fr; gap: 12px; align-items: start;">
+<div style="font-size: 20px; line-height: 1; filter: saturate(0.9);">💡</div>
 
-## Quick Start
+<div>
+<div style="font-weight: 700; margin-bottom: 6px;">Freeze a sample in Envion (pseudo-FFT feel)</div>
 
-1. **Load a list** from **Dynatext Cloud** (or select a local `.txt` in `data/`).  
-2. **Browse a sample** (WAV) and assign it as the playback buffer.  
-3. **Turn on DSP** and explore.
+<div style="font-size: 15px; color: #2b3036;">In this video I show how to &ldquo;freeze&rdquo; a sample in <strong>ENVION</strong>. I used an <strong>Amen Break</strong> as an example: by manually adjusting a few parameters, the final result strongly resembles an FFT transformation, even though the process itself is not technically spectral.<br />
+<br />
+<strong>Here&rsquo;s the interesting part:</strong> with the <em>vertical stretch factor slider</em> set to the minimum, the envelope is forced to perfectly match the duration of the sound, avoiding unwanted stretching; then, by <em>massively increasing the stretch factor</em>, the sample progressively loses its rhythmic articulation and turns into a suspended sound mass. During this stretching phase, it&rsquo;s normal to hear some <em>glitches</em>, since the factor is forcing the shape of the sound by stretching or compressing it. Once you find the <em>sweet spot</em>, the sound remains suspended and frozen.<br />
+<br />
+Adding some reverb enhances the impression of a &ldquo;frozen&rdquo; texture. The outcome is a kind of <strong>sonic illusion</strong>: there&rsquo;s no actual FFT analysis happening, but the resulting aesthetic easily evokes a spectral transformation. It&rsquo;s basically a &ldquo;wannabe FFT&rdquo;: a freeze effect achieved through different means, yet still capable of delivering a similar sensation.</div>
+</div>
+</div>
 
-- Use the **manual triggers** and sliders to test sequences.  
-- Adjust the **stretch factor** to compress/expand time.  
-- Try the **ready-made presets** (bottom area).  
+<div style="margin-top: 10px; font-size: 13px; color: #5b6570;">More about ENVION: <a href="https://www.peamarte.it/env/envion_v3.6.html" style="color: var(--link); text-decoration: none; border-bottom: 1px solid color-mix(in oklab, var(--link), transparent 70%);">peamarte.it/env/envion_v3.6.html</a></div>
+</div>
 
-**Timebase & $0-factor**  
-The timebase module retrieves the buffer duration (samples → milliseconds), exposes it as **$0-durata**, and calculates **$0-factor** for the global stretch of envelopes.
+<figure><img alt="Procedural Auto Screen" src="html-guide/img/screen-procedural-auto.png" /></figure>
+</section>
+<!-- NUKE SECTION -->
 
-**TYPICAL CONVERSIONS**
+<section class="card" id="nuke">
+<h2>Stereo Behavior and Enhanced Aggression &mdash; NUKE</h2>
+
+<p>The <strong>Nuke</strong> module processes the <strong>left and right channels with slight differences</strong> in the filter and clipping stages. These micro‑variations introduce <strong>phase shifts</strong> and <strong>asymmetries</strong> between L and R, resulting in:</p>
 
-    // from samples to milliseconds (44.1 kHz)
-    expr round((($f1 * 1000.) / 44100) * 100) / 100
-    
+<ul>
+  <li><strong>Stereo widening</strong>: L and R are no longer identical, creating a broader image.</li>
+  <li><strong>Perceptual instability</strong>: small discrepancies cause a lively, shifting space.</li>
+  <li><strong>Enhanced aggression</strong>: distortion artifacts differ per channel, yielding a wider, noisier stereo field.</li>
+</ul>
 
-* **$0-factor** applies to times of each segment.
-* Not mandatory when using *terne* as parameter modulations (e.g., FM resonance, filter index, temporal stretching).
+<figure><img alt="Nuke Distortion" src="html-guide/img/nuke-distorsion.png" />
+<figcaption>Distortion/overload utility snapshot</figcaption>
+</figure>
 
-**Original-speed playback:**  
-`0, <array_size> <durata_ms>` → scans the entire buffer in **durata\_ms** at constant speed.
+<p>This design makes Nuke not only a distortion stage but also a <strong>stereo expander through destruction</strong>. The contrast between <strong>similar but non‑identical processing</strong> of L and R gives the module strong spatial depth.</p>
+</section>
+<!-- PROJECT STRUCTURE & DYNATEXT CLOUD -->
 
-**WORKFLOW**
+<section class="card" id="echo">
+  <h2>Echo — Stereo Delay &amp; Feedback (else~ lib)</h2>
 
-1. **Load a sample** → `openpanel ~ soundfiler` into **sampletabL/R**. If mono, use *Mono→Stereo* (array copy L→R).
-2. **Load an envelope library** → `text define/get`. Each line = one *terna*. Select or randomize.
-3. **Play** → via autoplay or manual keys: **KEY1–4** (strike, original-speed, stop, retrigger).
-4. **Record** → from block **AUDIO RECORDER**.
+  <div class="grid cols-2" style="align-items:start;">
+    <!-- IMAGE ON THE LEFT -->
+    <figure style="margin:0">
+      <img src="https://www.peamarte.it/env/html-guide/img/echo-det.png" alt="Envion — Echo module detail">
+      <figcaption>Echo section (L/R sends, feedback, flutter &amp; post-reverb).</figcaption>
+    </figure>
 
-**USEFUL PRESETS (IDEAS)**
+    <!-- SIMPLE TEXT ON THE RIGHT -->
+    <div>
+      <h3 style="margin-top:0;">How the Echo works</h3>
+      <ul>
+        <li><strong>Stereo</strong>: L/R channels with slightly different times create a wider field.</li>
+        <li><strong>Feedback</strong>: controls the number of repeats, from subtle to regenerating.</li>
+        <li><strong>Flutter</strong>: small random variations of delay time, making it more “alive” and unstable.</li>
+        <li><strong>Post-Reverb</strong>: reverb applied only to the echo tails, adding depth.</li>
+        <li><strong>Sends</strong>: send amount to Echo-L / Echo-R from the mixer to decide how much signal enters.</li>
+      </ul>
 
-# Lists of Terne (1000 envelopes each - total 19k list)
+      <h3>The two synthesized sounds (demo on the right)</h3>
+      <ol>
+        <li><strong>Filtered burst</strong>: a short envelope (<code>line~</code>) multiplies <code>noise~</code> 
+            inside a <code>bp~</code> (band-pass). Result: sharp, bright hits.</li>
+        <li><strong>Grainy tone</strong>: <code>noise~</code> through <code>bp~</code> with variable frequency 
+            (MIDI scale → <code>mtof</code>), fast envelope. Result: more “tonal” accents.</li>
+      </ol>
 
-* **default.txt** – basic, neutral list, useful as a starting point.
-* **perc.txt** – percussive envelopes with fast attacks and short decays.
-* **vline\_perc\_1.txt / vline\_perc\_2.txt / vline\_ultra\_perc\_3.txt** – percussive variants generated via `vline~`, from softer (1) to more extreme/fast (3).
-* **zadar\_style\_4triplets.txt** – complex envelopes inspired by the *Zadar* generator, with four-way triplet structures.
-* **complex\_drone\_plain.txt** – long, static envelopes designed for drones.
-* **complex\_percussive\_plain.txt** – articulated, rhythmical envelopes with irregular variations.
-* **emf\_interference.txt** – patterns inspired by electromagnetic interference, with glitchy and fragmented shapes.
-* **drone.txt** – very extended, continuous envelopes for static layered textures.
-* **unstable-metro.txt** – “unstable metronome” sequences, irregular timing with micro-variations.
-* **buchla.txt** – organic, *West Coast*\-style envelopes, fluid and unpredictable curves.
-* **sharpy.txt** – sharp envelopes with strong transients.
-* **relaxed.txt** – smooth envelopes with slower times and softened curves.
-* **random\_delayed\_perc.txt** – percussive hits with random delays, creating temporal irregularities.
-* **vactrol.txt** – envelopes emulating a *vactrol low pass gate*, with natural attack/decay response.
-* **polyrhythm.txt** – multi-layered, offset patterns generating polyrhythmic articulations.
-* **bounded\_kickdrum.txt** – envelopes constrained to kick-drum ranges, punchy with short sustain.
-* **terne\_1000\_fadeout.txt** – 1000 terne with progressive fadeout, ideal for dissolving structures.
+      <p style="margin-top:0.8em; color:var(--muted);">
+        Together, the two sounds fill the stereo space: the Echo’s micro-shifts create width and motion.
+      </p>
+    </div>
+  </div>
+</section>
 
-**LIBRARY FORMATTING**
 
-    1 0.0 0.58 19 0.8 22 29 1 25 41;
-    0.7 120 0.0 38 80;
-    
 
-* Line 1 = **4-segment envelope**
-* Line 2 = **2-segment envelope** Avoid all-zero lines (silent)
 
-**AUTOPLAY & MANUAL PLAYER**
+<section class="grid cols-2">
+<article class="card">
+<h3>Project structure</h3>
 
-* **Autoplay**: a metro drives `text get`; last strike duration can trigger next step (*END* listener).
-* **Manual**:
-   * **KEY1** = strike
-   * **KEY2** = original-speed
-   * **KEY3** = stop
-   * **KEY4** = retrigger
+<ul>
+  <li><code>Envion_v3.6.pd</code> &rarr; main patch</li>
+  <li><code>audio/</code> &rarr; test samples and audio files</li>
+  <li><code>data/</code> &rarr; data terna and presets for slicing/algorithms</li>
+  <li><code>html-guide/</code> &rarr; guides and documentation (HTML/CSS)</li>
+</ul>
+</article>
 
-*Smart concatenation*: internal delays in *terne* allow irregular patterns without reprogramming the metro.
+<article class="card">
+<h3>Dynatext Cloud Sequencer</h3>
 
-**PLAYBACK ENGINE**
+<figure><img alt="Dynatext Cloud Sequencer" src="html-guide/img/dynatext-cloud-sequencer.png" /></figure>
+</article>
+</section>
+<!-- TERNE CONCEPT -->
 
-* `tabread4~ sampletabL/R` → interpolated 4-point reading, indexed by **vline\~**
-* `*~ / pow~` → amp control (envelope) + optional shaping
-* `snake~` → stereo/multichannel routing
-* `safety` → `clip~` adds headroom to avoid clipping
+<section class="card">
+<h2>The concept of <em>Terne</em></h2>
 
-![Dynatext Cloud Sequencer](html-guide/img/dynatext-cloud-sequencer.png)
+<p>One of the central elements of <strong>Envion</strong> is the use of <em>terne</em> (triplets of numerical values). Each terna defines the behavior of a sound fragment through three main parameters:</p>
 
+<ol>
+  <li><strong>Duration</strong> &ndash; relative or absolute time of the event (in ms or scaling factor).</li>
+  <li><strong>Amplitude</strong> &ndash; the signal level, which can be constant or shaped by an envelope.</li>
+  <li><strong>Offset / Position</strong> &ndash; the reading point or starting position of the fragment within the sample.</li>
+</ol>
 
-**Note:** `tabread4~` never stops. It runs until index=0 or out of buffer.  
-For immediate stop: send **clear/stop** to `vline~`, or drop amp to 0.
+<figure><img alt="Terna Dynatext" src="html-guide/img/terna-dynatext.png" /></figure>
 
-**OUTPUT & RECORDER**
+<h3>Examples of terne</h3>
 
-* Main out → **pd out\~** (replace with `dac~`)
-* **Normalization** (utility UI) before printing
-* **Recorder**: internal block with **rec/stop** buttons
+<pre>
+<code>
+0.452 80 0 ; &rarr; 452 ms duration, amplitude 80, offset at start of sample
+0.210 45 600 ; &rarr; 210 ms duration, amplitude 45, offset 600 ms into the sample
+0.879 100 1280 ; &rarr; 879 ms duration, full amplitude, offset 1280 ms
+      </code></pre>
+</section>
+<section class="card dynatext-highlight" id="dynatext">
+<h2>What are Dynatext?</h2>
 
-# Tricks & Best Practices
+<p>Dynatext are the true databases of <strong>Envion</strong>: they are not &ldquo;small&rdquo; files, but <strong>large archives</strong> containing up to <strong>1000 lines each</strong>. Every line corresponds to a complete trajectory, described through a <strong>numerical triplet</strong> (<em>amplitude, time, offset</em>), which is interpreted by the engine to drive envelopes.</p>
 
-* **Library hygiene**: one envelope per line; always close with `;`. Avoid zero times anywhere.  
-* **Headroom**: add `clip~` after the amplitude multiplier if you use `pow~` or boosting.  
-* **Stagger stereo**: send the same envelope to L/R but offset *delays* by a few ms for micro-spatial instability.  
-* **Param-mod**: use terne as *control-rate* (via `vline` + `snapshot~` or directly `vline~ → *~`) for resonance/FM index. `$0-factor` is optional.  
-* **Original-speed**: build messages “0, size duration” for linear scans; useful as timbral reference.  
-* **Debug**: print the raw line, then the list of segments; check that the sum of *time+delay* does not exceed sync expectations.  
+<p>These files, stored in the <code>/data</code> folder, form a vast repertoire of complex gestures ready to be activated, combined, and transformed. By exploring the text files, you can easily understand how they are structured and, if you wish, create your own &mdash; although the existing library already covers a wide range of sonic behaviors.</p>
 
----
+<h2>Why I use <code>vline~</code> instead of <code>line~</code></h2>
 
+<ul>
+  <li><code>line~</code> only accepts a target and a time &rarr; simple, linear ramps.</li>
+  <li><code>vline~</code> accepts an entire sequence of <strong>concatenated triplets</strong> (<em>value, duration, delay</em>), enabling complex articulations: micro-curves, pauses, multiple attacks, temporal bounces.</li>
+</ul>
 
-# Quick Play & Algorithmic Drum Machine
+<p>Instead of mere linear ramps, Envion works with fully-fledged <strong>dynamic phrases</strong>, richer and more expressive.</p>
 
-Envion can also be approached in a very **hands-on** way, without diving into all the procedural automation.
+<h2>Random List and Random Terna</h2>
 
-> 💡 **Tip**  
-> When loading a very short sample (such as a percussive sound), adjust the *stretch factor* manually (use the **vertical slider**, not the horizontal *auto-stretch*).  
-> Setting it to the minimum ensures that the envelope perfectly matches the duration of the sound, preventing unwanted stretching.
+<p>The system takes on an even more <strong>non-deterministic</strong> behavior when the two randomization checkboxes are enabled:</p>
 
+<ul>
+  <li><strong>Random List</strong> &rarr; randomly selects one of the 17 Dynatext files in <code>/data</code>.</li>
+  <li><strong>Random Terna</strong> &rarr; within the chosen file, randomly picks one of the 1000 lines.</li>
+</ul>
 
-![Envion Manual Strike](html-guide/img/envio-manual-strike.png)
+<p>This happens <strong>simultaneously</strong>: Envion randomly chooses both the file and the line inside it, yielding a very high degree of chance and variability. Each activation can produce a completely different sonic behavior, even with the same source material.</p>
 
-## Manual Strike Mode
-- Load any list from the **Dynatext Cloud**.
-- Assign a sample (short percussive ones work best).
-- Use **KEY-1 (Manual Strike)** to trigger individual gestures.  
-Each line of the list becomes a distinct hit: quick to explore, immediate to hear.
+<h2>The role of <em>Stretch</em></h2>
 
-This simple workflow turns Envion into an **algorithmic drum machine**: by browsing different lists and striking manually, you can generate unique **percussive articulations** and irregular rhythms.
+<p>The key control is the <strong>Stretch</strong> parameter, which adapts the trajectories to the <strong>time domain</strong> of the audio material (using a term familiar to Max/MSP users). By adjusting Stretch, Dynatext trajectories are compressed or expanded in time:</p>
 
+<ul>
+  <li><strong>Low values</strong> &rarr; fast, percussive, almost microscopic gestures.</li>
+  <li><strong>High values</strong> &rarr; slow, broad, dramatic evolutions.</li>
+</ul>
 
-[![Watch the video !  Algorithmic Drum Machine](https://img.youtube.com/vi/AsYjCjTsesY/maxresdefault.jpg)](https://youtu.be/AsYjCjTsesY)
+<h2>In summary</h2>
 
-▶ Click the image above to watch the video: Algorithmic Drum Machine
+<ul>
+  <li><strong>Large archives</strong> (1000 lines &times; 17 files)</li>
+  <li><strong>Multi-level randomization</strong> (file + line)</li>
+  <li><strong>Fine time-domain control</strong> via Stretch</li>
+</ul>
 
-## Tips & Tricks
-* Combine **short samples** (kicks, snares, metallic hits) with **percussive lists** (`perc.txt`, `random_delayed_perc.txt`) for rhythmic patterns.
-* Try **drone or long lists** on short samples: unexpected stutters and stretched hits emerge.
-* Map envelopes to **parameter modulation** (filters, FM index) instead of playback for complex timbres.
-* Alternate between **manual strike** and **autoplay** to balance **control** and **emergence**.
-* For **drum-like grooves**, use Random List + Random Terna but limit the sample length to ≤ 500 ms.
+<p>Together, these elements make Dynatext not just predefined envelopes, but a true <strong>generative machine of dynamic articulations</strong>, capable of endlessly surprising outcomes.</p>
+</section>
 
-This way, Envion can be both a **tool for deep algorithmic exploration** and a **playful instrument** for instant, raw experimentation.
+<!-- SEMANTIC CLASS -->
 
----
+<section class="card">
+<h2>Semantic Class &ndash; List Validation and Categorization</h2>
 
-# FAQ
+<p>The patch <code>duration_flag_800.pd</code> implements a basic <strong>semantic check</strong> for incoming lists (vline‑style). It ensures structural validity and assigns each list to a category before it is passed on.</p>
 
-## Is a line with just one terna “valid”?  
-Yes. **One line = one envelope**. With a single terna you get a one-step envelope. Multiple terne on the same line ⇒ multi-segment.  
+<figure><img alt="Semantic Class" src="html-guide/img/semantic-class.png" /></figure>
+
+<h3>Step‑by‑step logic</h3>
 
-## I want to use 12 terne in one line. Do I need to change `list split 3`?  
-No. `list split 3` is correct: it iterates groups of three values. Instead, extend the receiving side (e.g. `unpack` to 36 floats) or implement a dynamic parser with `[until]` that sends each terna to a subpatch for accumulation into `vline~`.  
+<ol>
+  <li><strong>Input (<code>inlet</code>)</strong> A list in <code>vline~</code> format enters the patch (usually a triplet: duration &ndash; amplitude &ndash; offset).</li>
+  <li><strong>Length check (<code>list length</code>)</strong> &mdash; at least 3 elements; otherwise flagged as invalid.</li>
+  <li><strong>Splitting and unpacking</strong> &mdash; extract the first three values (<code>unpack f f f</code>), first is duration.</li>
+  <li><strong>Duration test (<code>moses 500</code>)</strong> &mdash; &lt; 500 ms &rarr; percussive; &ge; 500 ms &rarr; hybrid.</li>
+  <li><strong>Routing</strong> &mdash; invalid lists discarded; valid ones tagged and forwarded.</li>
+</ol>
 
-## Sometimes no sound comes out with certain lists of terne. Why?  
-* Zero times (or very long *delays*) ⇒ apparent silence.  
-* *target* = 0 in all segments ⇒ zero amplitude.  
-* Formatting errors (missing `;`, commas instead of dots, broken lines).  
-* `$0-factor` too small/large ⇒ “micro” or “glacial” envelopes.  
-* Out-of-buffer index (wrong messages to `vline~` for array scanning).  
+<p>This acts as a <strong>semantic filter</strong>: it checks structural validity, then classifies by duration so Envion can route lists by temporal behavior.</p>
+</section>
+<!-- QUICK START -->
 
-**Procedure:** print the line → check triplets → verify sum of *time+delay* → try without `$0-factor` → try “original-speed”.  
+<section class="card">
+<h2>Quick Start</h2>
 
-## How do I immediately stop playback?  
-Send `stop` or `clear` to `vline~` and attenuate with `*~ 0`.  
-*tabread4~* follows the index: if the index doesn’t move and amp = 0, you hear nothing.  
+<ol>
+  <li><strong>Load a list</strong> from Dynatext Cloud (or select a local <code>.txt</code> in <code>data/</code>).</li>
+  <li><strong>Browse a sample</strong> (WAV) and assign it as the playback buffer.</li>
+  <li><strong>Turn on DSP</strong> and explore.</li>
+</ol>
+
+<ul>
+  <li>Use the <strong>manual triggers</strong> and sliders to test sequences.</li>
+  <li>Adjust the <strong>stretch factor</strong> to compress/expand time.</li>
+  <li>Try the <strong>ready‑made presets</strong> (bottom area).</li>
+</ul>
 
-## What does the “4” mean in `tabread4~`?  
-It’s **4-point interpolation** (cubic). Improves quality when the index moves at non-integer speeds or oversampling.  
+<h3>Timebase &amp; <code>$0</code>-factor</h3>
 
-## Difference between `line`, `line~` and `vline~`?  
-* `line`: control-rate ramp.  
-* `line~`: audio-rate ramp, but only one segment per message.  
-* `vline~`: audio-rate with a **sequence** of segments, each with its own *delay*.  
+<p>The timebase module retrieves the buffer duration (samples &rarr; milliseconds), exposes it as <strong>$0‑durata</strong>, and calculates <strong>$0‑factor</strong> for the global stretch of envelopes.</p>
 
-## Can I use terne to modulate filters/FM instead of audio?  
-Yes. In that case map *targets* to the parameter’s range. `$0-factor` is only needed if you want to scale times; otherwise ignore it.  
+<pre>
+<code>
+// from samples to milliseconds (44.1 kHz)
+expr round((($f1 * 1000.) / 44100) * 100) / 100
+      </code></pre>
 
-## What input file “quality” is needed?  
-44.1/48 kHz is more than enough; avoid peaks at 0 dBFS. Leave 3–6 dB of headroom for shaping.  
+<ul>
+  <li><strong>$0‑factor</strong> applies to times of each segment.</li>
+  <li>Not mandatory when using <em>terne</em> as parameter modulations (e.g., FM resonance, filter index, temporal stretching).</li>
+</ul>
 
-## How do I manage huge libraries (≈10k envelopes)?  
-After preparing the text files, use the browse txt file option to load them. Then navigate with a numeric index or trigger a random selection button. Keep files thematic for coherent families. Use a numeric index for navigation and a button for random selection. Keep files “thematic” for coherent families.  
+<p><strong>Original‑speed playback:</strong> <code>0, &lt;array_size&gt; &lt;durata_ms&gt;</code> &mdash; scans the entire buffer in <em>durata_ms</em> at constant speed.</p>
 
----
+<h3>Workflow</h3>
 
-v.3.6.1 last update domenica 22 settembre / 22.29
+<ol>
+  <li><strong>Load a sample</strong> &rarr; <code>openpanel ~ soundfiler</code> into <em>sampletabL/R</em>. If mono, use <em>Mono&rarr;Stereo</em> (copy L&rarr;R).</li>
+  <li><strong>Load an envelope library</strong> &rarr; <code>text define/get</code>. Each line = one <em>terna</em>. Select or randomize.</li>
+  <li><strong>Play</strong> &rarr; autoplay or manual keys: <strong>KEY1&ndash;4</strong> (strike, original‑speed, stop, retrigger).</li>
+  <li><strong>Record</strong> &rarr; from <em>AUDIO RECORDER</em> block.</li>
+</ol>
+
+<h3>Lists of Terne (1000 envelopes each &mdash; total 19k)</h3>
+
+<ul>
+  <li><strong>default.txt</strong> &mdash; neutral baseline.</li>
+  <li><strong>perc.txt</strong> &mdash; fast attacks, short decays.</li>
+  <li><strong>vline_perc_1/2</strong> &middot; <strong>vline_ultra_perc_3.txt</strong> &mdash; percussive variants from soft to extreme.</li>
+  <li><strong>zadar_style_4triplets.txt</strong> &mdash; complex, four‑way triplet structures.</li>
+  <li><strong>complex_drone_plain.txt</strong> &mdash; long static drones.</li>
+  <li><strong>complex_percussive_plain.txt</strong> &mdash; articulated rhythmic envelopes.</li>
+  <li><strong>emf_interference.txt</strong> &mdash; glitchy, fragmented shapes.</li>
+  <li><strong>drone.txt</strong> &mdash; extended continuous textures.</li>
+  <li><strong>unstable-metro.txt</strong> &mdash; irregular micro‑timing.</li>
+  <li><strong>buchla.txt</strong> &mdash; organic West‑Coast‑style curves.</li>
+  <li><strong>sharpy.txt</strong> &mdash; sharp transients.</li>
+  <li><strong>relaxed.txt</strong> &mdash; slower, softened curves.</li>
+  <li><strong>random_delayed_perc.txt</strong> &mdash; hits with random delays.</li>
+  <li><strong>vactrol.txt</strong> &mdash; LPG‑like natural A/D.</li>
+  <li><strong>polyrhythm.txt</strong> &mdash; multi‑layered offsets.</li>
+  <li><strong>bounded_kickdrum.txt</strong> &mdash; punchy, short sustain.</li>
+  <li><strong>terne_1000_fadeout.txt</strong> &mdash; progressive fadeouts.</li>
+</ul>
+
+<h3>Library formatting</h3>
+
+<pre>
+<code>1 0.0 0.58 19 0.8 22 29 1 25 41; 0.7 120 0.0 38 80;</code></pre>
+
+<ul>
+  <li>Line 1 = <strong>4‑segment envelope</strong></li>
+  <li>Line 2 = <strong>2‑segment envelope</strong>. Avoid all‑zero lines (silence).</li>
+</ul>
+
+<h3>Autoplay &amp; Manual Player</h3>
+
+<ul>
+  <li><strong>Autoplay</strong>: a metro drives <code>text get</code>; last strike duration can trigger next step (END listener).</li>
+  <li><strong>Manual</strong>:
+  <ul>
+    <li><strong>KEY1</strong> = strike</li>
+    <li><strong>KEY2</strong> = original‑speed</li>
+    <li><strong>KEY3</strong> = stop</li>
+    <li><strong>KEY4</strong> = retrigger</li>
+  </ul>
+  </li>
+</ul>
+
+<p><em>Smart concatenation</em>: internal delays in <em>terne</em> allow irregular patterns without reprogramming the metro.</p>
+
+<h3>Playback Engine</h3>
+
+<ul>
+  <li><code>tabread4~ sampletabL/R</code> &mdash; 4‑point interpolation, indexed by <code>vline~</code></li>
+  <li><code>*~ / pow~</code> &mdash; amplitude control + shaping</li>
+  <li><code>snake~</code> &mdash; stereo/multichannel routing</li>
+  <li><strong>safety</strong> &mdash; <code>clip~</code> headroom</li>
+</ul>
+
+<p><strong>Note</strong>: <code>tabread4~</code> never stops until index=0 or out of buffer. For immediate stop: send <code>clear/stop</code> to <code>vline~</code>, or drop amp to 0.</p>
+</section>
+<!-- QUICK PLAY & DRUM MACHINE -->
+
+<section class="card">
+<h2>Quick Play &amp; Algorithmic Drum Machine</h2>
+
+<div class="video-wrap">
+<div class="video-outer"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" loading="lazy" src="https://www.youtube.com/embed/AsYjCjTsesY?rel=0&amp;modestbranding=1&amp;playsinline=1" title="Envion v3.6 — Algorithmic Drum Machine &amp; Envelope Sequencer"></iframe></div>
+</div>
+
+
+
+<h3>Manual Strike Mode</h3>
+
+<ul>
+  <li>Load any list from the <strong>Dynatext Cloud</strong>.</li>
+  <li>Assign a sample (short percussive ones work best).</li>
+  <li>Use <strong>KEY‑1 (Manual Strike)</strong> to trigger individual gestures. Each line becomes a distinct hit.</li>
+</ul>
+
+<p>This simple workflow turns Envion into an <strong>algorithmic drum machine</strong>: browse different lists and strike manually to generate unique <strong>percussive articulations</strong> and irregular rhythms.</p>
+
+<h3>Tips &amp; Tricks</h3>
+
+<ul>
+  <li>Pair <strong>short samples</strong> (kicks, snares, metallic hits) with <strong>percussive lists</strong> (<code>perc.txt</code>, <code>random_delayed_perc.txt</code>).</li>
+  <li>Try <strong>drone/long lists</strong> on short samples for stutters and stretched hits.</li>
+  <li>Map envelopes to <strong>parameter modulation</strong> (filters, FM index) instead of playback.</li>
+  <li>Alternate between <strong>manual strike</strong> and <strong>autoplay</strong> to balance control and emergence.</li>
+  <li>For drum‑like grooves, use Random List + Random Terna and keep sample &le; 500 ms.</li>
+</ul>
+</section>
+<!-- FOOTER --></main>
+
+<footer>
+<p><span class="strike">Access</span> The repository is private. If you want to explore or play with Envion, send me your GitHub username or email and I&rsquo;ll grant access. | Emiliano metrostation@gmail.com</p>
+
+<p style="margin-top:6px">v3.6 &mdash; last update: Sun 21 September, 22:29</p>
+
+<p>Visite: <span id="visite">&mdash;</span></p>
+<script>
+      (async () => {
+        const NAMESPACE = 'peamarte-envion';
+        const KEY = 'minisito';
+        const url = `https://api.countapi.xyz/hit/${encodeURIComponent(NAMESPACE)}/${encodeURIComponent(KEY)}`;
+        try {
+          const res = await fetch(url, { cache: 'no-store' });
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          const data = await res.json();
+          document.getElementById('visite').textContent = data.value.toLocaleString('it-IT');
+        } catch (err) {
+          const k = 'local_visits';
+          const v = (parseInt(localStorage.getItem(k) || '0', 10) + 1);
+          localStorage.setItem(k, String(v));
+          document.getElementById('visite').textContent = `${v} (locale)`;
+        }
+      })();
+    </script></footer>
+</body>
+</html>
