@@ -27,7 +27,7 @@
 #X obj 1084 538 s \$0-speed;
 #X obj 1163 408 metro 4000;
 #X obj 988 948 t b b;
-#X msg 1239 882 1 771 0 0 1644 771 1 451 2415 0 28 2866, f 61;
+#X msg 1239 882 1 931 0 0 1788 931 1 733 2719 0 5 3452, f 61;
 #X msg 1200 831 set \$1 \$2 \$3 \$4 \$5 \$6 \$7 \$8 \$9 \$10 \$11 \$12, f 43;
 #X obj 1200 806 pack f f f f f f f f f f f f, f 32;
 #X floatatom 1070 487 4 0 0 0 random-speed - \$0-spds 0;
@@ -137,12 +137,12 @@
 #X obj 1164 575 s \$0-label;
 #X obj 1347 302 r \$0-label;
 #N canvas 0 22 450 278 (subpatch) 0;
-#X array samplebufL 242046 float 2;
-#X coords 0 1 242046 -1 100 80 1 0 0;
+#X array samplebufL 2.5578e+06 float 2;
+#X coords 0 1 2.5578e+06 -1 100 80 1 0 0;
 #X restore 1680 396 graph;
 #N canvas 0 22 450 278 (subpatch) 0;
-#X array samplebufR 242046 float 2;
-#X coords 0 1 242046 -1 100 80 1;
+#X array samplebufR 2.5578e+06 float 2;
+#X coords 0 1 2.5578e+06 -1 100 80 1;
 #X restore 1798 397 graph;
 #X obj 290 839 soundfiler;
 #X obj 290 766 openpanel;
@@ -171,7 +171,7 @@
 #X floatatom 294 1225 8 0 0 0 factor - \$0-factor 16;
 #X obj 1163 930 unpack f f f f f f f f f f f f, f 111;
 #X msg 1178 1095 set \$1 \$2 \$3 \$4 \$5 \$6 \$7 \$8 \$9 \$10 \$11 \$12, f 81;
-#X msg 1177 1121 1 11437 0 0 24387.1 11437 1 6690.12 35824 0 415.351 42514.2, f 81;
+#X msg 1177 1121 1 457610 0 0 878847 457610 1 360288 1.33646e+06 0 2457.63 1.69675e+06, f 81;
 #X listbox 1175 1164 49 0 0 0 - - - 16;
 #X text 1160 918 1;
 #X text 1220 948 2;
@@ -226,7 +226,7 @@
 #X obj 693 869 pack f f;
 #X floatatom 757 730 5 0 0 0 - \$0-durata - 0;
 #X msg 693 892 set 0 \, addcomma \, add \$1 \$2;
-#X msg 693 923 0 \, 242043 22281.2 \;;
+#X msg 693 923 0 \, 2.5578e+06 328221 \;;
 #X obj 755 1058 *~;
 #X floatatom 796 784 6 0 0 0 - - - 16;
 #X obj 796 762 * 14;
@@ -266,7 +266,7 @@
 #X obj 72 308 outlet~;
 #X obj 177 308 outlet~;
 #X obj 125 24 inlet;
-#X msg 73 191 0 \, 242046 5488.57 \;, f 30;
+#X msg 73 191 0 \, 2.5578e+06 58000 \;, f 30;
 #X obj 491 43 r \$0-dpstart;
 #X obj 491 74 t b;
 #X text 589 31 ARRAY length (ms);
