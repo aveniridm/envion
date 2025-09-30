@@ -121,6 +121,29 @@ The JUCE-based architecture also improves GUI responsiveness, event handling, an
 > **Envion** is an *envelope-first* engine for **Pure Data (Pd)**: it drives the read index of stereo buffers through textual sequences of **triplets** *(value, time, delay)* sent to `vline~`.  
 > Each line of a text file represents a complete envelope; switching line means switching gesture.  
 
+
+## Musical Gesture Theory — why this matters to Envion
+
+The seminal text *Gesture–Music* by Claude Cadoz and Marcelo M. Wanderley  
+partly inspired the envelope-first design of **Envion**.  
+Their view of instrumental gestures as an interplay of action/energy, perception, and meaning  
+aligns with Envion’s approach: envelopes, slicing, and mappings behave as **digital gestures**  
+written onto audio rather than merely playing files.
+
+- **Ergotic** (action/energy): envelopes and triggers impart force to the material.  
+- **Epistemic** (perception): trajectories shape how motion and form are perceived.  
+- **Semiotic** (meaning): mappings and presets articulate musical intent.  
+
+In short: Envion **writes trajectories** on sound.  
+This envelope-driven, gesture-centric view helps explain why a single fragment  
+can yield thousands of distinct, evolving articulations.  
+
+> **Reference** — Cadoz, C. & Wanderley, M. M.,  
+> [*Gesture–Music*](https://www.researchgate.net/publication/281419029_Gesture-Music).
+
+
+
+
 [![Watch the video](https://img.youtube.com/vi/h8UiZJa_Q_Q/maxresdefault.jpg)](https://youtu.be/h8UiZJa_Q_Q)
 
 ▶ Click the image above to watch the video on YouTube
