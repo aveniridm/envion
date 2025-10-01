@@ -246,6 +246,28 @@ The result is a material that embodies a **contrast**:
 
 This interplay between the **synthetic and the real**, between **algorithmic articulation** and **spatial resonance**, is at the core of Envion’s aesthetic exploration.
 
+
+### 💡 Stretch Automation — Envion v4.0
+
+![Envion Stretch Automation (v4.0)](https://www.peamarte.it/env/html-guide/img/envion-stretch.png)  
+*Stretch automation module (dual-matrix echo delay + LFO)*
+
+With the new release of **Envion v4.0** several important updates have been introduced.  
+In addition to the **dual-matrix echo delay**, there is now a dedicated **LFO for stretch automation**, allowing you to modulate the stretch factor from **1%** up to **40%**.  
+
+Keep in mind: the higher the **stretch factor**, the more both the sound and its envelope will expand proportionally.  
+To avoid unwanted artifacts, a **scaling limit at 40%** has been implemented — this prevents entering ranges where you’re more likely to hear **low-frequency clicks** instead of musical articulations.  
+
+The **LFO** can be enabled or disabled via a dedicated **spigot**, and of course you’re free to tweak both the **LFO speed** and the **stretch percentage** to shape the behavior in real time.  
+
+When you load a **preset**, you can always return to the **original stretch** by simply **re-triggering the preset**.  
+If you’re experimenting with your own material and you find a moment that sounds inspiring, make sure to note the **stretch value** at that point.  
+
+For convenience, next to the **LFO** you’ll find a **float reminder**: whenever you load or change a preset, this number will display the current stretch value, so you can keep track at a glance.  
+
+**Very important note:** if you are using short percussive samples, start with stretch factors between **1%** and **7–8%**, and from there decide whether to lengthen or shorten. If you start from higher stretch values, you will only get a sound lasting a few milliseconds that is extremely elongated. This can of course be an intentional effect, but not always will the spectral characteristics of a short sound remain convincing under extreme time-stretching.
+
+
 > 💡 **Tip**  
 > When loading a very short sample (such as a percussive sound), adjust the *stretch factor* manually (use the **vertical slider**, not the horizontal *auto-stretch*).  
 > Setting it to the minimum ensures that the envelope perfectly matches the duration of the sound, preventing unwanted stretching.
