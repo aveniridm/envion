@@ -14,12 +14,33 @@ For the 3D scope you can (optionally) add: `ggee`, `audiolab`, `simplex`.
 
 - ~~cyclone~~ — included in PlugData  
 - ~~else~~ — included in PlugData  
-- ggee  
-- ceammc  
-- simplex - optionally  
-- audiolab  
+- ggee - optional (for additional features)
+- ceammc - optional (for additional features)
+- simplex - optional (for 3D scope visualization)
+- audiolab - optional (for enhanced audio features)
 
 Open: `Envion_v3.9_Plugdata.pd` → play presets (bottom-right), tweak behavior, load new samples.
+
+### 📱 **PlugData on iPadOS/iOS**
+
+**Good news!** The core functionality of Envion works out-of-the-box on PlugData for iPadOS/iOS because **cyclone** and **else** libraries are built-in.
+
+If you see dependency warnings when opening the patch on iPadOS:
+- These warnings refer to **optional libraries** (ggee, ceammc, simplex, audiolab)
+- **You can safely ignore these warnings** — the patch will work without them
+- The optional libraries add extra features like 3D scope visualization, but are not required for core functionality
+- Currently, installing external libraries on iPadOS/iOS is not supported through PlugData's interface
+
+**What works on iPadOS without additional libraries:**
+✅ All envelope sequencing and dynatext features  
+✅ Audio playback and sample manipulation  
+✅ All preset functionality  
+✅ Recording and real-time processing  
+✅ Manual and automatic triggering  
+
+**What requires optional libraries (desktop only):**
+⚠️ 3D scope visualization (requires `simplex`)  
+⚠️ Some advanced audio processing features (requires `audiolab`, `ceammc`, `ggee`)
 
 
 ![Envion — Composite Overview](html-guide/img/enviaon-cmps.PNG "Envion — Composite Overview")
@@ -172,16 +193,19 @@ In this sense, the term **algorithmic drum machine** is appropriate. That said, 
 > At its core, Envion adds an **algorithmic layer** that keeps the envelope and the sample tightly coupled.  
 > This ensures that temporal gestures and sonic material remain bound together, preserving coherence while still allowing complex, generative transformations.  
 
-> **Dependencies**: Cyclone · ggee · ceammc · else · simplex (for 3D scope) | audiolab  
+> **Dependencies for Pure Data Vanilla**: Cyclone · ggee · ceammc · else · simplex (for 3D scope) | audiolab  
+> **Dependencies for PlugData**: ~~Cyclone~~ (included) · ~~else~~ (included) · *ggee* (optional) · *ceammc* (optional) · *simplex* (optional) · *audiolab* (optional)
 
 ---
 
-**Install via Deken (Pure Data)**
+**Install via Deken (Pure Data Desktop)**
 
 1. In Pure Data, go to **Help → Find Externals…** (opens *Deken*).  
 2. Search and install each library: `cyclone`, `ggee`, `ceammc`, `else`, `simplex`, `audiolab`.  
 3. If prompted for a location, install to your user externals folder (e.g., `~/Documents/Pd/externals`).  
 4. Restart Pure Data so the new objects are available.  
+
+**Note for PlugData users:** `cyclone` and `else` are already built-in. The other libraries are optional and provide enhanced features.
 
 ---
 
@@ -189,6 +213,7 @@ In this sense, the term **algorithmic drum machine** is appropriate. That said, 
 - If you cannot find a library, check that you are connected to the internet and your Pd version is up-to-date.  
 - Installed externals may not load until Pd is restarted.  
 - On macOS, make sure you installed Pd with write access to the externals folder (sometimes you need to create `~/Documents/Pd/externals` manually).  
+- **PlugData iPadOS/iOS users:** If you see dependency warnings about `ggee`, `ceammc`, `simplex`, or `audiolab`, you can safely ignore them. These are optional libraries that add extra features, but all core functionality works without them.  
 
 [First step on Envion (youtube clip)](https://www.youtube.com/watch?v=BiTsPTQfgCY&feature=youtu.be)
 

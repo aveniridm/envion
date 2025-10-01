@@ -366,18 +366,20 @@ Each line of a text file represents a complete envelope; switching line means sw
   <aside class="tip-bubble" role="tooltip">
     <p><strong>  <span aria-hidden="true">ℹ️</span> Envion quick setup</strong></p>
     <p>With <strong>PlugData</strong>, <span class="strike">cyclone</span> and <span class="strike">else</span> are already included.<br>
-    Mandatory library: <code>ggee</code>, <code>audiolab</code> - For the 3D scope you can (optionally) add: <code>simplex</code>.</p>
+    Optional libraries: <code>ggee</code>, <code>ceammc</code>, <code>audiolab</code> - For the 3D scope you can (optionally) add: <code>simplex</code>.</p>
 
     <ul>
       <li><span class="strike">cyclone</span> — included in PlugData</li>
       <li><span class="strike">else</span> — included in PlugData</li>
-      <li>ggee</li>
-      <li>ceammc</li>
-      <li>simplex</li>
-      <li>audiolab</li>
+      <li>ggee — optional (additional features)</li>
+      <li>ceammc — optional (additional features)</li>
+      <li>simplex — optional (3D scope visualization)</li>
+      <li>audiolab — optional (enhanced audio features)</li>
     </ul>
 
     <p>Open: <code>Envion_v3.9_Plugdata.pd</code> → play presets (bottom-right), tweak behavior, load new samples.</p>
+    
+    <p><strong>📱 iPadOS/iOS users:</strong> The core functionality works out-of-the-box! You can safely ignore dependency warnings about optional libraries (ggee, ceammc, simplex, audiolab). These add extra features but are not required for the main envelope sequencing, audio playback, and preset functionality.</p>
   </aside>
 </span>
 
@@ -504,9 +506,9 @@ Instead of &ldquo;playing&rdquo; files, Envion <strong>writes trajectories</stro
 <p>Inside the repository there is also a version tailored for <strong>PlugData</strong>. It&rsquo;s worth noting that this version is significantly more performant: unlike Pd-vanilla, where the audio and GUI share the same thread, PlugData (built on JUCE) separates the audio engine from the graphical interface. This reduces overhead, prevents dropouts when interacting with the patch, and makes real-time processing smoother. The JUCE-based architecture also improves GUI responsiveness, event handling, and CPU scheduling, resulting in noticeably faster and more stable performance, especially on older machines.</p>
 </blockquote>
 
-<p class="note callout"><strong>Dependencies</strong>: Cyclone &middot; ggee &middot; ceammc &middot; else &middot; simplex (for 3D scope) | audiolab</p>
+<p class="note callout"><strong>Dependencies for PlugData</strong>: <span class="strike">Cyclone</span> (included) &middot; <span class="strike">else</span> (included) &middot; <em>ggee</em> (optional) &middot; <em>ceammc</em> (optional) &middot; <em>simplex</em> (optional for 3D scope) &middot; <em>audiolab</em> (optional)</p>
 
-<div class="callout note"><strong>Install via Deken (Pure Data)</strong>
+<div class="callout note"><strong>Install via Deken (Pure Data Desktop)</strong>
 
 <ol style="margin:0.6em 0 0.2em 1.2em;">
   <li>In Pure Data, go to <kbd>Help</kbd> &rarr; <kbd>Find Externals&hellip;</kbd> (opens <em>Deken</em>).</li>
@@ -514,6 +516,31 @@ Instead of &ldquo;playing&rdquo; files, Envion <strong>writes trajectories</stro
   <li>If prompted for a location, install to your user externals folder (e.g., <code>~/Documents/Pd/externals</code>).</li>
   <li>Restart Pure Data so the new objects are available.</li>
 </ol>
+
+<p><strong>Note for PlugData users:</strong> <code>cyclone</code> and <code>else</code> are already included. The other libraries (<code>ggee</code>, <code>ceammc</code>, <code>simplex</code>, <code>audiolab</code>) are optional and add extra features.</p>
+</div>
+
+<div class="callout note" style="background: #fff3cd; border-left: 4px solid #ffc107;"><strong>📱 PlugData on iPadOS/iOS</strong>
+
+<p><strong>Good news!</strong> Envion works out-of-the-box on iPadOS/iOS because the required libraries (<code>cyclone</code> and <code>else</code>) are built into PlugData.</p>
+
+<p><strong>If you see dependency warnings:</strong></p>
+<ul style="margin:0.6em 0 0.2em 1.2em;">
+  <li>These refer to <strong>optional libraries</strong> (ggee, ceammc, simplex, audiolab)</li>
+  <li><strong>You can safely ignore them</strong> — all core functionality works without these</li>
+  <li>Installing external libraries on iPadOS/iOS is not currently supported</li>
+</ul>
+
+<p><strong>What works on iPadOS without additional libraries:</strong><br>
+✅ All envelope sequencing &amp; dynatext features<br>
+✅ Audio playback &amp; sample manipulation<br>
+✅ All preset functionality<br>
+✅ Recording &amp; real-time processing<br>
+✅ Manual &amp; automatic triggering</p>
+
+<p><strong>What requires optional libraries (desktop only):</strong><br>
+⚠️ 3D scope visualization (requires <code>simplex</code>)<br>
+⚠️ Some advanced features (requires <code>audiolab</code>, <code>ceammc</code>, <code>ggee</code>)</p>
 </div>
 </section>
 <!-- USING ENVION SECTION -->
