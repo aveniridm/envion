@@ -1,5 +1,5 @@
-#N struct 1005-path-template float x float y array 1005-data 1005-data-template;
-#N struct 1005-data-template float x float y;
+#N struct 1222-path-template float x float y array 1222-data 1222-data-template;
+#N struct 1222-data-template float x float y;
 #N canvas 1 23 1907 979 10;
 #X declare -lib ceammc;
 #X declare -lib audiolab;
@@ -27,7 +27,7 @@
 #X obj 1084 538 s \$0-speed;
 #X obj 1163 408 metro 4000;
 #X obj 988 948 t b b;
-#X msg 1239 882 0.66 455 0 0.137 57 455 0.063 519 512 0.318 50 1031, f 61;
+#X msg 1239 882 0.477 25 0 0 34 25 0 404 59 0.763 361 463, f 61;
 #X msg 1200 831 set \$1 \$2 \$3 \$4 \$5 \$6 \$7 \$8 \$9 \$10 \$11 \$12, f 43;
 #X obj 1200 806 pack f f f f f f f f f f f f, f 32;
 #X floatatom 1070 487 4 0 0 0 random-speed - \$0-spds 0;
@@ -137,12 +137,12 @@
 #X obj 1164 575 s \$0-label;
 #X obj 1347 302 r \$0-label;
 #N canvas 0 22 450 278 (subpatch) 0;
-#X array samplebufL 1.18333e+06 float 2;
-#X coords 0 1 1.18333e+06 -1 100 80 1 0 0;
+#X array samplebufL 1.34594e+06 float 2;
+#X coords 0 1 1.34594e+06 -1 100 80 1 0 0;
 #X restore 1680 396 graph;
 #N canvas 0 22 450 278 (subpatch) 0;
-#X array samplebufR 1.18333e+06 float 2;
-#X coords 0 1 1.18333e+06 -1 100 80 1;
+#X array samplebufR 1.34594e+06 float 2;
+#X coords 0 1 1.34594e+06 -1 100 80 1;
 #X restore 1798 397 graph;
 #X obj 290 839 soundfiler;
 #X obj 290 766 openpanel;
@@ -171,7 +171,7 @@
 #X floatatom 294 1225 8 0 0 0 factor - \$0-factor 16;
 #X obj 1163 930 unpack f f f f f f f f f f f f, f 111;
 #X msg 1178 1095 set \$1 \$2 \$3 \$4 \$5 \$6 \$7 \$8 \$9 \$10 \$11 \$12, f 81;
-#X msg 1177 1121 0.66 1.2209e+10 0 0.137 1.52948e+09 1.2209e+10 0.063 1.39263e+10 1.37385e+10 0.318 1.34165e+09 2.76648e+10, f 81;
+#X msg 1177 1121 0.477 256.215 0 0 348.452 256.215 0 4140.43 604.667 0.763 3699.74 4745.1, f 81;
 #X listbox 1175 1164 49 0 0 0 - - - 16;
 #X text 1160 918 1;
 #X text 1220 948 2;
@@ -226,7 +226,7 @@
 #X obj 693 869 pack f f;
 #X floatatom 757 730 5 0 0 0 - \$0-durata - 0;
 #X msg 693 892 set 0 \, addcomma \, add \$1 \$2;
-#X msg 693 923 0 \, 1.18333e+06 27833.5 \;;
+#X msg 693 923 0 \, 1.34594e+06 3539 \;;
 #X obj 755 1058 *~;
 #X floatatom 796 784 6 0 0 0 - - - 16;
 #X obj 796 762 * 14;
@@ -266,7 +266,7 @@
 #X obj 72 308 outlet~;
 #X obj 177 308 outlet~;
 #X obj 125 24 inlet;
-#X msg 73 191 0 \, 1.18333e+06 26833 \;, f 30;
+#X msg 73 191 0 \, 1.34594e+06 30520.3 \;, f 30;
 #X obj 491 43 r \$0-dpstart;
 #X obj 491 74 t b;
 #X text 589 31 ARRAY length (ms);
@@ -2826,7 +2826,7 @@
 #X text 1437 370 <-- click to open GUI;
 #N canvas 907 181 454 180 message-out 0;
 #X obj 20 20 inlet;
-#X msg 20 44 time-left 477.27 \, time-right 1000 \, pingpong 0 \, repeats 1 \, flutter 100 \, feedback 96.015 \, reverb 96.015 \, lop-frequency 4000 \, hip-frequency 100 \, hf-damping 80 \, lf-damping 50 \, ssb-amount 0 \, ssb-shift 0 \, distortion-mode 1 \, dry/wet 1.9164 \,;
+#X msg 20 44 time-left 313.79 \, time-right 1000 \, pingpong 0 \, repeats 1 \, flutter 100 \, feedback 91 \, reverb 91 \, lop-frequency 4000 \, hip-frequency 100 \, hf-damping 80 \, lf-damping 50 \, ssb-amount 0 \, ssb-shift 0 \, distortion-mode 1 \, dry/wet 2.1794 \,;
 #X connect 0 0 1 0;
 #X restore 1426 400 pd message-out;
 #X obj 1326 191 sig~;
@@ -3287,7 +3287,7 @@
 #X obj 2215 980 else/note 122 14 Menlo empty 0 255 255 255 0 251 124 122 1 0 GRAINY TONE;
 #X obj 1904 1369 cnv 6 144 31 empty empty WEB-SOCKET 41 16 0 14 #000000 #fcfcfc 0;
 #X obj 1902 1368 bng 32 250 50 0 empty empty empty 0 -7 0 10 #fcfcfc #000000 #000000;
-#N canvas 826 128 832 323 web-socket 1;
+#N canvas 826 128 832 323 web-socket 0;
 #X obj 637 122 s \$0-drone;
 #X obj 395 113 inlet;
 #X obj 760 189 s \$0-stretch;
@@ -3780,9 +3780,11 @@
 #X msg 760 161 1;
 #X msg 1454 620 0;
 #X obj 1311 577 cnv 19 200 29 empty empty LFO\ AUTOPAN 37 13 0 23 #fb7c7a #fcfcfc 0;
+#X obj 946 112 s \$0-normalize;
 #X connect 1 0 7 0;
 #X connect 7 1 24 0;
 #X connect 7 2 19 0;
+#X connect 7 2 101 0;
 #X connect 7 3 88 0;
 #X connect 7 4 98 0;
 #X connect 7 5 93 0;
@@ -4025,6 +4027,7 @@
 #X connect 97 0 53 0;
 #X restore 2061 1343 pd p_l;
 #X f 21;
+#X obj 1652 327 bng 25 250 50 0 empty \$0-normalize empty 17 7 0 10 #e4e4e4 #4d4d4d #373737;
 #X connect 0 0 2 0;
 #X connect 1 0 2 0;
 #X connect 3 0 2 0;
@@ -4425,3 +4428,4 @@
 #X connect 523 0 418 0;
 #X connect 525 0 530 0;
 #X connect 528 0 529 0;
+#X connect 531 0 138 0;
