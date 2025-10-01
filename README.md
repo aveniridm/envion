@@ -265,7 +265,7 @@ If you’re experimenting with your own material and you find a moment that soun
 
 For convenience, next to the **LFO** you’ll find a **float reminder**: whenever you load or change a preset, this number will display the current stretch value, so you can keep track at a glance.  
 
-**Very important note:** if you are using short percussive samples, start with stretch factors between **1%** and **7–8%**, and from there decide whether to lengthen or shorten. If you start from higher stretch values, you will only get a sound lasting a few milliseconds that is extremely elongated. This can of course be an intentional effect, but not always will the spectral characteristics of a short sound remain convincing under extreme time-stretching.
+**Very important note:** if you are using short percussive samples, start with stretch factors between **1%** and **7–8%**, and from there decide whether to lengthen or shorten. If you start from higher stretch values, you will only get a sound lasting a few milliseconds that is extremely elongated or even silence. This can of course be an intentional effect, but not always will the spectral characteristics of a short sound remain convincing under extreme time-stretching.
 
 
 > 💡 **Tip**  
