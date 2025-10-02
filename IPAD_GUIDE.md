@@ -92,9 +92,7 @@ You can transfer Envion files to your iPad using:
 Once transferred, open the `.pd` files directly in PlugData.
 
 ## Performance Tips for iPadOS
-
-- **Start with smaller audio files** — iPadOS has memory constraints
-- **Use lower sample rates** if needed — 44.1 kHz is recommended
+- **Start with preset** — The presets work fine — let me know if anything’s wrong
 - **Monitor CPU usage** — Some iPads may struggle with very complex patches
 - **Close other apps** — Free up system resources for better performance
 - **Adjust buffer size** — In PlugData settings, if audio glitches occur
