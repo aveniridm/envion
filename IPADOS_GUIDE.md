@@ -7,6 +7,27 @@
 ## Understanding the Dependency Warnings
 
 When you open Envion on PlugData for iPadOS, you may see warning messages about missing dependencies. **Don't worry — this is completely normal and expected!**
+## iPadOS Sandbox Notes
+
+On iPadOS, PlugData runs inside its own **sandbox**.  
+This means it cannot access arbitrary folders on your device — it can only read and write inside its own **Documents directory**.  
+
+### Why this matters
+If the `audio/` or `data/` folders are placed outside of the sandbox, PlugData will show errors such as:
+[soundfiler] read ... Operation not permitted
+can't open file ...
+
+### How to fix it
+- Copy the **entire Envion repository** (including `audio/` and `data/`) into the PlugData sandbox.  
+- You can do this via:
+  - **Finder/iTunes File Sharing** (PlugData → Documents)  
+  - **iCloud Drive** (place the folder in `PlugData/`)  
+  - **Files app** (any location accessible by PlugData)  
+- Always use **relative paths** (e.g. `./audio/sample.wav`) instead of absolute system paths.  
+  This ensures PlugData looks for files in the same folder as the patch, fully compatible with iPadOS.
+
+---
+
 
 ### What the warnings mean:
 
@@ -53,7 +74,7 @@ These built-in libraries provide all the essential functionality for Envion to w
 ## How to Use Envion on iPadOS
 
 1. **Download** the Envion repository and transfer the patch files to your iPad
-2. **Open** `___ Envion_v4.0_Plugdata.pd` in PlugData for iPadOS
+2. **Open** `___ Envion_v3.9_Plugdata_WIN-Ipad.pd` in PlugData for iPadOS
 3. **Dismiss** any dependency warning dialogs that appear
 4. **Load a sample** using the "BROWSE audio" button
 5. **Turn on DSP** (if not already on)
