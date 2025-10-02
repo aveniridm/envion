@@ -138,7 +138,7 @@ Once transferred, open the `.pd` files directly in PlugData.
 ## Additional Resources
 
 - **Main Documentation:** [README.md](README.md)
-- **HTML Guide:** [html-guide/envion_v3.6.html](html-guide/envion_v3.6.html)
+- **HTML Guide:** [https://www.peamarte.it/env/envion_v3.6.html](https://www.peamarte.it/env/envion_v3.6.html)
 - **Video Tutorials:** See README for YouTube links
 - **PlugData Website:** https://plugdata.org
 
