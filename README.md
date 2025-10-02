@@ -42,7 +42,7 @@ If you see dependency warnings when opening the patch on iPadOS:
 ⚠️ 3D scope visualization (requires `simplex`)  
 ⚠️ Some advanced audio processing features (requires `audiolab`, `ceammc`, `ggee`)
 
-📖 **[Read the full iPadOS/iOS guide](IPADOS_GUIDE.md)** for detailed instructions and troubleshooting.
+📖 **[Read the full iPadOS/iOS guide](IPAD_GUIDE.md)** for detailed instructions and troubleshooting.
 
 ---
 
