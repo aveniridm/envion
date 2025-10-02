@@ -95,7 +95,7 @@ Once transferred, open the `.pd` files directly in PlugData.
 
 ## Performance Tips for iPadOS
 - **Start with preset** — The presets work fine — let me know if anything’s wrong
-- **Monitor CPU usage** — Some iPads may struggle with very complex patches
+- **Monitor CPU usage** — Some iPads may struggle with very complex patches like Envion
 - **Close other apps** — Free up system resources for better performance
 - **Adjust buffer size** — In PlugData settings, if audio glitches occur
 
@@ -112,7 +112,7 @@ Once transferred, open the `.pd` files directly in PlugData.
 
 ### Problem: Patch won't load
 **Solution:**
-- Make sure you're using the PlugData version: `___ Envion_v4.0_Plugdata.pd`
+- Make sure you're using the PlugData version: `___ Envion_v4.0_Plugdata_WIN_ipad.pd`
 - Verify you have the latest version of PlugData for iOS
 - Check that the file wasn't corrupted during transfer
 
