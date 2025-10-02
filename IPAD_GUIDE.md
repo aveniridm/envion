@@ -1,5 +1,7 @@
 # Envion on PlugData for iPadOS/iOS
 
+[If you are on Desktop select this URL](https://www.peamarte.it/env/envion_v3.6.html)
+
 ## 📱 Quick Start Guide
 
 **Good news!** Envion works perfectly on PlugData for iPadOS and iOS devices. The core functionality is fully operational without requiring any additional library installations.
