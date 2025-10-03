@@ -25,7 +25,7 @@ Open: `Envion_v3.9_Plugdata.pd` → play presets (bottom-right), tweak behavior,
 
 ### 📱 **PlugData on iPadOS/iOS**
 
-**Good news!** The core functionality of Envion works out-of-the-box on PlugData for iPadOS/iOS because **cyclone** and **else** libraries are built-in.
+The core functionality of Envion works out-of-the-box on PlugData for iPadOS/iOS because **cyclone** and **else** libraries are built-in.
 
 If you see dependency warnings when opening the patch on iPadOS:
 - These warnings refer to **optional libraries** (ggee, ceammc, simplex, audiolab)
