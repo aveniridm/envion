@@ -46,6 +46,54 @@ If you see dependency warnings when opening the patch on iPadOS:
 
 ---
 
+The patch may look **intimidating** at first, but it is intentionally left **“alive”** (with formulas and functions visible) to encourage **exploration**.
+
+<!-- TIP — place right after the paragraph mentioned -->
+<div class="callout tip" id="kb-improvise">
+  <h3 style="margin-top:0;">Tip — Keyboard improvisation & safety</h3>
+  <p>
+    Once you toggle <strong>KEY ON/OFF</strong>, your <strong>computer keyboard</strong> becomes a live controller.
+    Know the shortcuts—but then <em>improvise</em>: play the QWERTY like an instrument and react to what Envion generates.
+    MIDI mapping is of course possible, yet in Envion’s DIY spirit the motto is:
+    <em>open the laptop and play—no cables, no menus, just gesture</em>.
+  </p>
+
+  <h4 style="margin:.6em 0 .2em;">Emergency stops</h4>
+  <p style="margin-top:0;">
+    If you experience <strong>sonic instability</strong> (runaway feedback or unpredictable behaviors):
+  </p>
+  <ul>
+    <li><kbd>6</kbd> — <strong>Graceful stop</strong>: interrupts input and lets the <em>last trajectory complete</em>.</li>
+    <li><kbd>7</kbd> — <strong>Hard stop (PANIC)</strong>: forces <code>vline~</code> to <code>0</code>, effectively muting almost any sound immediately.</li>
+  </ul>
+</div>
+
+## Keyboard Shortcuts
+
+**BACKSPACE** → Start
+
+| Key   | Action             |
+|-------|--------------------|
+| KEY-1 | Manual Strike      |
+| KEY-2 | Original Speed     |
+| KEY-3 | Stop Original      |
+| KEY-4 | Retrigger          |
+| KEY-5 | Random Terna Seq   |
+
+### Emergency block
+| Key | Action   |
+|-----|----------|
+| 6   | Graceful Stop (lets last trajectory complete) |
+| 7   | Hard Stop (PANIC) — forces `vline~` to 0 |
+
+### Additional
+| Key   | Action             |
+|-------|--------------------|
+| KEY-5 | Random Terna Seq   |
+| KEY-6 | BREAKDOWN          |
+| KEY-7 | PANIC              |
+
+
 ![Envion — Composite Overview](html-guide/img/enviaon-cmps.PNG "Envion — Composite Overview")
 
 I soon realized that the most flexible way to manage **thousands of segments** was to use plain-text databases containing the necessary information. From there, I created the **Dynatext** system.
@@ -339,53 +387,6 @@ By enabling both checkboxes, Envion activates a **procedural randomization** pro
 * **Random List**: randomly selects one of the 1,000 available lists.
 
 This mechanism allows Envion to combine automatic loading and random selection, producing an ever-changing and potentially infinite stream of events.
-
-The patch may look **intimidating** at first, but it is intentionally left **“alive”** (with formulas and functions visible) to encourage **exploration**.
-
-<!-- TIP — place right after the paragraph mentioned -->
-<div class="callout tip" id="kb-improvise">
-  <h3 style="margin-top:0;">Tip — Keyboard improvisation & safety</h3>
-  <p>
-    Once you toggle <strong>KEY ON/OFF</strong>, your <strong>computer keyboard</strong> becomes a live controller.
-    Know the shortcuts—but then <em>improvise</em>: play the QWERTY like an instrument and react to what Envion generates.
-    MIDI mapping is of course possible, yet in Envion’s DIY spirit the motto is:
-    <em>open the laptop and play—no cables, no menus, just gesture</em>.
-  </p>
-
-  <h4 style="margin:.6em 0 .2em;">Emergency stops</h4>
-  <p style="margin-top:0;">
-    If you experience <strong>sonic instability</strong> (runaway feedback or unpredictable behaviors):
-  </p>
-  <ul>
-    <li><kbd>6</kbd> — <strong>Graceful stop</strong>: interrupts input and lets the <em>last trajectory complete</em>.</li>
-    <li><kbd>7</kbd> — <strong>Hard stop (PANIC)</strong>: forces <code>vline~</code> to <code>0</code>, effectively muting almost any sound immediately.</li>
-  </ul>
-</div>
-
-## Keyboard Shortcuts
-
-**BACKSPACE** → Start
-
-| Key   | Action             |
-|-------|--------------------|
-| KEY-1 | Manual Strike      |
-| KEY-2 | Original Speed     |
-| KEY-3 | Stop Original      |
-| KEY-4 | Retrigger          |
-| KEY-5 | Random Terna Seq   |
-
-### Emergency block
-| Key | Action   |
-|-----|----------|
-| 6   | Graceful Stop (lets last trajectory complete) |
-| 7   | Hard Stop (PANIC) — forces `vline~` to 0 |
-
-### Additional
-| Key   | Action             |
-|-------|--------------------|
-| KEY-5 | Random Terna Seq   |
-| KEY-6 | BREAKDOWN          |
-| KEY-7 | PANIC              |
 
 
 Even though many operations seem **repeatable** (such as manually selecting a *terna* index from the list or triggering events by hand), the real nuances mainly emerge during the **automatic phase**.
