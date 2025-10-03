@@ -9,6 +9,15 @@ I would like to emphasize how fascinating the world of **envelope dynamics** is,
 
 ![Envion — Composite Overview](html-guide/img/enviaon-cmps.PNG "Envion — Composite Overview")
 
+> ## ⚠️ Notes on this documentation
+>
+> Envion is in **continuous development**.  
+> Some aspects of this documentation may change over time.
+>
+> If you notice inconsistencies, please open an [issue on GitHub](https://github.com/aveniridm/envion_v3.6/issues)  
+> or write an email to [Emiliano Pennisi](mailto:metrostation@gmail.com).
+
+
 ℹ️ **Envion quick setup**
 
 With **PlugData**, ~~cyclone~~ and ~~else~~ are already included.  
