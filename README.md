@@ -7,6 +7,8 @@ It includes tools for slicing, dynamic envelopes, texture generation, and multi-
 Per years, I explored different systems for handling envelopes dynamically — starting with software like *Composer Desktop Project*, and later with hardware generators such as **Zadar** in the Eurorack world.
 I would like to emphasize how fascinating the world of **envelope dynamics** is, and how envelopes can imprint *transformative tonal characteristics* onto sounds. Out of this research, I developed Envion.
 
+![Envion — Composite Overview](html-guide/img/enviaon-cmps.PNG "Envion — Composite Overview")
+
 ℹ️ **Envion quick setup**
 
 With **PlugData**, ~~cyclone~~ and ~~else~~ are already included.  
@@ -93,8 +95,6 @@ The patch may look **intimidating** at first, but it is intentionally left **“
 | KEY-6 | BREAKDOWN          |
 | KEY-7 | PANIC              |
 
-
-![Envion — Composite Overview](html-guide/img/enviaon-cmps.PNG "Envion — Composite Overview")
 
 I soon realized that the most flexible way to manage **thousands of segments** was to use plain-text databases containing the necessary information. From there, I created the **Dynatext** system.
 
