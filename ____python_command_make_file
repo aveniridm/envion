@@ -1,3 +1,4 @@
 python3 make_raw_list.py \
   --url "https://www.peamarte.it/freesound_get.php?q=drums&max_dur=15&mode=raw" \
-  --target 8
+  --count 10 \
+  --out-dir "/Users/emiliano/Documents/PureData/Envion-Algo-Score/netsound"
