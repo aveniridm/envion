@@ -25,3 +25,13 @@ python3 make_raw_list.py \
   --count 8 --out-dir "/Users/emiliano/Documents/PureData/Envion-Algo-Score/netsound" \
   --history "/Users/emiliano/Documents/PureData/Envion-Algo-Score/netsound/netsound_history.txt" \
   --dedupe --insecure
+
+
+python3 make_raw_list.py \
+  --url "https://www.peamarte.it/freesound_get.php?q=percussion*5,percussive*4,hit*3,impact*3,drum*2,hand%20drum*2,tom,bongo,conga,tabla,stick,rim,wood%20hit,metal%20hit,membrane,mallet,shaker,clave,bell&max_dur=15&mode=raw" \
+  --count 8 \
+  --out-dir "/Users/emiliano/Documents/PureData/Envion-Algo-Score/netsound" \
+  --history "/Users/emiliano/Documents/PureData/Envion-Algo-Score/netsound/netsound_history.txt" \
+  --dedupe \
+  --insecure
+
