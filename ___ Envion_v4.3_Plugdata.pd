@@ -137,12 +137,12 @@
 #X obj 1914 815 s \$0-label;
 #X obj 2097 542 r \$0-label;
 #N canvas 0 22 450 278 (subpatch) 0;
-#X array samplebufL 192256 float 2;
-#X coords 0 1 192256 -1 100 80 1 0 0;
+#X array samplebufL 238276 float 2;
+#X coords 0 1 238276 -1 100 80 1 0 0;
 #X restore 2430 636 graph;
 #N canvas 0 22 450 278 (subpatch) 0;
-#X array samplebufR 192256 float 2;
-#X coords 0 1 192256 -1 100 80 1;
+#X array samplebufR 238276 float 2;
+#X coords 0 1 238276 -1 100 80 1;
 #X restore 2548 637 graph;
 #X obj 1040 1090 soundfiler;
 #X obj 1040 1017 openpanel;
@@ -5862,7 +5862,7 @@
 #X obj 692 983 text define -k lista-netsound;
 #A set https://cdn.freesound.org/previews/698/698659_13237592-hq.mp3 \; https://cdn.freesound.org/previews/152/152652_2764107-hq.mp3 \; https://cdn.freesound.org/previews/74/74368_209414-hq.mp3 \; https://cdn.freesound.org/previews/242/242718_2146894-hq.mp3 \; https://cdn.freesound.org/previews/535/535471_10403690-hq.mp3 \; https://cdn.freesound.org/previews/75/75341_708954-hq.mp3 \; https://cdn.freesound.org/previews/669/669926_9839964-hq.mp3 \; https://cdn.freesound.org/previews/261/261331_2297168-hq.mp3 \; https://cdn.freesound.org/previews/74/74368_209414-hq.mp3 \; https://cdn.freesound.org/previews/353/353201_3356610-hq.mp3 \;;
 #X obj 860 690 text get lista-netsound;
-#X msg 862 826 download https://cdn.freesound.org/previews/74/74368_209414-hq.mp3, f 82;
+#X msg 862 826 download https://cdn.freesound.org/previews/152/152652_2764107-hq.mp3, f 82;
 #X obj 859 753 pack s, f 8;
 #X msg 859 782 set download \$1, f 17;
 #X obj 862 884 else/sfload samplebufL;
