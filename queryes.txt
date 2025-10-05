@@ -1,0 +1,27 @@
+# 1) drums “classico”
+python3 make_raw_list.py \
+  --url "https://www.peamarte.it/freesound_get.php?q=drums&max_dur=15&mode=raw" \
+  --count 8 --out-dir "/Users/emiliano/Documents/PureData/Envion-Algo-Score/netsound" \
+  --history "/Users/emiliano/Documents/PureData/Envion-Algo-Score/netsound/netsound_history.txt" \
+  --dedupe --insecure
+
+# 2) one-shot / gesti percussivi
+python3 make_raw_list.py \
+  --url "https://www.peamarte.it/freesound_get.php?q=hit&max_dur=15&mode=raw" \
+  --count 8 --out-dir "/Users/emiliano/Documents/PureData/Envion-Algo-Score/netsound" \
+  --history "/Users/emiliano/Documents/PureData/Envion-Algo-Score/netsound/netsound_history.txt" \
+  --dedupe --insecure
+
+# 3) oggetti concreti (metallo)
+python3 make_raw_list.py \
+  --url "https://www.peamarte.it/freesound_get.php?q=metal%20hit&max_dur=15&mode=raw" \
+  --count 8 --out-dir "/Users/emiliano/Documents/PureData/Envion-Algo-Score/netsound" \
+  --history "/Users/emiliano/Documents/PureData/Envion-Algo-Score/netsound/netsound_history.txt" \
+  --dedupe --insecure
+
+# 4) micro-impulsi / clicky
+python3 make_raw_list.py \
+  --url "https://www.peamarte.it/freesound_get.php?q=click&max_dur=8&mode=raw" \
+  --count 8 --out-dir "/Users/emiliano/Documents/PureData/Envion-Algo-Score/netsound" \
+  --history "/Users/emiliano/Documents/PureData/Envion-Algo-Score/netsound/netsound_history.txt" \
+  --dedupe --insecure

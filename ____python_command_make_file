@@ -1,4 +1,7 @@
 python3 make_raw_list.py \
-  --url "https://www.peamarte.it/freesound_get.php?q=drums&max_dur=15&mode=raw" \
-  --count 10 \
-  --out-dir "/Users/emiliano/Documents/PureData/Envion-Algo-Score/netsound"
+  --url "https://www.peamarte.it/freesound_get.php?q=drums,ethnic,breaks&max_dur=15&mode=raw" \
+  --count 8 \
+  --out-dir "/Users/emiliano/Documents/PureData/Envion-Algo-Score/netsound" \
+  --history "/Users/emiliano/Documents/PureData/Envion-Algo-Score/netsound/netsound_history.txt" \
+  --dedupe \
+  --insecure
