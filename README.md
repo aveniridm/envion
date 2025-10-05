@@ -18,6 +18,20 @@ I would like to emphasize how fascinating the world of **envelope dynamics** is,
 > or write an email to [Emiliano Pennisi](mailto:metrostation@gmail.com).
 
 
+> ## Envion — NET-AUDIO (Web Random Loader)
+> **What it does:** streams *random audio atoms* from the web and articulates them through Envion’s Dynatext envelopes.
+>
+> **Key points**
+> - Random sources from **[freesound.org](https://freesound.org/)** (drums) → each run generates **8 direct URLs**.  
+> - No local storage: the `netsound/` folder only holds **URL lists** (one per line, each ending with `;`).  
+> - Loaded sounds **inherit Envion patch parameters** — dynamics, envelopes, modulation depth, and the last preset.  
+> - Example preset: **ÆTCHR** (Autechre-inspired) — dense, percussive, and procedural.
+>
+>  **Full guide, video & screenshots:**  
+> **https://www.peamarte.it/env/envion_netaudio.html**
+
+
+
 ℹ️ **Envion quick setup**
 
 With **PlugData**, ~~cyclone~~ and ~~else~~ are already included.  
