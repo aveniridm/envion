@@ -1,0 +1,8 @@
+https://archive.org/download/Arianne-Project_Stendhal-Sound-Effects/Stendhal-SoundEffects/alligator-1.mp3;
+https://archive.org/download/Arianne-Project_Stendhal-Sound-Effects/Stendhal-SoundEffects/arrow-hit-1.mp3;
+https://archive.org/download/Arianne-Project_Stendhal-Sound-Effects/Stendhal-SoundEffects/attack-fire-1.mp3;
+https://archive.org/download/Arianne-Project_Stendhal-Sound-Effects/Stendhal-SoundEffects/attack-fire-2.mp3;
+https://archive.org/download/Arianne-Project_Stendhal-Sound-Effects/Stendhal-SoundEffects/attack-fire-3.mp3;
+https://archive.org/download/Arianne-Project_Stendhal-Sound-Effects/Stendhal-SoundEffects/attack-melee-01.mp3;
+https://archive.org/download/Arianne-Project_Stendhal-Sound-Effects/Stendhal-SoundEffects/attack-melee-02.mp3;
+https://archive.org/download/Arianne-Project_Stendhal-Sound-Effects/Stendhal-SoundEffects/attack-melee-03.mp3;

@@ -46,6 +46,51 @@
 # ───────────────────────────────────────────────────────────────
 
 
+funziona con internet_archive_fine_tuning.py
+
+cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score" && \
+python3 internet_archive_fine_tuning.py \
+  --q "insect" \
+  --include-subjects "sound effects,field recording,ambience" \
+  --exclude-collections "librivoxaudio,audio_bookspoetry,oldtimeradio,radioprograms,communitypodcast" \
+  --exclude "podcast,sermon,radio,chapter,novel,audiobook,libriVox" \
+  --max-dur 8 \
+  --count 8 \
+  --rows 300 \
+  --out-dir "netsound" \
+  --history "netsound/netsound_history.txt" \
+  --dedupe \
+  --debug \
+  --scope sitewide
+
+
+
+# Insect buzz / field recordings corti
+cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score" && \
+python3 internet_archive_fine_tuning.py \
+  --q "insect (buzz OR wing OR swarm)" \
+  --include-subjects "sound effects,field recording,ambience" \
+  --exclude-collections "librivoxaudio,audio_bookspoetry,oldtimeradio,radioprograms,communitypodcast" \
+  --exclude "podcast,sermon,radio,chapter,novel,audiobook" \
+  --max-dur 6 --count 8 --rows 300 \
+  --out-dir "netsound" --history "netsound/netsound_history.txt" \
+  --dedupe --scope sitewide
+
+
+
+
+# Metal impact / clang
+cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score" && \
+python3 internet_archive_fine_tuning.py \
+  --q "metal (hit OR impact OR clang OR strike)" \
+  --include-subjects "sound effects,field recording" \
+  --exclude-collections "librivoxaudio,audio_bookspoetry,oldtimeradio,radioprograms,communitypodcast" \
+  --exclude "podcast,sermon,radio,chapter,novel,audiobook" \
+  --max-dur 4 --count 8 --rows 300 \
+  --out-dir "netsound" --history "netsound/netsound_history.txt" \
+  --dedupe --scope sitewide
+
+
 
 
 cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score"
@@ -80,6 +125,21 @@ python3 make_bbc_search_ia.py \
 BBC / Internetarchive.org querye
 
 
+      cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score"
+
+python3 make_bbc_search_ia.py \
+  --q wood \
+  --max-dur 5 \
+  --count 8 \
+  --rows 300 \
+  --out-dir "netsound" \
+  --history "netsound/netsound_history.txt" \
+  --dedupe \
+  --no-fallback \
+  --debug
+
+
+
   cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score"
 
 python3 make_bbc_search_ia.py \
@@ -93,13 +153,24 @@ python3 make_bbc_search_ia.py \
   --no-fallback \
   --debug
 
+  cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score"
 
+python3 make_bbc_search_ia.py \
+  --q games \
+  --max-dur 5 \
+  --count 8 \
+  --rows 300 \
+  --out-dir "netsound" \
+  --history "netsound/netsound_history.txt" \
+  --dedupe \
+  --no-fallback \
+  --debug
 
     cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score"
 
 python3 make_bbc_search_ia.py \
-  --q wood \
-  --max-dur 0 \
+  --q snap \
+  --max-dur 30 \
   --count 8 \
   --rows 300 \
   --out-dir "netsound" \
@@ -113,7 +184,7 @@ python3 make_bbc_search_ia.py \
 
 python3 make_bbc_search_ia.py \
   --q wood \
-  --max-dur 2 \
+  --max-dur 5 \
   --count 8 \
   --rows 300 \
   --out-dir "netsound" \
