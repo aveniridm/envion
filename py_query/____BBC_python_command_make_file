@@ -45,8 +45,10 @@
 #
 # ───────────────────────────────────────────────────────────────
 
+# ───────────────────────────────────────────────────────────────
+BEST QUERY internet_archive_fine_tuning.py
+# ───────────────────────────────────────────────────────────────
 
-funziona con internet_archive_fine_tuning.py
 
 cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score" && \
 python3 internet_archive_fine_tuning.py \
@@ -91,7 +93,7 @@ python3 internet_archive_fine_tuning.py \
   --dedupe --scope sitewide
 
 
-
+# ───────────────────────────────────────────────────────────────
 
 cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score"
 
