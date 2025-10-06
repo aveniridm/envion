@@ -10,3 +10,39 @@ python3 make_bbc_search_ia.py \
   --dedupe \
   --no-fallback \
   --debug
+
+
+
+  cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score"
+
+python3 make_bbc_search_ia.py \
+  --q wind \
+  --max-dur 0 \
+  --count 8 \
+  --rows 300 \
+  --out-dir "netsound" \
+  --history "netsound/netsound_history.txt" \
+  --dedupe \
+  --no-fallback \
+  --debug
+
+
+
+
+
+
+
+  cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score"
+
+python3 make_bbc_search_ia.py \
+  --q drums \
+  --max-dur 0 \
+  --count 8 \
+  --rows 300 \
+  --out-dir "netsound" \
+  --history "netsound/netsound_history.txt" \
+  --dedupe \
+  --no-fallback \
+  --debug
+
+
