@@ -1,3 +1,53 @@
+# ───────────────────────────────────────────────────────────────
+#  ESEMPIO DI COMANDO — Envion NET-AUDIO (BBC + Internet Archive)
+# ───────────────────────────────────────────────────────────────
+#
+# cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score"
+# → Imposta la cartella di lavoro principale dove si trova Envion e gli script Python.
+#
+# python3 make_bbc_search_ia.py \
+# → Esegue lo script che cerca e genera liste di suoni dalle API di BBC e Internet Archive.
+#
+#   --q wood \
+# → Query di ricerca: parola chiave o frase (es. "wood", "wind percussion", "metal hit").
+#   Puoi anche usare più parole separate da virgole.
+#
+#   --max-dur 0 \
+# → Durata massima (in secondi) dei file da includere.
+#   0 = nessun limite (accetta file di qualsiasi durata).
+#   Es: --max-dur 3 include solo file più brevi di 3 secondi.
+#
+#   --count 8 \
+# → Numero di risultati finali da includere nella lista.
+#   Envion carica 8 slot stereo, quindi 8 è il valore ideale.
+#
+#   --rows 300 \
+# → Numero massimo di risultati scaricati dal motore di ricerca
+#   prima del filtraggio. Valori alti danno più varietà ma rallentano un po’.
+#
+#   --out-dir "netsound" \
+# → Cartella in cui verrà salvata la lista generata (es. envion_random_raw_xx.txt)
+#   e gli eventuali file CSV o log.
+#
+#   --history "netsound/netsound_history.txt" \
+# → File di cronologia che registra gli URL già scaricati.
+#   Serve per evitare duplicati nelle ricerche successive.
+#
+#   --dedupe \
+# → Attiva la rimozione automatica dei duplicati usando la cronologia.
+#
+#   --no-fallback \
+# → Disattiva ricerche di backup su altre sorgenti (limita la ricerca a BBC + Internet Archive).
+#
+#   --debug
+# → Mostra informazioni dettagliate nel terminale:
+#   URL di ricerca, risultati scartati, durate, titoli, ecc.
+#
+# ───────────────────────────────────────────────────────────────
+
+
+
+
 cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score"
 
 python3 make_bbc_search_ia.py \
@@ -12,7 +62,6 @@ python3 make_bbc_search_ia.py \
   --debug
 
 
-
   cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score"
 
 python3 make_bbc_search_ia.py \
@@ -28,8 +77,7 @@ python3 make_bbc_search_ia.py \
 
 
 
-
-
+BBC / Internetarchive.org querye
 
 
   cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score"
@@ -44,5 +92,35 @@ python3 make_bbc_search_ia.py \
   --dedupe \
   --no-fallback \
   --debug
+
+
+
+    cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score"
+
+python3 make_bbc_search_ia.py \
+  --q wood \
+  --max-dur 0 \
+  --count 8 \
+  --rows 300 \
+  --out-dir "netsound" \
+  --history "netsound/netsound_history.txt" \
+  --dedupe \
+  --no-fallback \
+  --debug
+
+
+      cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score"
+
+python3 make_bbc_search_ia.py \
+  --q wood \
+  --max-dur 2 \
+  --count 8 \
+  --rows 300 \
+  --out-dir "netsound" \
+  --history "netsound/netsound_history.txt" \
+  --dedupe \
+  --no-fallback \
+  --debug
+
 
 

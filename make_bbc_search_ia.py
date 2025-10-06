@@ -2,14 +2,14 @@
 # -*- coding: utf-8 -*-
 
 import argparse, os, sys, time, re, json
-from urllib.parse import urlencode
+from urllib.parse import urlencode, quote
 import requests
 from random import shuffle
 
 IA_SEARCH = "https://archive.org/advancedsearch.php"
 IA_META   = "https://archive.org/metadata/"
 BBC_COLLECTIONS = {"BBCSoundEffectsComplete", "bbcsoundeffects"}
-AUDIO_EXTS = {".wav", ".flac", ".aiff", ".aif", ".mp3"}
+AUDIO_EXTS = {".wav", ".aiff", ".aif", ".mp3"}  # tolto flac per PD
 
 def dbg(flag, *msg):
     if flag:
@@ -51,7 +51,6 @@ def valid_audio_file(fobj, max_dur):
     ext = os.path.splitext(name.lower())[1]
     if ext not in AUDIO_EXTS:
         return False
-    # se manca length, accettiamo
     if max_dur > 0:
         dur = parse_len(fobj.get("length"))
         if dur is not None and dur > max_dur:
@@ -71,8 +70,8 @@ def files_from_identifier(identifier, max_dur, debug, name_contains=None):
             continue
         if not valid_audio_file(f, max_dur):
             continue
-        out.append(f"https://archive.org/download/{identifier}/{name}")
-    # de-dup keep order
+        encoded_name = quote(name, safe="/")  # <-- encode per PureData
+        out.append(f"https://archive.org/download/{identifier}/{encoded_name}")
     seen, uniq = set(), []
     for u in out:
         if u not in seen:
@@ -116,7 +115,7 @@ def main():
 
     os.makedirs(args.out_dir, exist_ok=True)
 
-    # 1) Prova ricerca “docs” (spesso 0 per BBC)
+    # 1) query “docs”
     try:
         docs = search_bbc_docs(args.q, args.rows, args.debug)
     except Exception as e:
@@ -125,7 +124,7 @@ def main():
 
     candidates = []
 
-    # 2) Se ci sono docs, prova a estrarre file da ciascun item
+    # 2) tenta dai docs
     if docs:
         shuffle(docs)
         for d in docs:
@@ -136,7 +135,7 @@ def main():
                 colls = {raw_colls}
             else:
                 colls = set()
-            if args.no_fallback and not (colls & BBC_COLLECTIONS):
+            if args.no-fallback and not (colls & BBC_COLLECTIONS):
                 continue
             ident = d.get("identifier")
             if not ident:
@@ -149,24 +148,22 @@ def main():
             if len(candidates) >= args.count * 3:
                 break
 
-    # 3) **Fallback robusto**: scandisci direttamente i FILE di BBCSoundEffectsComplete
+    # 3) fallback diretto nella collezione BBC
     if not candidates:
         dbg(args.debug, "fallback: scan files of BBCSoundEffectsComplete by filename match")
         try:
-            # match su filename che contiene la query (es. "wind")
             from_bbc_root = files_from_identifier(
                 "BBCSoundEffectsComplete",
                 args.max_dur,
                 args.debug,
                 name_contains=args.q
             )
-            # randomizza e prendi un po' di candidati
             shuffle(from_bbc_root)
             candidates.extend(from_bbc_root)
         except Exception as e:
             dbg(args.debug, f"fallback scan failed: {e}")
 
-    # 4) Dedupe contro history e taglia a --count
+    # 4) dedupe + limit
     history = load_history(args.history) if args.dedupe else set()
     final = []
     for u in candidates:
