@@ -58,7 +58,7 @@ python3 internet_archive_fine_tuning.py \
   --exclude "podcast,sermon,radio,chapter,novel,audiobook,libriVox" \
   --max-dur 4 \
   --count 8 \
-  --rows 300 \
+  --rows 1300 \
   --out-dir "netsound" \
   --history "netsound/netsound_history.txt" \
   --dedupe \
