@@ -1,0 +1,11 @@
+# lowercase / dust micro-textures
+cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score" && \
+terms=(lowercase dust hiss crackle grain static) && \
+for t in "${terms[@]}"; do
+  python3 make_raw_list.py \
+    --url "https://www.peamarte.it/freesound_get.php?q=${t}&max_dur=4&mode=raw" \
+    --count 2 \
+    --out-dir "/Users/emiliano/Documents/PureData/Envion-Algo-Score/netsound" \
+    --history "/Users/emiliano/Documents/PureData/Envion-Algo-Score/netsound/netsound_history.txt" \
+    --dedupe --insecure
+done
