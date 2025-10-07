@@ -19,3 +19,19 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+Additional Legal & Ethical Notice
+Envion’s *NET-AUDIO* and *NET-SOUND* modules fetch tiny audio fragments
+from open archives such as Internet Archive and Freesound.org,
+using only their public web interfaces.
+No audio is stored, copied, or redistributed by the software —
+all sounds are streamed directly from their original sources.
+
+Each fragment remains subject to the license defined by its host.
+Users are responsible for verifying the applicable rights if any
+retrieved material is later recorded, published, or redistributed
+as part of a composition.
+
+This tool promotes an ethos of procedural, ephemeral sampling —
+encouraging listening, exploration, and respect for the authors
+and archives that make these resources available.
