@@ -65,6 +65,23 @@ python3 internet_archive_fine_tuning.py \
   --scope sitewide
 
 
+# Tiny electricity / lowercase micro sounds
+cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score" && \
+python3 internet_archive_fine_tuning.py \
+  --q "(tiny OR small OR micro OR subtle OR minimal OR delicate OR quiet) (electricity OR electric spark OR static OR crack OR arc OR current OR snap OR zap)" \
+  --include-subjects "sound effects,field recording,ambience" \
+  --exclude-collections "librivoxaudio,audio_bookspoetry,oldtimeradio,radioprograms,communitypodcast" \
+  --exclude "podcast,sermon,radio,chapter,novel,audiobook,libriVox" \
+  --max-dur 1.8 \
+  --count 8 \
+  --rows 1300 \
+  --out-dir "netsound" \
+  --history "netsound/netsound_history.txt" \
+  --dedupe \
+  --scope sitewide
+
+
+
 
 cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score" && \
 python3 internet_archive_fine_tuning.py \
