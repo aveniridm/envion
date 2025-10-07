@@ -44,3 +44,11 @@ python3 make_raw_list.py \
   --dedupe --insecure
 
 
+
+# 1) piano keys “classico”
+python3 make_raw_list.py \
+  --url "https://www.peamarte.it/freesound_get.php?q=piano&max_dur=5&mode=raw" \
+  --count 8 --out-dir "/Users/emiliano/Documents/PureData/Envion-Algo-Score/netsound" \
+  --history "/Users/emiliano/Documents/PureData/Envion-Algo-Score/netsound/netsound_history.txt" \
+  --dedupe --insecure
+

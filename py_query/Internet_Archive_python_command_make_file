@@ -64,6 +64,37 @@ python3 internet_archive_fine_tuning.py \
   --dedupe \
   --scope sitewide
 
+  # Electric snap / small electricity sounds
+cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score" && \
+python3 internet_archive_fine_tuning.py \
+  --q "(electricity OR electrical OR electric spark OR snap OR static OR crack OR arc OR current OR zap)" \
+  --include-subjects "sound effects,field recording,ambience" \
+  --exclude-collections "librivoxaudio,audio_bookspoetry,oldtimeradio,radioprograms,communitypodcast" \
+  --exclude "podcast,sermon,radio,chapter,novel,audiobook,libriVox" \
+  --max-dur 4 \
+  --count 8 \
+  --rows 1300 \
+  --out-dir "netsound" \
+  --history "netsound/netsound_history.txt" \
+  --dedupe \
+  --scope sitewide
+
+
+# Broad lowercase clicks (no scope)
+cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score" && \
+python3 internet_archive_fine_tuning.py \
+  --q "((click OR clicks OR tap OR tick OR tock OR snap OR snapping OR switch OR \"button press\" OR keypress OR keyboard OR relay OR latch OR ratchet OR \"mouse click\" OR \"camera shutter\") OR (twig OR seed OR bead OR pebble OR fingernail OR knuckle OR \"tongue click\" OR droplet OR \"tiny drip\" OR \"dry leaf\" OR \"wood creak\"))" \
+  --exclude-collections "librivoxaudio,audio_bookspoetry,oldtimeradio,radioprograms,communitypodcast" \
+  --exclude "podcast,sermon,radio,chapter,novel,audiobook,libriVox" \
+  --max-dur 6 \
+  --count 8 \
+  --rows 5000 \
+  --out-dir "netsound" \
+  --history "netsound/netsound_history.txt" \
+  --dedupe
+
+
+
 
 # Tiny electricity / lowercase micro sounds
 cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score" && \
@@ -81,6 +112,20 @@ python3 internet_archive_fine_tuning.py \
   --scope sitewide
 
 
+# Contact mic / tactile lowercase sounds
+cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score" && \
+python3 internet_archive_fine_tuning.py \
+  --q "(contact mic OR piezo OR surface recording OR vibration OR friction OR scrape OR rub OR touch OR resonance OR material resonance)" \
+  --include-subjects "field recording,contact microphone,sound effects,ambience,experimental" \
+  --exclude-collections "librivoxaudio,audio_bookspoetry,oldtimeradio,radioprograms,communitypodcast" \
+  --exclude "podcast,sermon,radio,chapter,novel,audiobook,libriVox" \
+  --max-dur 2.5 \
+  --count 8 \
+  --rows 1300 \
+  --out-dir "netsound" \
+  --history "netsound/netsound_history.txt" \
+  --dedupe \
+  --scope sitewide
 
 
 cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score" && \
