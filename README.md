@@ -734,4 +734,7 @@ After preparing the text files, use the browse txt file option to load them. The
 
 ---
 
-v.3.6.1 last update domenica 22 settembre / 22.29
+---
+<!--UPDATE_TS_START-->
+_Last update: pending..._
+<!--UPDATE_TS_END-->
