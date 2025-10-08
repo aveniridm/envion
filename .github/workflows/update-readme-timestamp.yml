@@ -1,0 +1,36 @@
+name: Update README timestamp
+
+# << IMPORTANTE: consente al GITHUB_TOKEN di scrivere sul repo >>
+permissions:
+  contents: write
+
+on:
+  push:
+    branches: [ main ]
+  schedule:
+    - cron: "0 8,16 * * *"   # 08:00 e 16:00 Europe/Rome
+  workflow_dispatch:
+
+jobs:
+  stamp:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update timestamp block
+        run: |
+          TS=$(TZ=Europe/Rome date '+%Y-%m-%d %H:%M %Z')
+          perl -0777 -pe 's/<!--UPDATE_TS_START-->.*?<!--UPDATE_TS_END-->/<!--UPDATE_TS_START-->\n_Last update: '"$TS"'_\n<!--UPDATE_TS_END-->/s' README.md > README.new.md
+          mv README.new.md README.md
+
+      - name: Commit if changed
+        run: |
+          if git diff --quiet; then
+            echo "No changes."
+          else
+            git config user.email "actions@github.com"
+            git config user.name "github-actions"
+            git add README.md
+            git commit -m "chore(readme): update timestamp [skip ci]"
+            git push
+          fi
