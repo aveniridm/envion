@@ -1,0 +1,11 @@
+#N canvas 449 106 624 176 12;
+#X obj 76 58 else/note 0 9 Menlo empty 0 0 0 0 0 255 255 255 0 0 RELEASE;
+#X obj 197 81 s val_2;
+#X obj 76 74 r val_2;
+#X obj 96 121 hsl 80 15 0 20000 0 0 empty empty empty -2 -10 0 12 #dfdfdf #000000 #000000 0 1;
+#X obj 197 31 ctlin 26;
+#X obj 197 55 expr ($f1 * 20000 / 127);
+#X obj 196 15 note 222 10 Menlo empty 0 0 0 0 0 255 255 255 0 0 microfreak - filter amt control decay;
+#X connect 2 0 3 0;
+#X connect 4 0 5 0;
+#X connect 5 0 1 0;
