@@ -1,4 +1,7 @@
 
+> ⚠️ **Full documentation available** at the Envion website:  
+> https://www.peamarte.it/env/envion_v3.6.html  
+> (Consult that for complete usage guide, examples, and reference)
 
 # Envion
 Algorithmic Dynatext Envelope Sequencer in Pure Data (Pd) developed by **Emiliano Pennisi 2025**
