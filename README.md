@@ -1,4 +1,3 @@
-![GitHub all releases](https://img.shields.io/github/downloads/aveniridm/envion/total?color=blue&label=downloads)
 
 
 # Envion
