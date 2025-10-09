@@ -1,8 +1,8 @@
-https://archive.org/download/BBCSoundEffectsComplete/sounds/White Noise Synthesised Wind (Constant Pitch)/White noise filtered to simulate wind at constant pitch. Wind 10. (3 tones up from Wind 9).07000111.flac;
-https://archive.org/download/BBCSoundEffectsComplete/sounds/Low-Pitched Wind/Low-pitched wind..07005207.flac;
-https://archive.org/download/BBCSoundEffectsComplete/sounds/Weather 1 - Wind/Gusty wind through wires..07047154.flac;
-https://archive.org/download/BBCSoundEffectsComplete/sounds/Weather 1 - Wind/Low pitched wind..07047157.mp3;
-https://archive.org/download/BBCSoundEffectsComplete/sounds/5-7 Cwt Bedford Light Van (Interior)/Interior, window lowered and raised. (Bedford light van.).07012042.wav;
-https://archive.org/download/BBCSoundEffectsComplete/sounds/World War II Aircraft_ Heinkel 115 (German)/Heinkel 115, exterior recording. Flying with wind at 3,000ft.07008036.flac;
-https://archive.org/download/BBCSoundEffectsComplete/sounds/New Zealand - The Natural World 1/Wind in wattle trees - wattle track, Tiritiri Matangi Island (NZ).07056032.mp3;
-https://archive.org/download/BBCSoundEffectsComplete/sounds/Sash window opened & shut..07037520.mp3;
+https://archive.org/download/BBCSoundEffectsComplete/sounds/White%20Noise%20Synthesised%20Wind%20%28Constant%20Pitch%29/White%20noise%20filtered%20to%20simulate%20wind%20at%20constant%20pitch.%20Wind%2010.%20%283%20tones%20up%20from%20Wind%209%29.07000111.flac;
+https://archive.org/download/BBCSoundEffectsComplete/sounds/Low-Pitched%20Wind/Low-pitched%20wind..07005207.flac;
+https://archive.org/download/BBCSoundEffectsComplete/sounds/Weather%201%20-%20Wind/Gusty%20wind%20through%20wires..07047154.flac;
+https://archive.org/download/BBCSoundEffectsComplete/sounds/Weather%201%20-%20Wind/Low%20pitched%20wind..07047157.mp3;
+https://archive.org/download/BBCSoundEffectsComplete/sounds/5-7%20Cwt%20Bedford%20Light%20Van%20%28Interior%29/Interior%2C%20window%20lowered%20and%20raised.%20%28Bedford%20light%20van.%29.07012042.wav;
+https://archive.org/download/BBCSoundEffectsComplete/sounds/World%20War%20II%20Aircraft_%20Heinkel%20115%20%28German%29/Heinkel%20115%2C%20exterior%20recording.%20Flying%20with%20wind%20at%203%2C000ft.07008036.flac;
+https://archive.org/download/BBCSoundEffectsComplete/sounds/New%20Zealand%20-%20The%20Natural%20World%201/Wind%20in%20wattle%20trees%20-%20wattle%20track%2C%20Tiritiri%20Matangi%20Island%20%28NZ%29.07056032.mp3;
+https://archive.org/download/BBCSoundEffectsComplete/sounds/Sash%20window%20opened%20%26%20shut..07037520.mp3;

@@ -1,0 +1,26 @@
+archive.org - query
+
+comando per fix space
+cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score" && \
+python3 fix_netsound_spaces_only.py
+
+
+add semicolon
+cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score" && \
+python3 add_semicolon.py
+
+
+
+
+cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score" && \
+> python3 internet_archive_fine_tuning.py \
+>   --q '"splash" AND (water OR pond)' \
+>   --scope sitewide \
+>   --rows 1200 --count 8 \
+>   --formats "wav,wave,aiff,aif,flac,mp3,ogg" \
+>   --exclude-collections "librivoxaudio,oldtimeradio,community_audio,sermons,opensource_audio,bbc_radio,radioprograms,communitypodcast,audio_bookspoetry" \
+>   --exclude "sermon,preacher,gospel,church,jesus,christian,bible" \
+>   --out-dir "netsound" \
+>   --history "netsound/netsound_history.txt" \
+>   --dedupe \
+>   --debug

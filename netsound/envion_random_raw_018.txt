@@ -1,8 +1,8 @@
-https://archive.org/download/ThunderSoundEffectsHD/Sound Effect 05.mp3;
-https://archive.org/download/ThunderSoundEffectsHD/Sound Effect 05.ogg;
-https://archive.org/download/valentinosoundeffectslibrary/CD01 - Household, Phones/CD01/10. Glass - tea cup moved in saucer.wav;
-https://archive.org/download/valentinosoundeffectslibrary/CD01 - Household, Phones/CD01/11. Glass - liqueur bottle cork opened.wav;
-https://archive.org/download/valentinosoundeffectslibrary/CD01 - Household, Phones/CD01/12. Glass - liqueur bottle open - squeak.wav;
-https://archive.org/download/valentinosoundeffectslibrary/CD01 - Household, Phones/CD01/14. Aerosol can spray - medium.wav;
-https://archive.org/download/valentinosoundeffectslibrary/CD01 - Household, Phones/CD01/15. Aerosol can spray - short.wav;
-https://archive.org/download/valentinosoundeffectslibrary/CD01 - Household, Phones/CD01/33. Door - wooden, slide closed.wav;
+https://archive.org/download/ThunderSoundEffectsHD/Sound%20Effect%2005.mp3;
+https://archive.org/download/ThunderSoundEffectsHD/Sound%20Effect%2005.ogg;
+https://archive.org/download/valentinosoundeffectslibrary/CD01%20-%20Household%2C%20Phones/CD01/10.%20Glass%20-%20tea%20cup%20moved%20in%20saucer.wav;
+https://archive.org/download/valentinosoundeffectslibrary/CD01%20-%20Household%2C%20Phones/CD01/11.%20Glass%20-%20liqueur%20bottle%20cork%20opened.wav;
+https://archive.org/download/valentinosoundeffectslibrary/CD01%20-%20Household%2C%20Phones/CD01/12.%20Glass%20-%20liqueur%20bottle%20open%20-%20squeak.wav;
+https://archive.org/download/valentinosoundeffectslibrary/CD01%20-%20Household%2C%20Phones/CD01/14.%20Aerosol%20can%20spray%20-%20medium.wav;
+https://archive.org/download/valentinosoundeffectslibrary/CD01%20-%20Household%2C%20Phones/CD01/15.%20Aerosol%20can%20spray%20-%20short.wav;
+https://archive.org/download/valentinosoundeffectslibrary/CD01%20-%20Household%2C%20Phones/CD01/33.%20Door%20-%20wooden%2C%20slide%20closed.wav;
