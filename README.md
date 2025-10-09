@@ -1,3 +1,6 @@
+![GitHub all releases](https://img.shields.io/github/downloads/aveniridm/envion/total?color=blue&label=downloads)
+
+
 # Envion
 Algorithmic Dynatext Envelope Sequencer in Pure Data (Pd) developed by **Emiliano Pennisi 2025**
 
