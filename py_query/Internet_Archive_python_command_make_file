@@ -50,8 +50,9 @@ BEST QUERY internet_archive_fine_tuning.py
 # ───────────────────────────────────────────────────────────────
 
 # Electric snap / small electricity sounds
+
 cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score" && \
-python3 internet_archive_fine_tuning.py \
+python3 "/Users/emiliano/Documents/PureData/Envion-Algo-Score/python__queries/internet_archive_fine_tuning.py" \
   --q "(electricity OR electrical OR electric spark OR snap OR static OR crack OR arc OR current OR zap)" \
   --include-subjects "sound effects,field recording,ambience" \
   --exclude-collections "librivoxaudio,audio_bookspoetry,oldtimeradio,radioprograms,communitypodcast" \
@@ -59,10 +60,11 @@ python3 internet_archive_fine_tuning.py \
   --max-dur 4 \
   --count 8 \
   --rows 1300 \
-  --out-dir "netsound" \
-  --history "netsound/netsound_history.txt" \
+  --out-dir "/Users/emiliano/Documents/PureData/Envion-Algo-Score/netsound" \
+  --history "/Users/emiliano/Documents/PureData/Envion-Algo-Score/netsound/netsound_history.txt" \
   --dedupe \
   --scope sitewide
+
 
   # Electric snap / small electricity sounds
 cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score" && \
@@ -82,15 +84,15 @@ python3 internet_archive_fine_tuning.py \
 
 # Broad lowercase clicks (no scope)
 cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score" && \
-python3 internet_archive_fine_tuning.py \
+python3 "/Users/emiliano/Documents/PureData/Envion-Algo-Score/python__queries/internet_archive_fine_tuning.py" \
   --q "((click OR clicks OR tap OR tick OR tock OR snap OR snapping OR switch OR \"button press\" OR keypress OR keyboard OR relay OR latch OR ratchet OR \"mouse click\" OR \"camera shutter\") OR (twig OR seed OR bead OR pebble OR fingernail OR knuckle OR \"tongue click\" OR droplet OR \"tiny drip\" OR \"dry leaf\" OR \"wood creak\"))" \
   --exclude-collections "librivoxaudio,audio_bookspoetry,oldtimeradio,radioprograms,communitypodcast" \
   --exclude "podcast,sermon,radio,chapter,novel,audiobook,libriVox" \
   --max-dur 6 \
   --count 8 \
   --rows 5000 \
-  --out-dir "netsound" \
-  --history "netsound/netsound_history.txt" \
+  --out-dir "/Users/emiliano/Documents/PureData/Envion-Algo-Score/netsound" \
+  --history "/Users/emiliano/Documents/PureData/Envion-Algo-Score/netsound/netsound_history.txt" \
   --dedupe
 
 
@@ -98,7 +100,7 @@ python3 internet_archive_fine_tuning.py \
 
 # Tiny electricity / lowercase micro sounds
 cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score" && \
-python3 internet_archive_fine_tuning.py \
+python3 "/Users/emiliano/Documents/PureData/Envion-Algo-Score/python__queries/internet_archive_fine_tuning.py" \
   --q "(tiny OR small OR micro OR subtle OR minimal OR delicate OR quiet) (electricity OR electric spark OR static OR crack OR arc OR current OR snap OR zap)" \
   --include-subjects "sound effects,field recording,ambience" \
   --exclude-collections "librivoxaudio,audio_bookspoetry,oldtimeradio,radioprograms,communitypodcast" \
@@ -106,15 +108,16 @@ python3 internet_archive_fine_tuning.py \
   --max-dur 1.8 \
   --count 8 \
   --rows 1300 \
-  --out-dir "netsound" \
-  --history "netsound/netsound_history.txt" \
+  --out-dir "/Users/emiliano/Documents/PureData/Envion-Algo-Score/netsound" \
+  --history "/Users/emiliano/Documents/PureData/Envion-Algo-Score/netsound/netsound_history.txt" \
   --dedupe \
   --scope sitewide
 
 
+
 # Contact mic / tactile lowercase sounds
 cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score" && \
-python3 internet_archive_fine_tuning.py \
+python3 "/Users/emiliano/Documents/PureData/Envion-Algo-Score/python__queries/internet_archive_fine_tuning.py" \
   --q "(contact mic OR piezo OR surface recording OR vibration OR friction OR scrape OR rub OR touch OR resonance OR material resonance)" \
   --include-subjects "field recording,contact microphone,sound effects,ambience,experimental" \
   --exclude-collections "librivoxaudio,audio_bookspoetry,oldtimeradio,radioprograms,communitypodcast" \
@@ -122,14 +125,16 @@ python3 internet_archive_fine_tuning.py \
   --max-dur 2.5 \
   --count 8 \
   --rows 1300 \
-  --out-dir "netsound" \
-  --history "netsound/netsound_history.txt" \
+  --out-dir "/Users/emiliano/Documents/PureData/Envion-Algo-Score/netsound" \
+  --history "/Users/emiliano/Documents/PureData/Envion-Algo-Score/netsound/netsound_history.txt" \
   --dedupe \
   --scope sitewide
 
 
+
+# Insect (generico, debug ON)
 cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score" && \
-python3 internet_archive_fine_tuning.py \
+python3 "/Users/emiliano/Documents/PureData/Envion-Algo-Score/python__queries/internet_archive_fine_tuning.py" \
   --q "insect" \
   --include-subjects "sound effects,field recording,ambience" \
   --exclude-collections "librivoxaudio,audio_bookspoetry,oldtimeradio,radioprograms,communitypodcast" \
@@ -137,8 +142,8 @@ python3 internet_archive_fine_tuning.py \
   --max-dur 8 \
   --count 8 \
   --rows 300 \
-  --out-dir "netsound" \
-  --history "netsound/netsound_history.txt" \
+  --out-dir "/Users/emiliano/Documents/PureData/Envion-Algo-Score/netsound" \
+  --history "/Users/emiliano/Documents/PureData/Envion-Algo-Score/netsound/netsound_history.txt" \
   --dedupe \
   --debug \
   --scope sitewide
@@ -147,55 +152,66 @@ python3 internet_archive_fine_tuning.py \
 
 # Insect buzz / field recordings corti
 cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score" && \
-python3 internet_archive_fine_tuning.py \
+python3 "/Users/emiliano/Documents/PureData/Envion-Algo-Score/python__queries/internet_archive_fine_tuning.py" \
   --q "insect (buzz OR wing OR swarm)" \
   --include-subjects "sound effects,field recording,ambience" \
   --exclude-collections "librivoxaudio,audio_bookspoetry,oldtimeradio,radioprograms,communitypodcast" \
   --exclude "podcast,sermon,radio,chapter,novel,audiobook" \
-  --max-dur 6 --count 8 --rows 300 \
-  --out-dir "netsound" --history "netsound/netsound_history.txt" \
-  --dedupe --scope sitewide
+  --max-dur 6 \
+  --count 8 \
+  --rows 300 \
+  --out-dir "/Users/emiliano/Documents/PureData/Envion-Algo-Score/netsound" \
+  --history "/Users/emiliano/Documents/PureData/Envion-Algo-Score/netsound/netsound_history.txt" \
+  --dedupe \
+  --scope sitewide
 
 
 
 
 # Metal impact / clang
 cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score" && \
-python3 internet_archive_fine_tuning.py \
+python3 "/Users/emiliano/Documents/PureData/Envion-Algo-Score/python__queries/internet_archive_fine_tuning.py" \
   --q "metal (hit OR impact OR clang OR strike)" \
   --include-subjects "sound effects,field recording" \
   --exclude-collections "librivoxaudio,audio_bookspoetry,oldtimeradio,radioprograms,communitypodcast" \
   --exclude "podcast,sermon,radio,chapter,novel,audiobook" \
-  --max-dur 4 --count 8 --rows 300 \
-  --out-dir "netsound" --history "netsound/netsound_history.txt" \
-  --dedupe --scope sitewide
+  --max-dur 4 \
+  --count 8 \
+  --rows 300 \
+  --out-dir "/Users/emiliano/Documents/PureData/Envion-Algo-Score/netsound" \
+  --history "/Users/emiliano/Documents/PureData/Envion-Algo-Score/netsound/netsound_history.txt" \
+  --dedupe \
+  --scope sitewide
+
 
 
 # ───────────────────────────────────────────────────────────────
+# BBC query: wind
 
-cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score"
 
-python3 make_bbc_search_ia.py \
-  --q wind \
+cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score" && \
+python3 "/Users/emiliano/Documents/PureData/Envion-Algo-Score/python__queries/make_bbc_search_ia.py" \
+  --q "wind" \
   --max-dur 0 \
   --count 8 \
   --rows 300 \
-  --out-dir "netsound" \
-  --history "netsound/netsound_history.txt" \
+  --out-dir "/Users/emiliano/Documents/PureData/Envion-Algo-Score/netsound" \
+  --history "/Users/emiliano/Documents/PureData/Envion-Algo-Score/netsound/netsound_history.txt" \
   --dedupe \
   --no-fallback \
   --debug
 
 
-  cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score"
 
-python3 make_bbc_search_ia.py \
-  --q wind \
-  --max-dur 0 \
+# BBC query: wood
+cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score" && \
+python3 "/Users/emiliano/Documents/PureData/Envion-Algo-Score/python__queries/make_bbc_search_ia.py" \
+  --q "wood" \
+  --max-dur 5 \
   --count 8 \
   --rows 300 \
-  --out-dir "netsound" \
-  --history "netsound/netsound_history.txt" \
+  --out-dir "/Users/emiliano/Documents/PureData/Envion-Algo-Score/netsound" \
+  --history "/Users/emiliano/Documents/PureData/Envion-Algo-Score/netsound/netsound_history.txt" \
   --dedupe \
   --no-fallback \
   --debug
@@ -204,31 +220,30 @@ python3 make_bbc_search_ia.py \
 
 BBC / Internetarchive.org querye
 
-
-      cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score"
-
-python3 make_bbc_search_ia.py \
-  --q wood \
-  --max-dur 5 \
+# BBC query: drums
+cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score" && \
+python3 "/Users/emiliano/Documents/PureData/Envion-Algo-Score/python__queries/make_bbc_search_ia.py" \
+  --q "drums" \
+  --max-dur 0 \
   --count 8 \
   --rows 300 \
-  --out-dir "netsound" \
-  --history "netsound/netsound_history.txt" \
+  --out-dir "/Users/emiliano/Documents/PureData/Envion-Algo-Score/netsound" \
+  --history "/Users/emiliano/Documents/PureData/Envion-Algo-Score/netsound/netsound_history.txt" \
   --dedupe \
   --no-fallback \
   --debug
 
 
 
-  cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score"
-
-python3 make_bbc_search_ia.py \
-  --q drums \
-  --max-dur 0 \
+# BBC query: snap
+cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score" && \
+python3 "/Users/emiliano/Documents/PureData/Envion-Algo-Score/python__queries/make_bbc_search_ia.py" \
+  --q "snap" \
+  --max-dur 30 \
   --count 8 \
   --rows 300 \
-  --out-dir "netsound" \
-  --history "netsound/netsound_history.txt" \
+  --out-dir "/Users/emiliano/Documents/PureData/Envion-Algo-Score/netsound" \
+  --history "/Users/emiliano/Documents/PureData/Envion-Algo-Score/netsound/netsound_history.txt" \
   --dedupe \
   --no-fallback \
   --debug

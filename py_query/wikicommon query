@@ -1,0 +1,56 @@
+wikicommon query
+
+
+
+
+Micro-texture whisper/crackle/hiss (lowercase):
+
+cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score" && \
+./wiki_commons_fetch.py \
+  --q "whisper OR crackle OR hiss OR grain OR rustle OR breath OR scrape" \
+  --count 8 --dedupe --verbose \
+  --out-dir "netsound/wiki" \
+  --history "netsound/wiki/netsound_history.txt"
+
+
+Acqua piccola (drip/splash minuto):
+
+cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score" && \
+./wiki_commons_fetch.py \
+  --q "drip OR water drop OR light splash OR bubble small" \
+  --count 8 --dedupe --verbose \
+  --out-dir "netsound/wiki" \
+  --history "netsound/wiki/netsound_history.txt"
+
+
+Foglie / carta / fruscii:
+
+cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score" && \
+./wiki_commons_fetch.py \
+  --q "leaf rustle OR paper crumple OR foil crinkle OR hiss quiet" \
+  --count 8 --dedupe --verbose \
+  --out-dir "netsound/wiki" \
+  --history "netsound/wiki/netsound_history.txt"
+
+
+
+Click/tic/tap minuti:
+
+  cd "/Users/emiliano/Documents/PureData/Envion-Algo-Score" && \
+./wiki_commons_fetch.py \
+  --q "tiny click OR soft tap OR subtle tick" \
+  --count 8 --dedupe --verbose \
+  --out-dir "netsound/wiki" \
+  --history "netsound/wiki/netsound_history.txt"
+
+
+  Opzioni utili (se vuoi ritoccare)
+
+--extensions ".ogg,.wav,.flac" per limitare i formati
+
+--exclude "speech,voiceover,talk" per scartare parole nel titolo/URL
+
+--out-file "wiki_urls.txt" per cambiare il file di output
+
+--timeout 20 se la rete è lenta
+
