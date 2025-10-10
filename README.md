@@ -14,6 +14,16 @@ I would like to emphasize how fascinating the world of **envelope dynamics** is,
 
 ![Envion — Composite Overview](html-guide/img/enviaon-cmps.PNG "Envion — Composite Overview")
 
+
+[Envion Playlist su YouTube](https://www.youtube.com/watch?v=gA-pdHQwibA&list=PLLITukQh1_l61lP6GMfa1Hz4Db7_wrTTT)
+**Envion – Official Video Series**  
+Dive into the world of Envion with our full video playlist. From behind-the-scenes footage and project insights to interviews and updates, these videos give you an all-around look at Envion’s mission, technology, and community.  
+
+🔍 Whether you're curious about sustainability, innovation, or the story behind Envion, this playlist is your go-to source.  
+Don’t forget to **like, comment and subscribe** for new episodes and announcements!
+
+
+
 > ## ⚠️ Notes on this documentation
 >
 > Envion is in **continuous development**.  
