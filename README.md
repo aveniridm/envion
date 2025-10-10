@@ -9,12 +9,6 @@ Algorithmic Dynatext Envelope Sequencer in Pure Data (Pd) developed by **Emilian
 **Envion** is an ecosystem in Pure Data designed for algorithmic and procedural composition, musique concrète, and experimental sound processing.
 It includes tools for slicing, dynamic envelopes, texture generation, and multi-channel management.
 
-Per years, I explored different systems for handling envelopes dynamically — starting with software like *Composer Desktop Project*, and later with hardware generators such as **Zadar** in the Eurorack world.
-I would like to emphasize how fascinating the world of **envelope dynamics** is, and how envelopes can imprint *transformative tonal characteristics* onto sounds. Out of this research, I developed Envion.
-
-![Envion — Composite Overview](html-guide/img/enviaon-cmps.PNG "Envion — Composite Overview")
-
-
 [Envion Playlist su YouTube](https://www.youtube.com/watch?v=gA-pdHQwibA&list=PLLITukQh1_l61lP6GMfa1Hz4Db7_wrTTT)
 **Envion – Official Video Series**  
 Dive into the world of Envion with our full video playlist. From behind-the-scenes footage and project insights to interviews and updates, these videos give you an all-around look at Envion’s mission, technology, and community.  
@@ -23,6 +17,10 @@ Dive into the world of Envion with our full video playlist. From behind-the-scen
 Don’t forget to **like, comment and subscribe** for new episodes and announcements!
 
 
+Per years, I explored different systems for handling envelopes dynamically — starting with software like *Composer Desktop Project*, and later with hardware generators such as **Zadar** in the Eurorack world.
+I would like to emphasize how fascinating the world of **envelope dynamics** is, and how envelopes can imprint *transformative tonal characteristics* onto sounds. Out of this research, I developed Envion.
+
+![Envion — Composite Overview](html-guide/img/enviaon-cmps.PNG "Envion — Composite Overview")
 
 > ## ⚠️ Notes on this documentation
 >
