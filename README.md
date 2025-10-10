@@ -9,8 +9,7 @@ Algorithmic Dynatext Envelope Sequencer in Pure Data (Pd) developed by **Emilian
 **Envion** is an ecosystem in Pure Data designed for algorithmic and procedural composition, musique concrète, and experimental sound processing.
 It includes tools for slicing, dynamic envelopes, texture generation, and multi-channel management.
 
-[Envion Playlist su YouTube](https://www.youtube.com/watch?v=gA-pdHQwibA&list=PLLITukQh1_l61lP6GMfa1Hz4Db7_wrTTT)
-**Envion – Official Video Series**  
+[**Envion – Official Video Series**](https://www.youtube.com/watch?v=gA-pdHQwibA&list=PLLITukQh1_l61lP6GMfa1Hz4Db7_wrTTT) 
 Dive into the world of Envion with our full video playlist. From behind-the-scenes footage and project insights to interviews and updates, these videos give you an all-around look at Envion’s mission, technology, and community.  
 
 🔍 Whether you're curious about sustainability, innovation, or the story behind Envion, this playlist is your go-to source.  
