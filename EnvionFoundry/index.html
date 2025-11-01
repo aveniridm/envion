@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>EnvionFoundry</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main>
+    <header class="titlebar">
+      <img src="https://www.peamarte.it/env/html-guide/img/logo_circle_60x60_bw_inverted.png" class="logo" />
+      <h1>EnvionFoundry</h1>
+    </header>
+
+    <p class="subtitle">Forge procedural audio fragments ready for Envion.</p>
+
+    <section id="local">
+      <h2>Local Processing</h2>
+      <label for="fileInput">Select audio file:</label>
+      <input type="file" id="fileInput" accept=".wav,.mp3" />
+
+      <div class="buttons">
+        <button id="processBtn">Process Audio</button>
+      </div>
+
+      <pre id="processLog">Waiting for file...</pre>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
