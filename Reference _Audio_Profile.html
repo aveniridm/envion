@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Envion — Reference Audio Profile</title>
+<style>
+  body {
+    font-family: "Inter", Arial, sans-serif;
+    background: #f5f5f5;
+    color: #222;
+    line-height: 1.6;
+    margin: 0;
+  }
+  header {
+    background: #111;
+    color: #eee;
+    padding: 2rem;
+    text-align: center;
+  }
+  main {
+    max-width: 880px;
+    margin: 2rem auto;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  }
+  h1, h2 {
+    font-weight: 600;
+  }
+  h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+  h2 { margin-top: 2rem; font-size: 1.2rem; }
+  img {
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 0.8rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  figure {
+    margin: 2rem 0;
+    text-align: center;
+  }
+  figcaption {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.4rem;
+  }
+  .param {
+    background: #f0f0f0;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    font-family: monospace;
+    font-size: 0.9rem;
+  }
+  .note {
+    background: #fff8dc;
+    border-left: 4px solid #e6c200;
+    padding: 1rem;
+    border-radius: 6px;
+    margin-top: 1rem;
+  }
+  footer {
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.8rem;
+    color: #555;
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Envion — Reference Audio Profile</h1>
+  <p>Perfect parameters for articulation and slicing</p>
+</header>
+
+<main>
+  <section>
+    <h2>Overview</h2>
+    <p>
+      The file <strong>FILE-MASTER-TIME.wav</strong> is a near-ideal specimen for
+      <em>Envion’s procedural articulation model</em>. Its duration (~9 s),
+      intensity modulation, and spectral balance allow it to interact with the
+      <strong>DF-SEQ ternary logic</strong> (red/grey/white triplets)
+      with natural rhythmic breathing and clearly defined micro-events.
+    </p>
+  </section>
+
+  <section>
+    <h2>Waveform and Spectral Analysis</h2>
+
+    <figure>
+      <img src="waveform.png" alt="Waveform of FILE-MASTER-TIME.wav">
+      <figcaption>Amplitude envelope showing seven main articulation peaks.</figcaption>
+    </figure>
+
+    <figure>
+      <img src="spectrum.png" alt="Spectral distribution of FILE-MASTER-TIME.wav">
+      <figcaption>Spectral energy distribution — concentrated around 1.4 kHz, ideal for Envion layering.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2>Analytical summary</h2>
+    <ul>
+      <li><strong>Duration:</strong> 9.2 s</li>
+      <li><strong>Mean RMS:</strong> moderate, stable amplitude contour</li>
+      <li><strong>Intensity peaks:</strong> 7 (natural segmentation points)</li>
+      <li><strong>Weighted mean frequency:</strong> ≈1450 Hz</li>
+      <li><strong>Profile type:</strong> semi-dense / articulated / micro-rhythmic</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Procedural compatibility</h2>
+    <p>
+      In Envion, this file behaves like a <em>living fragment</em> — rich enough to host
+      several independent gestures. Its temporal micro-architecture allows the system to:
+    </p>
+    <ul>
+      <li>assign <strong>ternary trigger patterns</strong> to each RMS peak;</li>
+      <li>generate <strong>entropy-based modulation</strong> between silent and active zones;</li>
+      <li>apply <strong>pitch and fade transformations</strong> without losing structural identity;</li>
+      <li>feed <strong>EnvionFoundry</strong> auto-slicing routines with clear anchor points.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Transformation presets</h2>
+    <div class="param">
+      <p><strong>Pitch-Up Micro</strong><br>
+      <code>asetrate=384000, aresample=48000, atempo=1.6</code><br>
+      → transforms micro-gestures into bright, sharp fragments.</p>
+
+      <p><strong>Pitch-Down Pad</strong><br>
+      <code>asetrate=16000, aresample=48000, atempo=0.7</code><br>
+      → turns the same source into deep, slow pads.</p>
+
+      <p><strong>Extended Fade</strong><br>
+      <code>afade=t=in:st=0:d=0.05, afade=t=out:st=0.5*d:d=0.5*d</code><br>
+      → smooth temporal erosion, ready for feedback layering.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Target profile for new recordings</h2>
+    <ul>
+      <li>8–12 seconds total duration</li>
+      <li>5–9 intensity clusters (clear onsets)</li>
+      <li>Average spectral centroid 1–2 kHz</li>
+      <li>Medium-high RMS dynamic range</li>
+      <li>Audible transients and subtle background texture</li>
+    </ul>
+    <div class="note">
+      Sounds that match this profile can be directly processed by
+      <strong>EnvionFoundry</strong> and integrated into the procedural ecosystem.
+    </div>
+  </section>
+
+  <section>
+    <h2>Listen</h2>
+    <audio controls>
+      <source src="FILE-MASTER-TIME.wav" type="audio/wav">
+      Your browser does not support audio playback.
+    </audio>
+  </section>
+</main>
+
+<footer>
+  © Envion Project — Reference page for procedural articulation and seeding analysis.
+</footer>
+</body>
+</html>
