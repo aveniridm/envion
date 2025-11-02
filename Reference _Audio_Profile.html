@@ -61,6 +61,11 @@
     border-radius: 6px;
     margin-top: 1rem;
   }
+  audio {
+    width: 100%;
+    margin-top: 1rem;
+    outline: none;
+  }
   footer {
     text-align: center;
     padding: 1rem;
@@ -79,11 +84,10 @@
   <section>
     <h2>Overview</h2>
     <p>
-      The file <strong>FILE-MASTER-TIME.wav</strong> is a near-ideal specimen for
-      <em>Envion’s procedural articulation model</em>. Its duration (~9 s),
-      intensity modulation, and spectral balance allow it to interact with the
-      <strong>DF-SEQ ternary logic</strong> (red/grey/white triplets)
-      with natural rhythmic breathing and clearly defined micro-events.
+      The file <strong>FILE-MASTER-TIME.wav</strong> represents an archetype for
+      <em>Envion’s procedural articulation model</em>. With its nine-second duration,
+      consistent energy flow and balanced spectral range, it perfectly supports
+      <strong>ternary seeding logic</strong> and <em>probabilistic articulation</em>.
     </p>
   </section>
 
@@ -91,43 +95,45 @@
     <h2>Waveform and Spectral Analysis</h2>
 
     <figure>
-      <img src="waveform.png" alt="Waveform of FILE-MASTER-TIME.wav">
-      <figcaption>Amplitude envelope showing seven main articulation peaks.</figcaption>
+      <img src="https://raw.githubusercontent.com/aveniridm/envion/refs/heads/main/media/envion_waveform_ref.png" 
+           alt="Waveform of FILE-MASTER-TIME.wav">
+      <figcaption>Amplitude envelope showing seven main articulation peaks (ideal for auto-slicing).</figcaption>
     </figure>
 
     <figure>
-      <img src="spectrum.png" alt="Spectral distribution of FILE-MASTER-TIME.wav">
-      <figcaption>Spectral energy distribution — concentrated around 1.4 kHz, ideal for Envion layering.</figcaption>
+      <img src="https://raw.githubusercontent.com/aveniridm/envion/refs/heads/main/media/envion_spectrum_ref.png" 
+           alt="Spectral distribution of FILE-MASTER-TIME.wav">
+      <figcaption>Energy concentrated around 1.4 kHz — bright, dynamic midrange perfect for Envion’s layering engine.</figcaption>
     </figure>
   </section>
 
   <section>
-    <h2>Analytical summary</h2>
+    <h2>Analytical Summary</h2>
     <ul>
       <li><strong>Duration:</strong> 9.2 s</li>
-      <li><strong>Mean RMS:</strong> moderate, stable amplitude contour</li>
-      <li><strong>Intensity peaks:</strong> 7 (natural segmentation points)</li>
+      <li><strong>Mean RMS:</strong> moderate and stable amplitude contour</li>
+      <li><strong>Intensity peaks:</strong> 7 clear articulation nodes</li>
       <li><strong>Weighted mean frequency:</strong> ≈1450 Hz</li>
       <li><strong>Profile type:</strong> semi-dense / articulated / micro-rhythmic</li>
     </ul>
   </section>
 
   <section>
-    <h2>Procedural compatibility</h2>
+    <h2>Procedural Compatibility</h2>
     <p>
-      In Envion, this file behaves like a <em>living fragment</em> — rich enough to host
-      several independent gestures. Its temporal micro-architecture allows the system to:
+      In Envion, this audio fragment acts as a <em>living articulation cell</em>.
+      Each intensity peak maps onto a <strong>ternary trigger triplet</strong> (red / grey / white),
+      creating organic rotations between activation, hold, and silence.
     </p>
-    <ul>
-      <li>assign <strong>ternary trigger patterns</strong> to each RMS peak;</li>
-      <li>generate <strong>entropy-based modulation</strong> between silent and active zones;</li>
-      <li>apply <strong>pitch and fade transformations</strong> without losing structural identity;</li>
-      <li>feed <strong>EnvionFoundry</strong> auto-slicing routines with clear anchor points.</li>
-    </ul>
+    <p>
+      The file’s micro-temporal balance allows Envion’s <code>Entropy Feeder</code>
+      and <code>DF-SEQ</code> systems to generate feedback-driven gestures
+      without losing temporal coherence.
+    </p>
   </section>
 
   <section>
-    <h2>Transformation presets</h2>
+    <h2>Recommended Transformation Presets</h2>
     <div class="param">
       <p><strong>Pitch-Up Micro</strong><br>
       <code>asetrate=384000, aresample=48000, atempo=1.6</code><br>
@@ -144,31 +150,32 @@
   </section>
 
   <section>
-    <h2>Target profile for new recordings</h2>
+    <h2>Target Profile for New Recordings</h2>
     <ul>
       <li>8–12 seconds total duration</li>
-      <li>5–9 intensity clusters (clear onsets)</li>
-      <li>Average spectral centroid 1–2 kHz</li>
-      <li>Medium-high RMS dynamic range</li>
-      <li>Audible transients and subtle background texture</li>
+      <li>5–9 dynamic peaks with natural decay</li>
+      <li>Spectral centroid between 1–2 kHz</li>
+      <li>Moderate dynamic range (non-compressed)</li>
+      <li>Visible transient articulation</li>
     </ul>
     <div class="note">
-      Sounds that match this profile can be directly processed by
-      <strong>EnvionFoundry</strong> and integrated into the procedural ecosystem.
+      Audio matching this profile integrates perfectly with
+      <strong>EnvionFoundry</strong> for automatic slicing,
+      anonymization and procedural transformation.
     </div>
   </section>
 
   <section>
-    <h2>Listen</h2>
+    <h2>Listen to the Reference File</h2>
     <audio controls>
-      <source src="FILE-MASTER-TIME.wav" type="audio/wav">
-      Your browser does not support audio playback.
+      <source src="https://raw.githubusercontent.com/aveniridm/envion/97b6f79e46e6483894d412d4dcad1c22086f58a3/audio/file_master_profile.wav" type="audio/wav">
+      Your browser does not support the audio element.
     </audio>
   </section>
 </main>
 
 <footer>
-  © Envion Project — Reference page for procedural articulation and seeding analysis.
+  © Envion Project — Reference page for articulation and procedural seeding analysis.
 </footer>
 </body>
 </html>
