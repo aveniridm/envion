@@ -7,7 +7,7 @@ by **Emiliano Pennisi** — 2025
 
 ### Foundational Statement
 
-Envion is an artistic-research ecosystem conceived and developed by **Emiliano Pennisi (2023–2025)**.  
+Envion is an artistic-research ecosystem conceived and developed by **Emiliano Pennisi (2024–2025)**.  
 It represents the first procedural environment for *network-based sonic excavation* and *algorithmic composition* built entirely in Pure Data and PlugData.  
 Envion introduces the notion of **Found Net Sound**, the **gesture as envelope** paradigm, and a modular architecture integrating network and local sound recontextualization.  
 Documented across public repositories, websites, and media features (CDM, Reddit, YouTube), Envion constitutes an original framework for open, procedural musique concrète.
@@ -144,6 +144,10 @@ You are free to use, modify, and redistribute this project, including for commer
 See the [LICENSE](LICENSE) file for details.
 
 ---
+
+
+Envion — © Emiliano Pennisi 2024–2025
+First public release: GitHub Repository
 
 ## Links
 
