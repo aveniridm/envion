@@ -12,6 +12,8 @@ It represents the first procedural environment for *network-based sonic excavati
 Envion introduces the notion of **Found Net Sound**, the **gesture as envelope** paradigm, and a modular architecture integrating network and local sound recontextualization.  
 Documented across public repositories, websites, and media features (CDM, Reddit, YouTube), Envion constitutes an original framework for open, procedural musique concrète.
 
+Check out my research here: https://www.researchcatalogue.net/researches/3994963
+
 ---
 
 **Documentation & Tutorials:**  
